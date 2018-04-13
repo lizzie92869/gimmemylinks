@@ -8,3 +8,6 @@
 
 lizzie = User.create(email: "lizzie@gmail.com", password: "lizziegmail", password_confirmation: "lizziegmail")
 david = User.create(email: "david@gmail.com", password: "davidgmail", password_confirmation: "davidgmail")
+
+link_clothes = Link.create(url: "http://www.ecosia.org/search?q=google&addon=chrome&addonversion=2.0.3", name: "summer fashion",priority: "high")
+link_clothes2 = Link.create(url: "https://www.ecosia.org/search?q=google&addon=chrome&addonversion=2.0.3", name: "summer fashion2",priority: "low")
