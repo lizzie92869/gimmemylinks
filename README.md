@@ -1,24 +1,22 @@
-# README
+This application allow its users to keep track and organize useful links such as articles you want to read later or 
+1. fork and clone the repo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2. bundle install
 
-Things you may want to cover:
+3. insert your own user key and secret key for omniauth:
+config/initializers/omniauth.rb
+provider :google, ENV['KEY'], ENV['SECRET']
 
-* Ruby version
+4. run the migrations: 
+rake db:migrate
 
-* System dependencies
+5. seed the database
+rake db:seed
 
-* Configuration
+6. run your local server
+rails s
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ruby: ruby 2.3.1
+running the test suite (if any): rspec
