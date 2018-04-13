@@ -13,6 +13,8 @@
 ActiveRecord::Schema.define(version: 20180413004429) do
 
   create_table "links", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "list_id"
     t.string "name"
     t.string "url"
     t.string "priority", default: "medium"
@@ -20,8 +22,6 @@ ActiveRecord::Schema.define(version: 20180413004429) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
-    t.integer "link_id"
   end
 
   create_table "users", force: :cascade do |t|

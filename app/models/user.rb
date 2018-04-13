@@ -1,6 +1,6 @@
 class User < ApplicationRecord	
-  has_many :lists
-  has_many :links, through: :lists
+  has_many :links
+  has_many :lists, through: :links
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

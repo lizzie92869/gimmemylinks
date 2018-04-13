@@ -2,8 +2,8 @@ require 'uri'
 
 class Link < ActiveRecord::Base
 
-	has_many :lists
-	has_many :users, through: :lists
+	belongs_to :list
+	belongs_to :user
 
 	validates :url, http_url: true
 	#to display the user's high priority links on his home page
