@@ -1,2 +1,2 @@
-class list < ActiveRecord::Base
+class List < ActiveRecord::Base
 end
