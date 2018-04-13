@@ -1,0 +1,12 @@
+<div><p> Welcome to your profile page </p></div>
+
+<div>
+<%=current_user.email%>
+<%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
+</div>
+
+<% lists.each do |list| %>
+<div>
+<%= link_to list.name, list_path(list)%>
+</div>
+<% end %>
