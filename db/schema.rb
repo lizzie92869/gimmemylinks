@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413001229) do
+ActiveRecord::Schema.define(version: 20180413004429) do
+
+  create_table "links", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.string "priority", default: "medium"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "link_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
