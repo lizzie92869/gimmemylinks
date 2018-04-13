@@ -1,1 +1,12 @@
-hello
+<h1>MyLinks<h1>
+
+<% if !user_signed_in? %>
+<h3>Keep track of all your useful links</h3>
+<p> <%= link_to "Sign in", new_user_session_path %> </p>
+<p> <%= link_to "Sign up", new_user_registration_path %> </p>
+<% end %>
+
+<% if user_signed_in? %>
+<p> Welcome to your profile page </p>
+<%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
+<% end %>
