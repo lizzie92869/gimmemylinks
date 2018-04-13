@@ -9,4 +9,9 @@
 <% if user_signed_in? %>
 <p> Welcome to your profile page </p>
 <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
+
+<%=current_user.email%>
+
 <% end %>
+
+
