@@ -6,12 +6,17 @@ new link to create
 <%= form_for [@list, @link] do |f|%>
 <%= f.text_field :name, placeholder: "name" %>
 <%= f.text_field :url, placeholder: "url" %>
+
+<div >
+<!-- class="btn-group btn-group-toggle" data-toggle="buttons"
+, :html => {:class => "btn btn-secondary active"} -->
 <%= f.radio_button(:priority, "low") %>
 <%= f.label :priority, "low" %>
 <%= f.radio_button(:priority, "medium") %>
 <%= f.label :priority, "medium" %>
 <%= f.radio_button(:priority, "high") %>
 <%= f.label :priority, "high" %>
+</div>
 
 <%= f.hidden_field :user_id, value:  current_user.id%>
 <%= f.hidden_field :list_id, value: @list.id %>
