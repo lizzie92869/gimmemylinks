@@ -6,4 +6,11 @@ new link to create
 <%= form_for [@list, @link] do |f|%>
 <%= f.text_field :name, placeholder: "name" %>
 <%= f.text_field :url, placeholder: "url" %>
+<%= f.radio_button(:priority, "low") %>
+<%= f.label :priority, "low" %>
+<%= f.radio_button(:priority, "medium") %>
+<%= f.label :priority, "medium" %>
+<%= f.radio_button(:priority, "high") %>
+<%= f.label :priority, "high" %>
+<%= f.submit %>
 <% end %>
