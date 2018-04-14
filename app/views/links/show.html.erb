@@ -1,7 +1,12 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
 
-
+</br>
+</br>
+</br>
 <div>
 big preview web page link
 </div>
+
+<%= @link.name %>
+<%= button_to "Delete", list_link_path, :method => :delete %>
