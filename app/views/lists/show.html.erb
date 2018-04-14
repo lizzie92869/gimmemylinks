@@ -5,10 +5,15 @@
 <p>You are looking at list <%= @list.name %></p>
 </br>
 
+<p> <%= link_to "add a link", new_list_link_path(@list) %> </p>
+<%= link_to "Delete this list", @list, :method => :delete, :confirm => "Are you sure ?"%>
+
 <% @links.each do |link| %>
 <div>
 <%= link_to link.name, list_link_path(link) %>
 </div>
 <% end %>
 
-<p> <%= link_to "add a link", new_list_link_path(@list) %> </p>
+
+
+
