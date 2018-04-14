@@ -12,5 +12,9 @@ new link to create
 <%= f.label :priority, "medium" %>
 <%= f.radio_button(:priority, "high") %>
 <%= f.label :priority, "high" %>
+
+<%= f.hidden_field :user_id, value:  current_user.id%>
+<%= f.hidden_field :list_id, value: @list.id %>
+
 <%= f.submit %>
 <% end %>
