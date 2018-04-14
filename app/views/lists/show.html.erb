@@ -6,12 +6,28 @@
 </br>
 
 <p> <%= link_to "add a link", new_list_link_path(@list) %> </p>
+
+</br>
+</br>
+<h2> Filter by </h2>
+<p> <%= link_to "priority", new_list_link_path(@list) %> </p>
+<p> <%= link_to "least recent", new_list_link_path(@list) %> </p>
+<p> <%= link_to "most recent", new_list_link_path(@list) %> </p>
+
+
+
 <%= link_to "Delete this list", @list, :method => :delete, :confirm => "Are you sure ?"%>
 
 <% @links.each do |link| %>
+<!-- <div class = "carousel"> -->
+
+<iframe class = "carousel" src=<%=link.url%>></iframe>
+
+<!-- </div> -->
 <div>
-<%= link_to link.name, list_link_path(link) %>
+<%= link.name %>
 </div>
+
 <% end %>
 
 
