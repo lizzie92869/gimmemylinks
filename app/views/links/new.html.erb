@@ -7,15 +7,39 @@ new link to create
 <%= f.text_field :name, placeholder: "name" %>
 <%= f.text_field :url, placeholder: "url" %>
 
-<div >
-<!-- class="btn-group btn-group-toggle" data-toggle="buttons"
-, :html => {:class => "btn btn-secondary active"} -->
-<%= f.radio_button(:priority, "low") %>
-<%= f.label :priority, "low" %>
-<%= f.radio_button(:priority, "medium") %>
-<%= f.label :priority, "medium" %>
-<%= f.radio_button(:priority, "high") %>
-<%= f.label :priority, "high" %>
+priority:
+<!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+<label class="btn btn-secondary active">
+    <input type="radio" name="low" id="option1" autocomplete="off" checked> low
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="medium" id="option2" autocomplete="off"> medium
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="high" id="option3" autocomplete="off"> high
+  </label> -->
+
+<div class="btn-group btn-group-lg" role="group">
+<!-- <button type="button" class="btn-default">high</button>
+<button type="button" class="btn-default">medium</button>
+<button type="button" class="btn-default">low</button> -->
+
+
+ <label class="btn btn-default" >low</label>
+<%= f.radio_button("priority", "low") %>
+
+ <label class="btn btn-default" >medium</label>
+<%= f.radio_button("priority", "medium") %>
+
+ <label class="btn btn-default" >high</label>
+<%= f.radio_button("priority", "high") %>
+
+
+<!-- can't use bootstrap and rails helper? -->
+
+
+
+
 </div>
 
 <%= f.hidden_field :user_id, value:  current_user.id%>
