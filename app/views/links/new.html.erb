@@ -1,1 +1,9 @@
 new link to create
+<%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
+
+</br>
+</br>
+<%= form_for [@list, @link] do |f|%>
+<%= f.text_field :name, placeholder: "name" %>
+<%= f.text_field :url, placeholder: "url" %>
+<% end %>
