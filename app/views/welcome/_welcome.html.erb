@@ -7,8 +7,10 @@
 
 
 <% current_user.lists.uniq.each do |list| %>
-<div>
-<%= link_to list.name, list_path(list)%>
+<div >
+<!-- try btn-block when grid set -->
+<a href=<%= list_path(list) %> class="btn btn-light btn-lg", role="button"> <%= list.name %> </a>
+
 </div>
 <% end %>
 
