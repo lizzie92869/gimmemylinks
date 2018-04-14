@@ -5,7 +5,8 @@
 <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
 </div>
 
-<% lists.each do |list| %>
+
+<% current_user.lists.uniq.each do |list| %>
 <div>
 <%= link_to list.name, list_path(list)%>
 </div>

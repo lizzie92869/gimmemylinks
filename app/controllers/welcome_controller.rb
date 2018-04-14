@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
 	def home
-		@lists = List.all
+		# @lists = current_user.lists.all
 	end
 	
 end
