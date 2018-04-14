@@ -11,3 +11,10 @@
 <%= link_to list.name, list_path(list)%>
 </div>
 <% end %>
+
+write code to create a new list from the partial!!
+<%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
+<%= f.text_field :name, placeholder: "new list name" %>
+<%= f.hidden_field :user_id, value:  current_user.id%>
+<%= f.submit "Create new list" %>
+<% end %>
