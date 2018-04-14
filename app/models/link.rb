@@ -9,4 +9,8 @@ class Link < ActiveRecord::Base
 	#to display the user's high priority links on his home page
 	scope :priority, -> { where(priority: "high") }
 
+	def show
+		@link = Link.find(params[:id])
+	end
+
 end

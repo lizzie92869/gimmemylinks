@@ -6,6 +6,6 @@
 
 <% @links.each do |link| %>
 <div>
-<%= link.name %>
+<%= link_to link.name, list_link_path(link) %>
 </div>
 <% end %>
