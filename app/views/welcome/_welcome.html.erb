@@ -1,15 +1,14 @@
 <div class="row">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-<div><p> Welcome to your profile page </p></div>
-<div>
+<p class="head text-right">
 <%=current_user.email%>
 <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
-</div>
-</div>
+</p>
 </div>
 
 
-<div class="row">
+
+
 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
 
 <% current_user.lists.uniq.each do |list| %>

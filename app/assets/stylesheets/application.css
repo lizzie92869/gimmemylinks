@@ -26,3 +26,8 @@ font-family: 'Ubuntu Mono', monospace;
 	border-color: black;
 	/*display: inline;*/
 }
+
+.head{
+	text-align: left;
+	color: grey;
+}
