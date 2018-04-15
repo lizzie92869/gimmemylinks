@@ -18,10 +18,10 @@
 
 		<div class="caption left-margin">
 		</br>
-		<%= link.name %>
-		<a href="<%=link.url%>" class="btn btn-info btn-sm go" target= "blank"> visit the link</a>
+		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= link.name %></div>
+		<a href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
 		</div>
-		<iframe class = "carousel rounded border" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
+		<iframe class = "carousel rounded" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
 		
 		
 	<% end %>

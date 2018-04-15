@@ -3,12 +3,6 @@ body{
 font-family: 'Ubuntu Mono', monospace;
 }
 
-h1{
-	font-family: 'Ubuntu Mono', monospace;
-}
-
-
-
 .head{
 	text-align: left;
 	color: grey;
@@ -19,6 +13,9 @@ h1{
 	width: 90%;	
 	margin-left: 10%;
 	display: inline-block;
+	border-style: solid;
+	border-color: #CCFF38;
+	border-width: 3px;
 }
 
 .left-margin{
@@ -27,7 +24,28 @@ h1{
 
 .go{
 	float: right;
+	background-color: #CCFF38;
+	padding: 7px;
+}
 
+a:link{
+	color: grey;
+}
+
+a:visited { 
+    color: grey;
+}
+
+a:hover {
+    color: black;
+}
+
+a:active {
+    color: red;
+}
+
+.btn-info{
+	color: #CCFF38;
 }
 
 .filter{
