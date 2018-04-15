@@ -48,10 +48,15 @@ a:active {
 	color: #CCFF38;
 }
 
-.filter{
-	
+.delete_link a{
+	color: white;
+	background: red;
+	padding: 9px;
+	float: right;
 }
 
-.delete{
-
+.pos{
+	position: fixed;
 }
+
+
