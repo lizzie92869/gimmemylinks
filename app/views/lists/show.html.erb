@@ -1,46 +1,40 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
-<div class="col-lg-9 col-md-9 col-sm-6 col-xs-12" >
 
-	
-	<p><strong>List <%= @list.name %></strong></p>
-	</br>
-	</br>
-	Filter by 
+<div class="col-lg-9 col-md-9 col-sm-6 col-xs-12" >
+	<!-- <p><strong>List <%= @list.name %></strong></p> -->
+	<div class="filter left-margin">Filter by 
 	<%= link_to "priority", new_list_link_path(@list) %> 
 	<%= link_to "least recent", new_list_link_path(@list) %> 
 	<%= link_to "most recent", new_list_link_path(@list) %> 
+	</div>
+	<div class="delete left-margin">
 	<%= link_to "Delete this list", @list, :method => :delete, :confirm => "Are you sure ?"%>
+	</div>
 
-
-</br>
-
-
-
+	</br>
 
 	<% @links.each do |link| %>
-<div class="thumbnail ">
-	<iframe class = "carousel rounded border border-light" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
-<div class="caption">
-	<p><%= link.name %></p>
-	<p><a href="<%=link.url%>" class="btn btn-primary" target= "blank"> Go to website</a></p>
-	</div>
 
-
-
+		<div class="caption left-margin">
+		</br>
+		<%= link.name %>
+		<a href="<%=link.url%>" class="btn btn-info btn-sm go" target= "blank"> visit the link</a>
+		</div>
+		<iframe class = "carousel rounded border" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
+		
+		
 	<% end %>
-	<div class="row">
-	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
-	</div>
-	<div class="col-lg-9 col-md-9 col-sm-6 col-xs-12" >
+	
 
-	
+
+	<div class="row">
 	<a href=<%=new_list_link_path(@list) %>><%= image_tag("plus.png", size: "100x100", alt: "Add a link", href: "#") %></a>
-	
-	</div>
 	</div>
 
 </div>
+
+
 
 </div>
 <!-- closing the row from the partial -->

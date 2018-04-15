@@ -5,35 +5,30 @@
 <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
 </p>
 </div>
+</div>
 
 
 
+<div class="row">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
 
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
-
-<div class="list-group">
-<% current_user.lists.uniq.each do |list| %>
-
-<li class="list-group-item d-flex justify-content-between align-items-center">
+	<div class="list-group">
+	<% current_user.lists.uniq.each do |list| %>
+	<li class="list-group-item d-flex justify-content-between align-items-center">
     <a href=<%= list_path(list) %>, role="button"> <%= list.name %> </a>
     <span class="badge badge-primary badge-pill"><%= list.links.size %></span>
-  </li>
+  	</li>
+	<% end %>
+	</div>
+	</br>
+	</br>
+	<%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
+	<%= f.text_field :name, placeholder: "new list name" %>
+	<%= f.hidden_field :user_id, value:  current_user.id%>
+	<%= f.submit "Create new list" %>
+	<% end %>
 
-
-<% end %>
-</div>
-
-
-
-
-</br>
-</br>
-<%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
-<%= f.text_field :name, placeholder: "new list name" %>
-<%= f.hidden_field :user_id, value:  current_user.id%>
-<%= f.submit "Create new list" %>
-<% end %>
-</div>
+	</div>
 
 <!-- the row is still opened -->
 
