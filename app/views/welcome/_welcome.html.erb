@@ -11,12 +11,11 @@
 
 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
 
+<div class="list-group">
 <% current_user.lists.uniq.each do |list| %>
-
-<!-- try btn-block when grid set -->
-<a href=<%= list_path(list) %> class="btn btn-light btn-lg", role="button"> <%= list.name %> </a>
-</br>
+<a href=<%= list_path(list) %> class="list-group-item list-group-item-action", role="button"> <%= list.name %> </a>
 <% end %>
+</div>
 </br>
 </br>
 <%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
@@ -27,3 +26,10 @@
 </div>
 
 <!-- the row is still opened -->
+
+
+
+
+
+
+

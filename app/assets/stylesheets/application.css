@@ -17,17 +17,20 @@ body{
 font-family: 'Ubuntu Mono', monospace;
 }
 
-.carousel{
-	height: 100px;
-	width: 100px;
-	/*background-color: blue;*/
-	margin: 30px;
-	border-style: solid;
-	border-color: black;
-	/*display: inline;*/
-}
+
 
 .head{
 	text-align: left;
 	color: grey;
+}
+
+
+.carousel{
+	height: 100px;
+	width: 100px;
+
+	margin: 30px;
+	border-style: solid;
+	border-color: black;
+	
 }

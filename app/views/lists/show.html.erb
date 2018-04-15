@@ -1,33 +1,37 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
 <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12" >
-<p><strong>List <%= @list.name %></strong></p>
-</br>
-<p> <%= link_to "add a link", new_list_link_path(@list) %> </p>
-<!-- <div class="clearfix visible-lg">
-</div> -->
-</br>
-</br>
-Filter by 
-<%= link_to "priority", new_list_link_path(@list) %> 
-<%= link_to "least recent", new_list_link_path(@list) %> 
-<%= link_to "most recent", new_list_link_path(@list) %> 
 
-<%= link_to "Delete this list", @list, :method => :delete, :confirm => "Are you sure ?"%>
+	
+	<p><strong>List <%= @list.name %></strong></p>
+	</br>
+	</br>
+	Filter by 
+	<%= link_to "priority", new_list_link_path(@list) %> 
+	<%= link_to "least recent", new_list_link_path(@list) %> 
+	<%= link_to "most recent", new_list_link_path(@list) %> 
+	<%= link_to "Delete this list", @list, :method => :delete, :confirm => "Are you sure ?"%>
+
+
 </br>
-<% @links.each do |link| %>
-<!-- <div class = "carousel"> -->
-<!-- <div class="clearfix visible-lg"> -->
-<iframe class = "carousel" src=<%=link.url%>></iframe>
+	<% @links.each do |link| %>
+	<!-- <div class = "carousel"> -->
+	<!-- <div class="clearfix visible-lg"> -->
+	<iframe class = "carousel" src=<%=link.url%>></iframe>
 
-<!-- </div> -->
+	<%= link.name %>
 
-<%= link.name %>
-<!-- </div> -->
-
-<% end %>
+	<% end %>
+	<div class="row">
+	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
+	</div>
+	<div class="col-lg-9 col-md-9 col-sm-6 col-xs-12" >
+	<p> <%= link_to "add a link", new_list_link_path(@list) %> </p>
+	</div>
+	</div>
 
 </div>
+
 </div>
 <!-- closing the row from the partial -->
 
