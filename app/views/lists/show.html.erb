@@ -1,34 +1,35 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
-
+<div class="col-lg-9 col-md-9 col-sm-6 col-xs-12" >
+<p><strong>List <%= @list.name %></strong></p>
 </br>
-<p>You are looking at list <%= @list.name %></p>
-</br>
-
 <p> <%= link_to "add a link", new_list_link_path(@list) %> </p>
-
+<!-- <div class="clearfix visible-lg">
+</div> -->
 </br>
 </br>
-<h2> Filter by </h2>
-<p> <%= link_to "priority", new_list_link_path(@list) %> </p>
-<p> <%= link_to "least recent", new_list_link_path(@list) %> </p>
-<p> <%= link_to "most recent", new_list_link_path(@list) %> </p>
-
-
+Filter by 
+<%= link_to "priority", new_list_link_path(@list) %> 
+<%= link_to "least recent", new_list_link_path(@list) %> 
+<%= link_to "most recent", new_list_link_path(@list) %> 
 
 <%= link_to "Delete this list", @list, :method => :delete, :confirm => "Are you sure ?"%>
-
+</br>
 <% @links.each do |link| %>
 <!-- <div class = "carousel"> -->
-
+<!-- <div class="clearfix visible-lg"> -->
 <iframe class = "carousel" src=<%=link.url%>></iframe>
 
 <!-- </div> -->
-<div>
+
 <%= link.name %>
-</div>
+<!-- </div> -->
 
 <% end %>
+
+</div>
+</div>
+<!-- closing the row from the partial -->
 
 
 

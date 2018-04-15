@@ -18,11 +18,10 @@ font-family: 'Ubuntu Mono', monospace;
 }
 
 .carousel{
-	height: 40%;
-	min-height: 100px;
-	width: 20%;
+	height: 100px;
+	width: 100px;
 	/*background-color: blue;*/
-	margin: 10px;
+	margin: 30px;
 	border-style: solid;
 	border-color: black;
 	/*display: inline;*/
