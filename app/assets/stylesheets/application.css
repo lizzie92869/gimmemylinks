@@ -26,11 +26,6 @@ font-family: 'Ubuntu Mono', monospace;
 
 
 .carousel{
-	height: 100px;
-	width: 100px;
-
-	margin: 30px;
-	border-style: solid;
-	border-color: black;
-	
+	height: 100%;
+	width: 100%;	
 }

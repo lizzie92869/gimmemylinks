@@ -14,12 +14,19 @@
 
 
 </br>
-	<% @links.each do |link| %>
-	<!-- <div class = "carousel"> -->
-	<!-- <div class="clearfix visible-lg"> -->
-	<iframe class = "carousel" src=<%=link.url%>></iframe>
 
-	<%= link.name %>
+
+
+
+	<% @links.each do |link| %>
+<div class="thumbnail ">
+	<iframe class = "carousel rounded border border-light" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
+<div class="caption">
+	<p><%= link.name %></p>
+	<p><a href="<%=link.url%>" class="btn btn-primary" target= "blank"> Go to website</a></p>
+	</div>
+
+
 
 	<% end %>
 	<div class="row">
