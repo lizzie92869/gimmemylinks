@@ -1,4 +1,10 @@
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
+
+<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" >
+</div>
+<div class="col-lg-7 col-md-8 col-sm-5 col-xs-11" >
+
+<div class="left-margin top-margin-new">
 Save a new link
 <%= form_for [@list, @link] do |f|%>
 <%= f.text_field :name, placeholder: "name" %>
@@ -17,30 +23,32 @@ priority:
   </label> -->
 
 <div class="btn-group btn-group-lg" role="group">
-<!-- <button type="button" class="btn-default">high</button>
-<button type="button" class="btn-default">medium</button>
-<button type="button" class="btn-default">low</button> -->
+	<!-- <button type="button" class="btn-default">high</button>
+	<button type="button" class="btn-default">medium</button>
+	<button type="button" class="btn-default">low</button> -->
 
 
- <label class="btn btn-default" >low</label>
-<%= f.radio_button("priority", "low") %>
+	 <label class="btn btn-default" >low</label>
+	<%= f.radio_button("priority", "low") %>
 
- <label class="btn btn-default" >medium</label>
-<%= f.radio_button("priority", "medium") %>
+	 <label class="btn btn-default" >medium</label>
+	<%= f.radio_button("priority", "medium") %>
 
- <label class="btn btn-default" >high</label>
-<%= f.radio_button("priority", "high") %>
-
-
-<!-- can't use bootstrap and rails helper? -->
+	 <label class="btn btn-default" >high</label>
+	<%= f.radio_button("priority", "high") %>
 
 
+	<!-- can't use bootstrap and rails helper? -->
 
+	</div>
 
+	<%= f.hidden_field :user_id, value:  current_user.id%>
+	<%= f.hidden_field :list_id, value: @list.id %>
+
+	<%= f.submit %>
+	<% end %>
 </div>
 
-<%= f.hidden_field :user_id, value:  current_user.id%>
-<%= f.hidden_field :list_id, value: @list.id %>
-
-<%= f.submit %>
-<% end %>
+</div>
+<!-- closing the div tag of the partial -->
+</div>

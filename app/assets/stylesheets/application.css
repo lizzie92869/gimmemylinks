@@ -18,6 +18,14 @@ font-family: 'Ubuntu Mono', monospace;
 	border-width: 3px;
 }
 
+.top-margin-new{
+ 	margin-top: 20%;
+}
+
+.top-margin-show{
+	margin-top: 10%;
+}
+
 .left-margin{
 	margin-left: 10%;
 }
