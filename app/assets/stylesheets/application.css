@@ -51,12 +51,27 @@ a:active {
 .delete_link a{
 	color: white;
 	background: red;
-	padding: 9px;
+	padding: 14px;
 	float: right;
+	font-family: 'Ubuntu Mono', monospace;
 }
 
 .pos{
 	position: fixed;
+}
+
+.pos h1{
+	font-family: 'Ubuntu Mono'; monospace; 
+	font-size: 4em; 
+	color: grey;
+	margin-bottom: 50px;
+}
+
+.email-logout{
+	text-align: right;
+	color: grey;
+	margin-bottom: 20px;
+	font-family: 'Ubuntu Mono', monospace;
 }
 
 
