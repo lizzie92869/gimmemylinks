@@ -23,13 +23,17 @@
 			<% end %>
 		
 
-			<li class="list-group-item d-flex justify-content-between align-items-center">
+			<div class="list-group-item ">
 			<%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
-			<%= f.text_field :name, placeholder: "new list name" %>
 			<%= f.hidden_field :user_id, value:  current_user.id%>
-			<%= f.submit "Create new list" %>
+			<%= f.text_field :name, placeholder: "new list name", class: "d-inline list-group-item d-flex justify-content-between align-items-center" %>
+			
+
+			<%= f.submit "new", class: "d-inline btn btn-primary btn-lg" %>
 			<% end %>
-			</li>
+			</div>
+
+
 			</div>
 		</div>
 	</div>

@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
 		color_array[index]
 	end
 	
+
+
+
+
 end
