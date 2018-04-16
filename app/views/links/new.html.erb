@@ -5,50 +5,49 @@
 <div class="col-lg-7 col-md-8 col-sm-5 col-xs-11" >
 
 <div class="left-margin top-margin-new">
-Save a new link
+
+<div class="new"> Save a new link </div>
+<%= image_tag "line.png", option={class: "new"} %>
+</br>
+</br>
 <%= form_for [@list, @link] do |f|%>
 <%= f.text_field :name, placeholder: "name" %>
+</br>
+</br>
 <%= f.text_field :url, placeholder: "url" %>
 
-priority:
-<!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
-<label class="btn btn-secondary active">
-    <input type="radio" name="low" id="option1" autocomplete="off" checked> low
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="medium" id="option2" autocomplete="off"> medium
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="high" id="option3" autocomplete="off"> high
-  </label> -->
-
-<div class="btn-group btn-group-lg" role="group">
-	<!-- <button type="button" class="btn-default">high</button>
-	<button type="button" class="btn-default">medium</button>
-	<button type="button" class="btn-default">low</button> -->
+</br>
+</br>
+<div class="new">
+	priority:
 
 
-	 <label class="btn btn-default" >low</label>
-	<%= f.radio_button("priority", "low") %>
-
-	 <label class="btn btn-default" >medium</label>
-	<%= f.radio_button("priority", "medium") %>
-
-	 <label class="btn btn-default" >high</label>
-	<%= f.radio_button("priority", "high") %>
 
 
-	<!-- can't use bootstrap and rails helper? -->
+		 <label>low</label>
+		<%= f.radio_button("priority", "low") %>
 
+		 <label>medium</label>
+		<%= f.radio_button("priority", "medium") %>
+
+		 <label>high</label>
+		<%= f.radio_button("priority", "high") %>
+
+
+
+		<!-- can't use bootstrap and rails helper? -->
+
+	<!-- 	</div> -->
+
+		<%= f.hidden_field :user_id, value:  current_user.id%>
+		<%= f.hidden_field :list_id, value: @list.id %>
+		</br>
+		</br>
+		</br>
+		<%= f.submit "Save" %>
+		<% end %>
 	</div>
-
-	<%= f.hidden_field :user_id, value:  current_user.id%>
-	<%= f.hidden_field :list_id, value: @list.id %>
-
-	<%= f.submit %>
-	<% end %>
 </div>
-
 </div>
 <!-- closing the div tag of the partial -->
 </div>
