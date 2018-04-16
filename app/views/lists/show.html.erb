@@ -1,7 +1,8 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
-
-<div class="col-lg-9 col-md-9 col-sm-6 col-xs-12" >
+<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" >
+</div>
+<div class="col-lg-8 col-md-8 col-sm-5 col-xs-11" >
 	<div class="email-logout">
     <%=current_user.email%> |
     <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
