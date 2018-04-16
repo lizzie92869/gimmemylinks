@@ -3,7 +3,7 @@
 lizzie = User.create(email: "lizzie@gmail.com", password: "lizziegmail", password_confirmation: "lizziegmail")
 david = User.create(email: "david@gmail.com", password: "davidgmail", password_confirmation: "davidgmail")
 
-list1 = List.create(name: "Rails documentation", color: "#CCFF38")
+list1 = List.create(name: "Rails documentation")
 list2 = List.create(name: "Baby toys wishlist" )
 list3 = List.create(name: "Interesting website designs" )
 list4 = List.create(name: "Things to do around" )
