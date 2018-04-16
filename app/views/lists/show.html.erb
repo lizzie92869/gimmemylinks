@@ -2,7 +2,7 @@
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" >
 </div>
-<div class="col-lg-8 col-md-8 col-sm-5 col-xs-11" >
+<div class="col-lg-7 col-md-8 col-sm-5 col-xs-11" >
 	<div class="email-logout">
     <%=current_user.email%> |
     <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
@@ -24,8 +24,10 @@
 
 	</br>
 
-	<% @links.each do |link| %>
-
+	<% @links.each_with_index do |link, index| %>
+	
+		<!-- to not have the fake link showing up -->
+		<% if !(index==0 && link.name == "Create a new link") %>
 		<div class="caption left-margin">
 		</br>
 		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= link.name %>
@@ -33,7 +35,7 @@
 		</div>
 		</div>
 		<iframe style="border-color: <%= link.list.color %>;" class = "carousel rounded" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
-		
+		<% end %>
 		
 	<% end %>
 	

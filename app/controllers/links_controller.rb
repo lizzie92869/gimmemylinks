@@ -11,7 +11,7 @@ class LinksController < ApplicationController
 
 	def create
 		@list = List.find(params[:list_id])
-		binding.pry
+		
 		@link = Link.create(link_params)
 		redirect_to list_path(@list)
 	end
