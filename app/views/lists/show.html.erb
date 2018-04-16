@@ -29,10 +29,10 @@
 		<div class="caption left-margin">
 		</br>
 		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= link.name %>
-		<a href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
+		<a style="background-color: <%= link.list.color %>;" href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
 		</div>
 		</div>
-		<iframe class = "carousel rounded" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
+		<iframe style="border-color: <%= link.list.color %>;" class = "carousel rounded" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
 		
 		
 	<% end %>
@@ -40,7 +40,9 @@
 
 
 	<div class="row">
-	<a href=<%=new_list_link_path(@list) %>><%= image_tag("plus.png", size: "100x100", alt: "Add a link", href: "#") %></a>
+	<div class="plus">
+	<a href=<%=new_list_link_path(@list) %>><%= image_tag("plus.png", size: "150x150", alt: "Add a link") %></a>
+	</div>
 	</div>
 
 </div>
