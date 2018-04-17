@@ -10,10 +10,9 @@ class LinksController < ApplicationController
 	end
 
 	def create
-		
-		@list = List.find(params[:list_id])
-		
+		@list = List.find(params[:list_id])	
 		@link = Link.create(link_params)
+		flash[:alert]="name can't be blank / URL must be valid"
 		redirect_to list_path(@list)
 	end
 
