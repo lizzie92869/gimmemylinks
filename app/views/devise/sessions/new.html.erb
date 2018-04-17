@@ -1,26 +1,39 @@
-<h2>Log in</h2>
+<% if !user_signed_in? %>
+
+
+<div class="claim">Keep track of all your useful links</div>
+
+
+<div class="login-html">
+
+<div class="sign"><%= link_to "Sign in", new_user_session_path %></div> 
+|
+<div class="sign"><%= link_to "Sign up", new_user_registration_path %></div>
+
+</br>
+</br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="signin">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div class="signin">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
+    <div class="sigin">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end -%>
 
-  <div class="actions">
+  <div class="signin">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+<% end%>
 <%= render "devise/shared/links" %>
