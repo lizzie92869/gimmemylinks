@@ -14,17 +14,11 @@
 
 	Filter by |
 
-	<!-- if clicked, send "@links = @list.priority"-->
-	
-	<% form_for(@list, :url => list_links_path(@list), :method => :get) do |f| %>
-	<%= binding.pry %>
-	<%= f.hidden_field "@links", value:  @list.links.high_priority%>
+	<!-- if clicked/checked, send "@links = @list.priority"-->
+	<%= link_to "priority", high_priority_lists_path %> | 
 
-	<%= button_to "priority"%> | 
-	<% end %>
-
-	<%= link_to "least recent", new_list_link_path(@list) %> |  
-	<%= link_to "most recent", new_list_link_path(@list) %> 
+	<%= link_to "least recent", recent_lists_path %> |  
+	<%= link_to "most recent", old_lists_path %> 
 	
 
 

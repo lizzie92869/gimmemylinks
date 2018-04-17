@@ -1,5 +1,7 @@
 class LinksController < ApplicationController
 
+
+
 	def index
 	end
 
@@ -17,7 +19,6 @@ class LinksController < ApplicationController
 	end
 
 	def show
-		binding.pry
 		@link = Link.find(params[:id])
 	end
 

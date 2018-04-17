@@ -1,5 +1,27 @@
 class ListsController < ApplicationController
 
+def high_priority
+		@list = List.find(params[:id])
+		@links = @list.links.high_priority
+		@new_list = List.create
+		render action: :show
+	end
+
+	def recent
+		@list = List.find(params[:id])
+		@links = @list.links.recent
+		@new_list = List.create
+		render action: :show
+	end
+
+	def old
+		@list = List.find(params[:id])
+		@links = @list.links.old
+		@new_list = List.create
+		render action: :show
+	end
+
+
 
 	def create
 		# binding.pry
@@ -20,19 +42,9 @@ class ListsController < ApplicationController
 
 
 	def show
-		# binding.pry
 		@new_list = List.create
 		@list = List.find(params[:id])
-
-
-		@links |= @list.links
-
-
-
-
-
-
-		
+		@links = @list.links
 	end
 
 	def destroy
