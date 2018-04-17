@@ -112,7 +112,12 @@ a:active {
 }
 
 
-
+.link_date{
+	font-family: 'Ubuntu Mono', monospace; 
+	color: grey; 
+	font-size: 0.7em; 
+	float: right;
+}
 
 
 

@@ -10,20 +10,11 @@
 	<div class="filter left-margin">
 	</br>
 
-
-
 	Filter by |
-
-	<!-- if clicked/checked, send "@links = @list.priority"-->
 	<%= link_to "priority", high_priority_lists_path %> | 
-
 	<%= link_to "least recent", recent_lists_path %> |  
 	<%= link_to "most recent", old_lists_path %> 
 	
-
-
-
-
 	<span class="delete_link">
 	<%= link_to "Delete List!", @list, :method => :delete, :confirm => "Are you sure ?"%>
 	</span>
@@ -35,7 +26,7 @@
 	
 		<!-- to not have the fake link showing up -->
 		<% if !(index==0 && link.name == "Create a new link") %>
-		<div class="caption left-margin">
+		<div class="caption left-margin top-margin-show">
 		</br>
 		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= link_to link.name, list_link_path(link) %>
 
@@ -43,6 +34,7 @@
 		</div>
 		</div>
 		<iframe style="border-color: <%= link.list.color %>;" class = "carousel rounded" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
+		<div class="link_date"><%=link.created_at.strftime("%m/%d/%Y")%></div>
 		<% end %>
 		
 	<% end %>

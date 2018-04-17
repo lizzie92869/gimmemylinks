@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 
-def high_priority
+	def high_priority
 		@list = List.find(params[:id])
 		@links = @list.links.high_priority
 		@new_list = List.create
