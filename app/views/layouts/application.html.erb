@@ -23,9 +23,11 @@
  
   <div class="container">
   
+    
 
-  	<p class="notice"><%= notice %></p>
-  	<p class="alert"><%= alert %></p>
+    <% if flash[:alert] %>
+  	<p class="alert-warning"><%= flash[:alert] %></p>
+    <% end %>
 
     
 

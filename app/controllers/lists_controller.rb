@@ -6,12 +6,13 @@ class ListsController < ApplicationController
 		@list = List.create(list_name_params)
 		list_id = @list.id
 		@list.color = random_color
+
 		#To have the new list appear in the user's list, I need to create a fake link to link the list and the user
 		@link = Link.create(user_id: params[:list][:user_id], list_id: list_id, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
 		if @list.save 
 			redirect_to new_list_link_path(@list)
 		else
-			alert="name can't be blank"
+			flash[:alert]="name can't be blank"
 			redirect_to root_path
 		end
 		

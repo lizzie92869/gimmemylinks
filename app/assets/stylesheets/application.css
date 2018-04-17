@@ -3,6 +3,15 @@ body{
 font-family: 'Ubuntu Mono', monospace;
 }
 
+.alert{
+	color: white;
+	background-color: red;
+	opacity: 0.5;
+	border-style: solid;
+	border-width: 2px;
+	border-color: red;
+}
+
 .head{
 	text-align: left;
 	color: grey;

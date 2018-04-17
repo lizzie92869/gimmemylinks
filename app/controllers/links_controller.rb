@@ -10,6 +10,7 @@ class LinksController < ApplicationController
 	end
 
 	def create
+		
 		@list = List.find(params[:list_id])
 		
 		@link = Link.create(link_params)
@@ -17,6 +18,7 @@ class LinksController < ApplicationController
 	end
 
 	def show
+		binding.pry
 		@link = Link.find(params[:id])
 	end
 
