@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root to: "welcome#home"
 
   resources :lists do
+  	collection do
+  		get :high_priority
+  		get :recent
+  		get :old
+  	end
     resources :links
   end
 
