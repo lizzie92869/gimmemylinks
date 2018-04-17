@@ -22,8 +22,17 @@ class ListsController < ApplicationController
 	def show
 		# binding.pry
 		@new_list = List.create
-		@list = List.find(params[:id]) 
-		@links = @list.links
+		@list = List.find(params[:id])
+
+
+		@links |= @list.links
+
+
+
+
+
+
+		
 	end
 
 	def destroy
