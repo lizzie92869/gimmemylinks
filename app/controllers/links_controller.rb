@@ -14,13 +14,18 @@ class LinksController < ApplicationController
 	def create
 		@list = List.find(params[:list_id])	
 		@link = Link.create(link_params)
+		if @link.save
+		else
 		flash[:alert]="name can't be blank / URL must be valid"
+		end
 		redirect_to list_path(@list)
 	end
 
 	def show
 		@new_list = List.create
-		@link = Link.find(params[:id])
+		
+		@link = current_user.links.where(id: params[:id]).first
+		
 	end
 
 	def destroy

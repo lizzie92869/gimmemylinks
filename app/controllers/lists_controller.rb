@@ -24,10 +24,10 @@ class ListsController < ApplicationController
 
 
 	def create
-		# binding.pry
-		@list = List.create(list_name_params)
+		
+		@list = List.create(name: params[:list][:name])
 		list_id = @list.id
-		@list.color = random_color
+		@list.color = random_color 
 
 		#To have the new list appear in the user's list, I need to create a fake link to link the list and the user
 		@link = Link.create(user_id: params[:list][:user_id], list_id: list_id, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
@@ -44,7 +44,9 @@ class ListsController < ApplicationController
 	def show
 		@new_list = List.create
 		@list = List.find(params[:id])
+
 		@links = @list.links
+		
 	end
 
 	def destroy
