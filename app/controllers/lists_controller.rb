@@ -25,12 +25,14 @@ class ListsController < ApplicationController
 
 	def create
 		
-		@list = List.create(name: params[:list][:name])
+		# @list = List.create(name: params[:list][:name])
+		@list = List.create(list_name_params)
 		list_id = @list.id
 		@list.color = random_color 
 
 		#To have the new list appear in the user's list, I need to create a fake link to link the list and the user
-		@link = Link.create(user_id: params[:list][:user_id], list_id: list_id, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
+		# @link = Link.create(user_id: params[:list][:user_id], list_id: list_id, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
+		@link = Link.create(list_params)
 		if @list.save 
 			redirect_to new_list_link_path(@list)
 		else
@@ -62,7 +64,7 @@ class ListsController < ApplicationController
 	end
 
 	def list_params
-		params.require(:list).permit(:name, :user_id)
+		params.require(:list).permit(:name, :user_id, :list_id, :url, :priority)
 	end
 
 

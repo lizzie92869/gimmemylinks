@@ -1,0 +1,9 @@
+user has_many lists 
+user has_many links through lists
+
+list belongs_to user
+list has_many list_links
+list has_many links, through: list_links
+
+list has_many list_links
+links has_many list, through :list_links
