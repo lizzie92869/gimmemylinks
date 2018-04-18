@@ -6,7 +6,7 @@ class LinksController < ApplicationController
 	end
 
 	def new
-		@new_list = List.create
+		@new_list = List.new
 		@list = List.find(params[:list_id])
 		@link = Link.new
 	end
@@ -22,8 +22,8 @@ class LinksController < ApplicationController
 	end
 
 	def show
-		@new_list = List.create
-		
+		@new_list = List.new
+	
 		@link = Link.find(params[:id])
 		
 	end
