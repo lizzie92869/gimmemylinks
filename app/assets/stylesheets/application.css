@@ -21,12 +21,17 @@ font-family: 'Ubuntu Mono', monospace;
 	height: 200px;
 	width: 90%;	
 	margin-left: 10%;
-	display: inline-block;
+	/*display: inline-block;*/
 	border-style: solid;
 	border-color: #CCFF38;
 	border-width: 3px;
 	
 }
+
+.size-preview{
+	height: 700px;
+}
+
 
 .top-margin-new{
  	margin-top: 20%;

@@ -8,6 +8,7 @@
     <%=current_user.email%> |
     <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
     </div>
+
 	<div class="filter left-margin">
 	</br>
 
@@ -15,21 +16,20 @@
 <div class="caption left-margin top-margin-show">
 		</br>
 		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= @link.name %>
-		
+
+
+		<span class="delete_link">
+		<%= link_to "Delete Link!", list_link_path, :method => :delete%>
+		</span>
 
 
 		<a style="background-color: <%= @link.list.color %>;" href="<%=@link.url%>" class="go" target= "blank"> visit the link</a>
 		</div>
 		</div>
-		<iframe style="border-color: <%= @link.list.color %>;" class = "carousel rounded" src=<%=@link.url%> href="<%= list_link_path(@link) %>"></iframe>
+		<iframe style="border-color: <%= @link.list.color %>;" class = "carousel rounded size-preview" src=<%=@link.url%> href="<%= list_link_path(@link) %>"></iframe>
 		<div class="link_date"><%=@link.created_at.strftime("%m/%d/%Y")%></div>
 
-<div class="big_preview">
-big preview web page link
-</div>
 
-<%= @link.name %>
-<%= button_to "Delete", list_link_path, :method => :delete %>
 </div>
 </div>
 </div>

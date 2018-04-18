@@ -24,15 +24,16 @@ class LinksController < ApplicationController
 	def show
 		@new_list = List.create
 		
-		@link = current_user.links.where(id: params[:id]).first
+		@link = Link.find(params[:id])
 		
 	end
 
 	def destroy
 		@link = Link.find(params[:id])
-		@list = List.find(params[:id])
+		@list = @link.list
 		@link.destroy
-		redirect_to list_path(@list) 
+		flash[:alert]="link deleted succesfully"
+		redirect_to list_path(@list)
 	end
 
 	private
