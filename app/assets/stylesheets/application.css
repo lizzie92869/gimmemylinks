@@ -160,8 +160,8 @@ a:active {
 	height: 100%;
 	max-width: 600px;
 	max-height: 400px;
-	min-width: 300px;
-	min-height: 200px;
+	min-width: 500px;
+	min-height: 500px;
 	width:50%;
 	height:50%;
 	position: absolute;
@@ -183,21 +183,31 @@ a:active {
 	/*text-align: center;*/
 } 
 
-.signup{
+.signup-container{
 	font-size: 1em;
 	color: #34CE93;
 	font-family: 'Ubuntu Mono', monospace;
 	margin-left: 50%;
 }
 
-.signup{
+.signin-container{
 	font-size: 1em;
 	color: #34CE93;
 	font-family: 'Ubuntu Mono', monospace;
-	margin-left: 5%;
+	/*margin-left: 0%;*/
 }
 
-
+.google-button{
+	background-color: #34CE93; /* Green */
+    border: none;
+    color: white;
+    padding: 0px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 6px;
+}
 
 
 

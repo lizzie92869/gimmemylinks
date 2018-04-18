@@ -19,12 +19,12 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="signup">
+  <div class="signup-container">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="signup">
+  <div class="signup-container">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -32,18 +32,22 @@
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
-  <div class="signup">
+  <div class="signup-container">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
   </br>
-  <div class="signup">
+  <div class="signup-container">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-<div class="signup">or</div>
-<div class="signup"><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></div>
+
+
+<div class="signup-container">or</div>
+
+<div class="signup-container google-button"><div><%= link_to "Sign up with google+", user_google_oauth2_omniauth_authorize_path %></div>
 </div>
+
 
 <% end %>
 
