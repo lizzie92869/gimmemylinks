@@ -41,8 +41,7 @@ font-family: 'Ubuntu Mono', monospace;
 
 .carousel{
 	height: 200px;
-	width: 90%;	
-	margin-left: 10%;
+	width: 100%;	
 	border-style: solid;
 	border-color: #CCFF38;
 	border-width: 3px;
@@ -51,6 +50,7 @@ font-family: 'Ubuntu Mono', monospace;
 
 .size-preview{
 	height: 700px;
+
 }
 
 

@@ -1,30 +1,28 @@
 <%= form_for [@list, @link] do |f|%>
-<div class="form-fields">
-<%= f.text_field :name, placeholder: "name" %>
-</div>
-</br>
-<div class="form-fields">
-<%= f.text_field :url, placeholder: "url", class: "field-length" %>
-</div>
-</br>
-</br>
-<div class="new">
-	priority:
-
-		 <label>low</label>
-		<%= f.radio_button("priority", 3) %>
-
-		 <label>medium</label>
-		<%= f.radio_button("priority", 2) %>
-
-		 <label>high</label>
-		<%= f.radio_button("priority", 1) %>
-
-
-		<%= f.hidden_field :user_id, value:  current_user.id%>
-		<%= f.hidden_field :list_id, value: @list.id %>
-		<div class="save">
-		<%= f.submit "Save link!", class:"save" %>
-		</div>
-		<% end %>
+	<div class="form-fields">
+	<%= f.text_field :name, placeholder: "name" %>
 	</div>
+	</br>
+	<div class="form-fields">
+	<%= f.text_field :url, placeholder: "url", class: "field-length" %>
+	</div>
+	</br>
+	</br>
+
+	<div class="new">
+	priority:
+	 <label>low</label>
+	<%= f.radio_button("priority", 3) %>
+	 <label>medium</label>
+	<%= f.radio_button("priority", 2) %>
+	 <label>high</label>
+	<%= f.radio_button("priority", 1) %>
+
+	<%= f.hidden_field :user_id, value:  current_user.id%>
+	<%= f.hidden_field :list_id, value: @list.id %>
+
+	<div class="save">
+	<%= f.submit "Save link!", class:"save" %>
+	</div>
+	</div>
+<% end %>
