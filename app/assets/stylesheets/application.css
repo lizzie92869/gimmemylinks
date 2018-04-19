@@ -138,12 +138,6 @@ a:active {
 
 
 
-
-
-
-
-
-
 .login-wrap{
 	/*width: 100%;
 	margin: auto;
@@ -218,9 +212,23 @@ a:active {
     border-radius: 6px;
 }
 
+.form-fields{
+	font-family: 'Ubuntu Mono', monospace;
+
+}
 
 
-
-
+.save{
+	color: grey;
+	background: #CCFF38;
+	padding: 7px;
+	padding-right: 11px;
+	padding-left: 11px;
+	float: right;
+	font-family: 'Ubuntu Mono', monospace;
+	border-style: : hidden;
+	border-style: none;
+	border-width: 0px;
+}
 
 

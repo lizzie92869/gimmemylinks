@@ -9,13 +9,13 @@
     <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
     </div>
 
-	<div class="filter left-margin">
+	<div class="left-margin">
 	</br>
 
 
-<div class="caption left-margin top-margin-show">
-		</br>
-		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= @link.name %>
+<div class="caption">
+
+<%= render partial: 'form', locals: { link: @link, list: @list} %>
 
 
 		<span class="delete_link">

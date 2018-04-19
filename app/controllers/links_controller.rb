@@ -23,9 +23,8 @@ class LinksController < ApplicationController
 
 	def show
 		@new_list = List.new
-	
 		@link = Link.find(params[:id])
-		
+		@list = @link.list
 	end
 
 	def destroy
