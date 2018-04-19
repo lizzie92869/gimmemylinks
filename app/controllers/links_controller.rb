@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
 include ApplicationHelper
-
+before_action :find_link, :only => [:show, :update, :destroy]
 
 	def index
 	end
@@ -13,7 +13,7 @@ include ApplicationHelper
 
 	def create
 		@list = List.find(params[:list_id])	
-		@link = Link.create(link_params)
+		@link = Link.new(link_params)
 		if @link.save
 		else
 		flash[:alert]="name can't be blank / URL must be valid"
@@ -23,12 +23,10 @@ include ApplicationHelper
 
 	def show
 		@new_list = List.new
-		@link = Link.find(params[:id])
 		@list = @link.list
 	end
 
 	def update
-		@link = Link.find(params[:id])
 		@list = params[:list_id]
 		if @link.update(link_params)
 			flash[:alert]="link updated succesfully"
@@ -40,7 +38,6 @@ include ApplicationHelper
 	end
 
 	def destroy
-		@link = Link.find(params[:id])
 		@list = @link.list
 		@link.destroy
 		flash[:alert]="link deleted succesfully"
@@ -51,6 +48,10 @@ include ApplicationHelper
 
 	def link_params
 		params.require(:link).permit(:name, :url, :priority, :user_id, :list_id)
+	end
+
+	def find_link
+		@link = Link.find(params[:id])
 	end
 
 	
