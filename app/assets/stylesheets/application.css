@@ -3,6 +3,27 @@ body{
 font-family: 'Ubuntu Mono', monospace;
 }
 
+.button-new-list{
+    color: white;
+	background: blue;
+	padding: 7px;
+	padding-right: 11px;
+	padding-left: 11px;
+	float: right;
+	display: inline;
+	font-family: 'Ubuntu Mono', monospace;
+	border-style: hidden;
+	border-style: none;
+	border-width: 0px;
+	
+
+}
+
+.field-new-list{
+	width: 40%;
+	float: left;
+	
+}
 
 .alert{
 	color: white;
@@ -81,6 +102,10 @@ a:active {
 
 .pos{
 	position: fixed;
+	min-height: 100%;
+	 height: auto !important;
+	 height: 100%;
+
 }
 
 .pos h1{

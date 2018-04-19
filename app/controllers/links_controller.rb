@@ -27,6 +27,18 @@ class LinksController < ApplicationController
 		@list = @link.list
 	end
 
+	def update
+		@link = Link.find(params[:id])
+		@list = params[:list_id]
+		if @link.update(link_params)
+			flash[:alert]="link updated succesfully"
+			redirect_to list_path(@list)
+		else
+			flash[:alert]="name can't be blank / URL must be valid"
+			redirect_to list_link_path(@list, @link)
+		end
+	end
+
 	def destroy
 		@link = Link.find(params[:id])
 		@list = @link.list

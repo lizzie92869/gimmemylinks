@@ -22,11 +22,23 @@
 			<div class="list-group-item ">
 			<%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
 			<%= f.hidden_field :user_id, value:  current_user.id%>
-			<%= f.text_field :name, placeholder: "new list name", class: "list-group-item " %>
+
+			
+			<div>
+			<%= f.text_field :name, placeholder: "new list name", class: " " %>
 			
 
-			<%= f.submit "new", class: "d-inline btn btn-primary btn-lg" %>
-			<% end %>
+			<div style="display: inline;">
+			
+			<%= f.submit "new", class: "button-new-list" %>
+		
+			</div>
+			
+	<% end %>
+
+	</div>
+		
+			
 			</div>
 
 
