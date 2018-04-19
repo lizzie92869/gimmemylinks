@@ -22,7 +22,6 @@ font-family: 'Ubuntu Mono', monospace;
 	height: 200px;
 	width: 90%;	
 	margin-left: 10%;
-	/*display: inline-block;*/
 	border-style: solid;
 	border-color: #CCFF38;
 	border-width: 3px;
@@ -39,7 +38,7 @@ font-family: 'Ubuntu Mono', monospace;
 }
 
 .top-margin-show{
-	margin-top: 10%;
+	margin-top: 7%;
 }
 
 .left-margin{
@@ -92,7 +91,8 @@ a:active {
 }
 
 .email-logout{
-	text-align: right;
+	float: right;
+	
 	color: grey;
 	margin-bottom: 20px;
 	font-family: 'Ubuntu Mono', monospace;

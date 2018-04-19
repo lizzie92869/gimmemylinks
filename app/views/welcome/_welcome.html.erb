@@ -4,8 +4,6 @@
 <div class="row">
 	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
 
-
-
 		<div class="pos">
 		 <h1>MyLinks</h1>
 			<div class="list-group">
@@ -13,12 +11,10 @@
 
 
     		<li style="background-color: <%= list.color %>; min-width: 300px;" class="list-group-item d-flex justify-content-between align-items-center">
-   			 <a href=<%= list_path(list) %> role="button" style="color: white;"><%= list.name %></a>
+   			 <a href=<%= list_path(list) %> role="button" style="color: black;"><%= list.name %></a>
 
     		<span style="background-color: white; color: grey;" class="badge badge-primary badge-pill link-count"><%= (list.links.size)-1 %></span>
     	
-
-
   			</li>
 			<% end %>
 		
@@ -38,7 +34,27 @@
 		</div>
 	</div>
 
-<!-- the row is still opened -->
+	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" >
+	</div>
+
+	<div class="col-lg-7 col-md-8 col-sm-5 col-xs-11" >
+
+		<div class="row email-logout">
+			<div class="top-margin-show">
+    		<%=current_user.email%> |
+    		<%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
+			</div>
+		</div>
+
+		<div class="row">
+		</br>
+		</br>
+		</br>
+		</br>
+		</div>
+
+
+
 
 
 
