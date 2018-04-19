@@ -52,8 +52,6 @@ before_action :find_link, :only => [:show, :update, :destroy]
 
 	def find_link
 		@link = Link.find(params[:id])
-	end
-
-	
+	end	
 
 end
