@@ -12,19 +12,14 @@
 	priority:
 
 		 <label>low</label>
-		<%= f.radio_button("priority", "low") %>
+		<%= f.radio_button("priority", 3) %>
 
 		 <label>medium</label>
-		<%= f.radio_button("priority", "medium") %>
+		<%= f.radio_button("priority", 2) %>
 
 		 <label>high</label>
-		<%= f.radio_button("priority", "high") %>
+		<%= f.radio_button("priority", 1) %>
 
-
-
-		<!-- can't use bootstrap and rails helper? -->
-
-	<!-- 	</div> -->
 
 		<%= f.hidden_field :user_id, value:  current_user.id%>
 		<%= f.hidden_field :list_id, value: @list.id %>

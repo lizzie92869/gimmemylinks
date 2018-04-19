@@ -5,4 +5,19 @@ module ApplicationHelper
 	# 	index = (1 + rand(color_array.count))
 	# 	color_array[index]
 	# end
+
+
+	def hr_priority
+		hello
+		# i_priority = link.priority
+		# case i_priority
+		# when i_priority = 1
+		# 	return "low"
+		# when i_priority = 2
+		# 	return "medium"
+		# when i_priority = 3
+		# 	return "high"
+		# end
+	end
+
 end

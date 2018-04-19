@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417012316) do
+ActiveRecord::Schema.define(version: 20180419172302) do
 
   create_table "links", force: :cascade do |t|
     t.integer "user_id"
     t.integer "list_id"
     t.string "name"
     t.string "url"
-    t.string "priority", default: "medium"
+    t.integer "priority", default: 3
     t.datetime "created_at"
   end
 

@@ -9,31 +9,9 @@
 <%= image_tag "line.png", option={class: "new"} %>
 </br>
 </br>
-<%= form_for [@list, @link] do |f|%>
-<%= f.text_field :name, placeholder: "name" %>
-</br>
-</br>
-<%= f.text_field :url, placeholder: "url", class: "field-length" %>
 
-</br>
-</br>
-<div class="new">
-	priority:
 
-		 <label>low</label>
-		<%= f.radio_button("priority", "low") %>
-
-		 <label>medium</label>
-		<%= f.radio_button("priority", "medium") %>
-
-		 <label>high</label>
-		<%= f.radio_button("priority", "high") %>
-
-		<%= f.hidden_field :user_id, value:  current_user.id%>
-		<%= f.hidden_field :list_id, value: @list.id %>
-		<%= f.submit "Save", class:"save" %>
-		<% end %>
-	</div>
+<%= render partial: 'form', locals: {link: @link, list: @list} %>
 </div>
 </div>
 <!-- closing the div tag of the partial -->

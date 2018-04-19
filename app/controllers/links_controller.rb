@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-
+include ApplicationHelper
 
 
 	def index
@@ -52,5 +52,7 @@ class LinksController < ApplicationController
 	def link_params
 		params.require(:link).permit(:name, :url, :priority, :user_id, :list_id)
 	end
+
+	
 
 end
