@@ -1,41 +1,41 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
 
-			<div>
-			</br>
-			Filter by |
-			<%= link_to "priority", high_priority_lists_path %> | 
-			<%= link_to "least recent", recent_lists_path %> |  
-			<%= link_to "most recent", old_lists_path %> 
-			<span class="delete_link" >
-			<%= link_to "Delete List!", @list, :method => :delete%>
-			</span>
-			</div>
+		<div>
+		</br>
+		Filter by |
+		<%= link_to "priority", high_priority_lists_path %> | 
+		<%= link_to "least recent", recent_lists_path %> |  
+		<%= link_to "most recent", old_lists_path %> 
+		<span class="delete_link" >
+		<%= link_to "Delete List!", @list, :method => :delete%>
+		</span>
+		</div>
 
-			</br>
-			<% @links.each_with_index do |link, index| %> 
-			<!-- to not have the fake link showing up -->
-			<% if !(link.name == "Create a new link") %>
-			<div class="caption top-margin-show">
-			</br>
-				<div class="font"><%= link.name %></div>
-				<div class="font grey"><%= link_to "View or Edit", list_link_path(@list,link) %> // <%= link.hr_priority %> priority
+		</br>
+		<% @links.each_with_index do |link, index| %> 
+		<!-- to not have the fake link showing up -->
+		<% if !(link.name == "Create a new link") %>
+		<div class="caption top-margin-show">
+		</br>
+			<div class="font"><%= link.name %></div>
+			<div class="font grey"><%= link_to "View or Edit", list_link_path(@list,link) %> // <%= link.hr_priority %> priority
 
-				<a style="background-color: <%= link.list.color %>;" href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
-				</div>
+			<a style="background-color: <%= link.list.color %>;" href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
 			</div>
-			<iframe style="border-color: <%= link.list.color %>;" class = "preview rounded" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
-			<div class="link_date font"><%=link.created_at.strftime("%m/%d/%Y")%></div>
-			<% end %>
-			<% end %>
-	
-			<div>
-			<a class="plus" href=<%=new_list_link_path(@list) %>><%= image_tag("plus.png", size: "150x150", alt: "Add a link") %></a>
-			</div>
+		</div>
+		<iframe style="border-color: <%= link.list.color %>;" class = "preview rounded" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
+		<div class="link_date font"><%=link.created_at.strftime("%m/%d/%Y")%></div>
+		<% end %>
+		<% end %>
 
-	<!-- from the partial -->
+		<div>
+		<a class="plus" href=<%=new_list_link_path(@list) %>><%= image_tag("plus.png", size: "150x150", alt: "Add a link") %></a>
+		</div>
+
+	<!-- from the welcome partial -->
 	</div>
-<!-- from the partial -->
+<!-- from the welcome partial -->
 </div>
 
 
