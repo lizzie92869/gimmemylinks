@@ -79,14 +79,12 @@ a:active {
 }
 
 .pos h1{
-	font-family: 'Ubuntu Mono'; monospace; 
 	font-size: 4em; 
 	color: grey;
 	margin-bottom: 50px;
 }
 
 .new{
-	font-family: 'Ubuntu Mono', monospace;
 	margin-bottom: 30px;
 }
 
@@ -95,7 +93,6 @@ a:active {
 }
 
 .link_date{
-	font-family: 'Ubuntu Mono', monospace; 
 	color: grey; 
 	font-size: 0.7em; 
 	float: right;
