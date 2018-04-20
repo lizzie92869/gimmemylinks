@@ -17,13 +17,13 @@
 			<%= f.hidden_field :user_id, value:  current_user.id%>
 
 			
-			<div>
-			<%= f.text_field :name, placeholder: "new list name", class: " " %>
+			<div style="width: 100%">
+			<%= f.text_field :name, placeholder: "new list name", class: "field-new-list" %>
 			
 
 			<div style="display: inline;">
 			
-			<%= f.submit "new", class: "button-new-list" %>
+			<%= f.submit "Save", class: "button-new-list" %>
 		
 			</div>
 			

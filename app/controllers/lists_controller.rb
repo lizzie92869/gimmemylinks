@@ -2,6 +2,11 @@ class ListsController < ApplicationController
 before_action :find_list, :only => [:high_priority, :recent, :old, :show, :destroy]
 before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 
+	# def filter(method_name)
+	# @list.links.public_send(method_name) if @list.links.respond_to? method_name
+	# render action: :show
+	# end
+
 	def high_priority
 		@links = @list.links.high_priority
 		render action: :show

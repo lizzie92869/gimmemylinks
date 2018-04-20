@@ -1,9 +1,9 @@
 <%= form_for [@list, @link] do |f|%>
-	<div class="form-fields">
+	<div class="font">
 	<%= f.text_field :name, placeholder: "name" %>
 	</div>
 	</br>
-	<div class="form-fields">
+	<div class="font">
 	<%= f.text_field :url, placeholder: "url", class: "field-length" %>
 	</div>
 	</br>
@@ -21,8 +21,8 @@
 	<%= f.hidden_field :user_id, value:  current_user.id%>
 	<%= f.hidden_field :list_id, value: @list.id %>
 
-	<div class="save">
-	<%= f.submit "Save link!", class:"save" %>
+	<div class="save-button">
+	<%= f.submit "Save link!", class:"save-button" %>
 	</div>
 	</div>
 <% end %>

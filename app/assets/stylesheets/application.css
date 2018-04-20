@@ -3,28 +3,7 @@ body{
 font-family: 'Ubuntu Mono', monospace;
 }
 
-.button-new-list{
-    color: white;
-	background: blue;
-	padding: 7px;
-	padding-right: 11px;
-	padding-left: 11px;
-	float: right;
-	display: inline;
-	font-family: 'Ubuntu Mono', monospace;
-	border-style: hidden;
-	border-style: none;
-	border-width: 0px;
-	
-
-}
-
-.field-new-list{
-	width: 40%;
-	float: left;
-	
-}
-
+/*flash alerts*/
 .alert{
 	color: white;
 	background-color: red;
@@ -34,28 +13,41 @@ font-family: 'Ubuntu Mono', monospace;
 	border-color: red;
 }
 
-.head{
-	text-align: left;
-	color: grey;
+.button-new-list{
+    color: white;
+	background: blue;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	padding-right: 13px;
+	padding-left: 13px;
+	/*float: right;*/
+	display: inline;
+	font-family: 'Ubuntu Mono', monospace;
+	border-style: hidden;
+	border-style: none;
+	border-width: 0px;	
+
 }
 
-.carousel{
+/*.field-new-list{
+	margin-right: 0;
+}
+*/
+#list-name{
+	width:100%;
+}
+
+
+.preview{
 	height: 200px;
 	width: 100%;	
 	border-style: solid;
 	border-color: #CCFF38;
-	border-width: 3px;
-	
+	border-width: 3px;	
 }
 
 .size-preview{
 	height: 700px;
-
-}
-
-
-.top-margin-new{
- 	margin-top: 20%;
 }
 
 .top-margin-show{
@@ -88,9 +80,6 @@ a:active {
     color: red;
 }
 
-.btn-info{
-	color: #CCFF38;
-}
 
 .delete_link a{
 	color: white;
@@ -117,7 +106,6 @@ a:active {
 
 .email-logout{
 	float: right;
-	
 	color: grey;
 	margin-bottom: 20px;
 	font-family: 'Ubuntu Mono', monospace;
@@ -125,10 +113,6 @@ a:active {
 
 .plus{
 	display: block;
-    /*margin-left: 50%;
-    margin-right: 50%;*/
-    /*margin-left: auto;
-    margin-right: auto;*/
     text-align: center;
 }
 
@@ -141,11 +125,6 @@ a:active {
 	width: 80%;
 }
 
-.field-length-list{
-	width: 100%;
-}
-
-
 .link_date{
 	font-family: 'Ubuntu Mono', monospace; 
 	color: grey; 
@@ -153,26 +132,6 @@ a:active {
 	float: right;
 }
 
-.signin{
-	width: 60%;
-	height: 50%;
-	padding: 10%;
-	background-color: #CCFF38;
-}
-
-
-
-
-.login-wrap{
-	/*width: 100%;
-	margin: auto;
-	max-width: 525px;
-	min-height: 450px;
-	position: relative;*/
-
-	
-
-}
 
 .claim{
 	margin-top: 10%;
@@ -202,14 +161,14 @@ a:active {
 
 }
 
-.sign {
+/*.sign {
 	font-family: 'Ubuntu Mono', monospace; 
 	color: red; 
 	font-size: 1em; 
 	display: inline;
 	margin: 18%;
-	/*text-align: center;*/
-} 
+	
+}*/
 
 .signup-container{
 	font-size: 1em;
@@ -222,7 +181,6 @@ a:active {
 	font-size: 1em;
 	color: #34CE93;
 	font-family: 'Ubuntu Mono', monospace;
-	/*margin-left: 0%;*/
 }
 
 .google-button{
@@ -237,13 +195,12 @@ a:active {
     border-radius: 6px;
 }
 
-.form-fields{
+.font{
 	font-family: 'Ubuntu Mono', monospace;
-
 }
 
 
-.save{
+.save-button{
 	color: grey;
 	background: #CCFF38;
 	padding: 7px;
