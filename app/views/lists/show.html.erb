@@ -22,7 +22,7 @@
 		<div class="caption top-margin-show">
 		</br>
 		<div class="font"><%= link.name %></div>
-		<div class="font grey"><%= link_to "Edit", list_link_path(@list,link) %> // <%= link.hr_priority %> priority
+		<div class="font grey"><%= link_to "View or Edit", list_link_path(@list,link) %> // <%= link.hr_priority %> priority
 
 		<a style="background-color: <%= link.list.color %>;" href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
 		</div>
@@ -44,6 +44,8 @@
 
 </div>
 
+</div>
+</div>
 
 
 

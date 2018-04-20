@@ -5,12 +5,8 @@ Rails.application.routes.draw do
   get '/lists/:id/recent', to: 'lists#recent', as: :recent_lists
   get '/lists/:id/old', to: 'lists#old', as: :old_lists
 
-  
-
-
-  resources :lists do
-  	
-    resources :links
+  resources :lists, only: [:show, :create, :destroy] do
+    resources :links, except: [:index, :edit]
 
   end
 

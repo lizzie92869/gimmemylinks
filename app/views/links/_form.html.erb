@@ -10,19 +10,19 @@
 	</br>
 
 	<div class="new font">
-	priority:
-	 <label>low</label>
-	<%= f.radio_button("priority", 3) %>
-	 <label>medium</label>
-	<%= f.radio_button("priority", 2) %>
-	 <label>high</label>
-	<%= f.radio_button("priority", 1) %>
+		priority:
+		 <label>low</label>
+		<%= f.radio_button("priority", 3) %>
+		 <label>medium</label>
+		<%= f.radio_button("priority", 2) %>
+		 <label>high</label>
+		<%= f.radio_button("priority", 1) %>
 
-	<%= f.hidden_field :user_id, value:  current_user.id%>
-	<%= f.hidden_field :list_id, value: @list.id %>
+		<%= f.hidden_field :user_id, value:  current_user.id%>
+		<%= f.hidden_field :list_id, value: @list.id %>
 
-	<div class="save-button">
-	<%= f.submit "Save link!", class:"save-button" %>
-	</div>
+		<div class="save-button">
+		<%= f.submit "Save link!", class:"save-button" %>
+		</div>
 	</div>
 <% end %>

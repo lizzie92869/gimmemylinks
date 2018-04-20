@@ -12,13 +12,6 @@ class Link < ActiveRecord::Base
 	scope :recent, -> {order("created_at DESC")}
 	scope :old, -> {order("created_at ASC")}
 
-
-
-	# def show
-	# 	@link = Link.find(params[:id])
-	# end
-
-
 	def hr_priority
 		i_priority = self.priority
 		case i_priority

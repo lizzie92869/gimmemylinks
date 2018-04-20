@@ -2,9 +2,6 @@ class LinksController < ApplicationController
 include ApplicationHelper
 before_action :find_link, :only => [:show, :update, :destroy]
 
-	def index
-	end
-
 	def new
 
 		@new_list = List.new
