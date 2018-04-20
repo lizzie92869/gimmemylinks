@@ -1,7 +1,7 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
 
-	<div class="left-margin">
+	<div>
 	</br>
 	Filter by |
 	<%= link_to "priority", high_priority_lists_path %> | 
@@ -19,7 +19,7 @@
 	
 		<!-- to not have the fake link showing up -->
 		<% if !(link.name == "Create a new link") %>
-		<div class="caption left-margin top-margin-show">
+		<div class="caption top-margin-show">
 		</br>
 		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= link_to link.name, list_link_path(@list,link) %> // <%= link.hr_priority %> priority
 
@@ -35,7 +35,7 @@
 
 
 	<div>
-	<a class="left-margin plus" href=<%=new_list_link_path(@list) %>><%= image_tag("plus.png", size: "150x150", alt: "Add a link") %></a>
+	<a class="plus" href=<%=new_list_link_path(@list) %>><%= image_tag("plus.png", size: "150x150", alt: "Add a link") %></a>
 	</div>
 
 

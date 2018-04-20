@@ -1,8 +1,4 @@
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
-
-
-
-<div class="left-margin">
 </br>
 
 <div class="new"> Save a new link in <%=@list.name%></div>
@@ -10,9 +6,7 @@
 </br>
 </br>
 
-
 <%= render partial: 'form', locals: {link: @link, list: @list} %>
-</div>
 </div>
 </div>
 <!-- closing the div tag of the partial -->

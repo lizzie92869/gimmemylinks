@@ -1,11 +1,9 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
-
-<div class="left-margin">
 </br>
 
-<div class="caption">
-<%= render partial: 'form', locals: { link: @link, list: @list} %>
+	<div class="caption">
+	<%= render partial: 'form', locals: { link: @link, list: @list} %>
 	</div>
 
 	<span class="delete_link">
@@ -21,10 +19,6 @@
 	<iframe style="border-color: <%= @link.list.color %>;" class = "preview rounded size-preview" src=<%=@link.url%> href="<%= list_link_path(@link) %>"></iframe>
 	<div class="link_date"><%=@link.created_at.strftime("%m/%d/%Y")%></div>
 
-</div>
-
-
-	
 
 <!-- close the welcome partial -->
 </div>
