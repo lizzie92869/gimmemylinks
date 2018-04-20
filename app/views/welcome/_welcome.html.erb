@@ -1,12 +1,12 @@
 <div class="row">
-	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
+	<div id="first_column" class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
 
 		<div class="pos font">
 		 <h1>MyLinks</h1>
-			<div class="list-group">
+			<div class="list-group" style="width: 265px;">
 			<% current_user.lists.uniq.each do |list| %>
 			
-    		<li style="background-color: <%= list.color %>; max-width: 265px;" class="list-group-item d-flex justify-content-between align-items-center">
+    		<li style="background-color: <%= list.color %>;" class="list-group-item d-flex justify-content-between align-items-center">
    			 <a href=<%= list_path(list) %> role="button" class="text-list"><%= list.name %></a>
    			 <!-- inline style to overwrite bootstrap -->
     		<span style="background-color: white; color: grey;" class="badge badge-primary badge-pill link-count"><%= (list.links.size)-1 %></span>
@@ -19,13 +19,14 @@
 			<%= f.hidden_field :user_id, value:  current_user.id%>
 
 
+<div class="list-group-item " style="width: 265px; margin-left: -21px; padding-top: 10px;">
 			<!-- work in progress -->
-			<div style="width: 100%">
+			<div style="width: 100%;">
 			<%= f.text_field :name, placeholder: "new list name", class: "field-new-list" %>
 			
-			<div style="display: inline;">
-			<%= f.submit "New", class: "" %>
-			
+			<span><div class="hidden_button">
+			<%= f.submit "New" %>
+</div></span>
 			<!-- until there -->
 
 
@@ -44,7 +45,7 @@
 	</div>
 
 <div class="clearfix visible-xs visible-md"></div>
-	<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
+	<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="second_column" >
 
 
 		<div class="row email-logout">

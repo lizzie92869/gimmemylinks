@@ -6,6 +6,13 @@ body{
 font-family: 'Ubuntu Mono', monospace;
 }
 
+@media only screen and (max-width: 1000px){
+ #second_column {
+ 	margin-top: calc(div.first_column.height);
+ }
+}
+
+
 /*flash alerts*/
 .alert-warning{
 	opacity: 0.5;
