@@ -7,13 +7,8 @@ font-family: 'Ubuntu Mono', monospace;
 }
 
 /*flash alerts*/
-.alert{
-	color: white;
-	background-color: red;
+.alert-warning{
 	opacity: 0.5;
-	border-style: solid;
-	border-width: 2px;
-	border-color: red;
 }
 
 .text-list{ 
@@ -31,6 +26,9 @@ font-family: 'Ubuntu Mono', monospace;
 	width:100%;
 }
 
+.grey{
+	color:grey;
+}
 
 .preview{
 	height: 200px;
