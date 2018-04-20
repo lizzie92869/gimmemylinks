@@ -1,0 +1,42 @@
+.delete_link a{
+	color: white;
+	background: red;
+	padding: 14px;
+	float: right;
+	font-family: 'Ubuntu Mono', monospace;
+}
+
+.plus{
+	display: block;
+    text-align: center;
+}
+
+.button-new-list{
+    color: white;
+	background: blue;
+	padding-top: 4px;
+	padding-bottom: 2px;
+	padding-right: 13px;
+	padding-left: 13px;
+	width: 100%;
+	/*float: right;*/
+	display: inline;
+	font-family: 'Ubuntu Mono', monospace;
+	border-style: hidden;
+	border-style: none;
+	border-width: 0px;	
+
+}
+
+.save-button{
+	color: grey;
+	background: #CCFF38;
+	padding: 7px;
+	padding-right: 11px;
+	padding-left: 11px;
+	float: right;
+	font-family: 'Ubuntu Mono', monospace;
+	border-style: hidden;
+	border-style: none;
+	border-width: 0px;
+}

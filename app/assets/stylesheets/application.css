@@ -23,23 +23,6 @@ font-family: 'Ubuntu Mono', monospace;
 	text-overflow: ellipsis;
 }
 
-.button-new-list{
-    color: white;
-	background: blue;
-	padding-top: 4px;
-	padding-bottom: 2px;
-	padding-right: 13px;
-	padding-left: 13px;
-	width: 100%;
-	/*float: right;*/
-	display: inline;
-	font-family: 'Ubuntu Mono', monospace;
-	border-style: hidden;
-	border-style: none;
-	border-width: 0px;	
-
-}
-
 /*.field-new-list{
 	margin-right: 0;
 }
@@ -91,15 +74,6 @@ a:active {
     color: red;
 }
 
-
-.delete_link a{
-	color: white;
-	background: red;
-	padding: 14px;
-	float: right;
-	font-family: 'Ubuntu Mono', monospace;
-}
-
 .pos{
 	position: fixed;
 	min-height: 100%;
@@ -113,11 +87,6 @@ a:active {
 	font-size: 4em; 
 	color: grey;
 	margin-bottom: 50px;
-}
-
-.plus{
-	display: block;
-    text-align: center;
 }
 
 .new{
@@ -138,19 +107,6 @@ a:active {
 
 .font{
 	font-family: 'Ubuntu Mono', monospace;
-}
-
-.save-button{
-	color: grey;
-	background: #CCFF38;
-	padding: 7px;
-	padding-right: 11px;
-	padding-left: 11px;
-	float: right;
-	font-family: 'Ubuntu Mono', monospace;
-	border-style: : hidden;
-	border-style: none;
-	border-width: 0px;
 }
 
 #error_explanation, #error_explanation h2{
