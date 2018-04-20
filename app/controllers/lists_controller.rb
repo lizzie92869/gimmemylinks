@@ -9,6 +9,7 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 	# end
 
 	def high_priority
+		
 		@links = @list.links.high_priority
 		render action: :show
 	end
@@ -58,7 +59,7 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 	end
 
 	def create_list
-		@new_list = List.create
+		@new_list = List.new
 	end
 
 end

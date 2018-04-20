@@ -6,6 +6,7 @@ before_action :find_link, :only => [:show, :update, :destroy]
 	end
 
 	def new
+
 		@new_list = List.new
 		@list = List.find(params[:list_id])
 		@link = Link.new
