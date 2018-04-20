@@ -21,7 +21,7 @@
 		<% if !(link.name == "Create a new link") %>
 		<div class="caption left-margin top-margin-show">
 		</br>
-		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= link_to link.name, list_link_path(@list,link) %> // <%= link.priority %> priority
+		<div style="font-family: 'Ubuntu Mono', monospace; color: grey;"><%= link_to link.name, list_link_path(@list,link) %> // <%= link.hr_priority %> priority
 
 		<a style="background-color: <%= link.list.color %>;" href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
 		</div>

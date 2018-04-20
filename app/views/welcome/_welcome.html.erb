@@ -1,12 +1,12 @@
 <div class="row">
-	<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" >
+	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
 		<div class="pos">
 		 <h1>MyLinks</h1>
 			<div class="list-group">
 			<% current_user.lists.uniq.each do |list| %>
 			
-    		<li style="background-color: <%= list.color %>; min-width: 300px;" class="list-group-item d-flex justify-content-between align-items-center">
-   			 <a href=<%= list_path(list) %> role="button" style="color: black;"><%= list.name %></a>
+    		<li style="background-color: <%= list.color %>; max-width: 265px;" class="list-group-item d-flex justify-content-between align-items-center">
+   			 <a href=<%= list_path(list) %> role="button" class="text-list"><%= list.name %></a>
     		<span style="background-color: white; color: grey;" class="badge badge-primary badge-pill link-count"><%= (list.links.size)-1 %></span>
   			</li>
 			<% end %>
@@ -21,10 +21,13 @@
 			<%= f.text_field :name, placeholder: "new list name", class: "field-new-list" %>
 			
 
+			
 			<div style="display: inline;">
 			
-			<%= f.submit "Save", class: "button-new-list" %>
-		
+			<%= f.submit "New", class: "" %>
+			
+			
+
 			</div>
 			
 	<% end %>
@@ -39,10 +42,10 @@
 		</div>
 	</div>
 
-	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" >
-	</div>
+	<!-- <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0" >
+	</div> -->
 
-	<div class="col-lg-7 col-md-8 col-sm-5 col-xs-11" >
+	<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" >
 
 		<div class="row email-logout">
 			<div class="top-margin-show">

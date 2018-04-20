@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+include ApplicationHelper
 before_action :find_list, :only => [:high_priority, :recent, :old, :show, :destroy]
 before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 

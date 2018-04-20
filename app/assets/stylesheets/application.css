@@ -3,6 +3,13 @@ body{
 font-family: 'Ubuntu Mono', monospace;
 }
 
+.text-list{ 
+	width: 80%; 
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis;
+}
+
 /*flash alerts*/
 .alert{
 	color: white;
@@ -20,6 +27,7 @@ font-family: 'Ubuntu Mono', monospace;
 	padding-bottom: 2px;
 	padding-right: 13px;
 	padding-left: 13px;
+	width: 100%;
 	/*float: right;*/
 	display: inline;
 	font-family: 'Ubuntu Mono', monospace;
@@ -161,14 +169,13 @@ a:active {
 
 }
 
-/*.sign {
+.sign {
 	font-family: 'Ubuntu Mono', monospace; 
-	color: red; 
 	font-size: 1em; 
 	display: inline;
 	margin: 18%;
 	
-}*/
+}
 
 .signup-container{
 	font-size: 1em;
@@ -213,4 +220,7 @@ a:active {
 	border-width: 0px;
 }
 
-
+#error_explanation, #error_explanation h2{
+	color: black;
+	font-size: 10px;
+}

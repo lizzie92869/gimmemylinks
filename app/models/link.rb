@@ -14,8 +14,21 @@ class Link < ActiveRecord::Base
 
 
 
-	def show
-		@link = Link.find(params[:id])
+	# def show
+	# 	@link = Link.find(params[:id])
+	# end
+
+
+	def hr_priority
+		i_priority = self.priority
+		case i_priority
+		when i_priority = 1
+			return "low"
+		when i_priority = 2
+			return "medium"
+		when i_priority = 3
+			return "high"
+		end
 	end
 
 end
