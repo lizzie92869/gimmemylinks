@@ -5,7 +5,6 @@
 		 <h1>MyLinks</h1>
 			<div class="list-group" style="width: 265px;">
 			<% current_user.lists.uniq.each do |list| %>
-			
     		<li style="background-color: <%= list.color %>;" class="list-group-item d-flex justify-content-between align-items-center">
    			 <a href=<%= list_path(list) %> role="button" class="text-list"><%= list.name %></a>
    			 <!-- inline style to overwrite bootstrap -->
@@ -14,40 +13,30 @@
 			<% end %>
 		
 
-			<div class="list-group-item ">
-			<%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
-			<%= f.hidden_field :user_id, value:  current_user.id%>
+				<div class="list-group-item ">
+				<%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
+				<%= f.hidden_field :user_id, value:  current_user.id%>
+				<div class="list-group-item " style="width: 265px; margin-left: -21px; padding-top: 10px;">
+				<!-- work in progress -->
+				<div style="width: 100%;">
+				<%= f.text_field :name, placeholder: "new list name", class: "field-new-list" %>
+				<span><div class="hidden_button">
+				<%= f.submit "New" %>
+				</div></span>
+				<!-- until there -->
+				</div>
+				<% end %>
+				</div>
+				</div>
 
 
-<div class="list-group-item " style="width: 265px; margin-left: -21px; padding-top: 10px;">
-			<!-- work in progress -->
-			<div style="width: 100%;">
-			<%= f.text_field :name, placeholder: "new list name", class: "field-new-list" %>
-			
-			<span><div class="hidden_button">
-			<%= f.submit "New" %>
-</div></span>
-			<!-- until there -->
+		    </div>
+	    </div>
+    </div>
 
+	<div class="clearfix visible-xs visible-md"></div>
 
-			</div>
-			
-	<% end %>
-
-	</div>
-		
-			
-			</div>
-
-
-			</div>
-		</div>
-	</div>
-
-<div class="clearfix visible-xs visible-md"></div>
 	<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="second_column" >
-
-
 		<div class="row email-logout">
 			<div class="top-margin-show">
     		<%=current_user.email%> |
@@ -62,6 +51,8 @@
 		</br>
 		</div>
 
+	<!-- will need </div>  -->
+<!-- will need </div>  -->
 
 
 
