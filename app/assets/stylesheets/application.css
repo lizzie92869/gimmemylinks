@@ -18,6 +18,21 @@ font-family: 'Ubuntu Mono', monospace;
 	opacity: 0.5;
 }
 
+#error_explanation, #error_explanation h2{
+	background-color: #FFF9E6;
+	position: fixed;
+	left: -200px;
+	top: -60px;
+	opacity: 0.5;
+	width: 1000px;
+	color: black;
+	font-size: 12px;
+}
+
+#error_explanation{
+	padding-top: 20px;
+}
+
 .text-list{ 
 	width: 80%; 
 	white-space: nowrap; 
@@ -107,7 +122,4 @@ a:active {
 	font-family: 'Ubuntu Mono', monospace;
 }
 
-#error_explanation, #error_explanation h2{
-	color: black;
-	font-size: 10px;
-}
+
