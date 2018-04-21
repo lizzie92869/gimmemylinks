@@ -27,6 +27,8 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 
 	def create
 		@list = List.new(list_name_params)
+		
+		@list.user_id = current_user.id
 		@list.color = random_color 
 		#To have the new list appear in the user's list, I need to create a fake link to link the list and the user
 		@link = Link.create(user: current_user, list: @list, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
@@ -37,11 +39,13 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 				flash[:alert]="name can't be blank or already used"
 				redirect_to root_path
 				end
+				binding.pry
 	end
 
 
 	def show
 		@links = @list.links	
+		authenticate_user
 	end
 
 	def destroy 
@@ -61,6 +65,13 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 
 	def create_list
 		@new_list = List.new
+	end
+
+	def authenticate_user
+		if !(current_user && @list.user_id == current_user)
+			flash[:alert] = "You are not allow to view this page"
+			redirect_to root_path
+		end
 	end
 
 end
