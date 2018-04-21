@@ -2,6 +2,7 @@ class ListsController < ApplicationController
 include ApplicationHelper
 before_action :find_list, :only => [:high_priority, :recent, :old, :show, :destroy]
 before_action :create_list, :only => [:high_priority, :recent, :old, :show]
+# before_action :authenticate_user!, only: [:show]
 
 	# def filter(method_name)
 	# @list.links.public_send(method_name) if @list.links.respond_to? method_name
@@ -25,7 +26,7 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 	end
 
 	def create
-		@list = List.create(list_name_params)
+		@list = List.new(list_name_params)
 		list_id = @list.id
 		@list.color = random_color 
 		#To have the new list appear in the user's list, I need to create a fake link to link the list and the user
@@ -33,7 +34,7 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 				if @list.save 
 			redirect_to new_list_link_path(@list)
 		else
-			flash[:alert]="name can't be blank"
+			flash[:alert]="name can't be blank or already used"
 			redirect_to root_path
 		end
 	end

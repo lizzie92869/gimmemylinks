@@ -5,5 +5,5 @@ class List < ActiveRecord::Base
 	validates :name, presence: true
 
 
-	# validates :name, uniqueness: { scope: :user_id, message: "You already have a list with this name." }, if: :user_id?
+	# validates :name, uniqueness: { scope: :user_id }
 end

@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
 include ApplicationHelper
 before_action :find_link, :only => [:show, :update, :destroy]
+# before_action :authenticate_user!, only: [:show, :new]
 
 	def new
 
