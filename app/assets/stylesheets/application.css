@@ -52,6 +52,10 @@ font-family: 'Ubuntu Mono', monospace;
 	color:grey;
 }
 
+.white{
+	color: white;
+}
+
 .preview{
 	height: 200px;
 	width: 100%;	

@@ -2,15 +2,16 @@ class LinksController < ApplicationController
 include ApplicationHelper
 before_action :find_link, :only => [:show, :update, :destroy]
 # before_action :authenticate_user!, only: [:show, :new]
+before_action :authenticate_user!
 
 	def new
-
 		@new_list = List.new
 		@list = List.find(params[:list_id])
 		@link = Link.new
 	end
 
 	def create
+
 		@list = List.find(params[:list_id])	
 		@link = Link.new(link_params)
 		if @link.save
@@ -21,6 +22,7 @@ before_action :find_link, :only => [:show, :update, :destroy]
 	end
 
 	def show
+		binding.pry
 		@new_list = List.new
 		@list = @link.list
 	end
