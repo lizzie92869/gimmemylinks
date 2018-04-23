@@ -1,15 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  
-
-  # def authorized?
-  # 	if current_user.logged_in? && user.authorized?
-  # 	else
-  # 		flash[:alert]="Sorry, you can't access this page."
-  # 		redirect_to root_path
-  # 	end
-  # end
-
 
 
   def random_color

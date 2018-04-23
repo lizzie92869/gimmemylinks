@@ -2,12 +2,14 @@
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
 			<div>
 			</br>
-			Filter by |
-			<%= link_to "priority", high_priority_lists_path %> | 
-			<%= link_to "least recent", recent_lists_path %> |  
-			<%= link_to "most recent", old_lists_path %> 
+			Sort by |
 			
-			<span class="delete_link"  >
+			
+			<%= link_to "priority", filter_path(@list, :high_priority)%> | 
+			<%= link_to "least recent", filter_path(@list, :recent)%> |  
+			<%= link_to "most recent", filter_path(@list, :old) %> 
+
+			<span class="delete_link"  > 
 			<%= link_to "Delete List!", @list, :method => :delete%>
 			</span>
 

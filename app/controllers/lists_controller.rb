@@ -1,29 +1,32 @@
 class ListsController < ApplicationController
 include ApplicationHelper
-before_action :find_list, :only => [:high_priority, :recent, :old, :show, :destroy]
-before_action :create_list, :only => [:high_priority, :recent, :old, :show]
+before_action :find_list, :only => [:filter, :show, :destroy]
+before_action :create_list, :only => [:filter, :show]
 # before_action :authenticate_user!, only: [:show]
 
-	# def filter(method_name)
-	# @list.links.public_send(method_name) if @list.links.respond_to? method_name
-	# render action: :show
+	def filter
+	@links = @list.links.public_send(params[:filter]) if @list.links.respond_to? params[:filter]
+	render action: :show
+	end
+
+
+
+	# def high_priority
+		
+	# 	@links = @list.links.high_priority
+	# 	render action: :show
 	# end
 
-	def high_priority
-		
-		@links = @list.links.high_priority
-		render action: :show
-	end
+	# def recent
+	# 	@links = @list.links.recent
+	# 	render action: :show
+	# end
 
-	def recent
-		@links = @list.links.recent
-		render action: :show
-	end
+	# def old
+	# 	@links = @list.links.old
+	# 	render action: :show
+	# end
 
-	def old
-		@links = @list.links.old
-		render action: :show
-	end
 
 	def create
 		@list = List.new(list_name_params)
@@ -39,13 +42,13 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 				flash[:alert]="name can't be blank or already used"
 				redirect_to root_path
 				end
-				binding.pry
+			
 	end
 
 
 	def show
 		@links = @list.links	
-		authenticate_user
+		authenticate_user?
 	end
 
 	def destroy 
@@ -67,8 +70,10 @@ before_action :create_list, :only => [:high_priority, :recent, :old, :show]
 		@new_list = List.new
 	end
 
-	def authenticate_user
-		if !(current_user && @list.user_id == current_user)
+	def authenticate_user?
+		# binding.pry
+		if current_user && @list.user_id == current_user.id
+		else
 			flash[:alert] = "You are not allow to view this page"
 			redirect_to root_path
 		end
