@@ -4,33 +4,15 @@ before_action :find_list, :only => [:filter, :show, :destroy]
 before_action :create_list, :only => [:filter, :show]
 # before_action :authenticate_user!, only: [:show]
 
+# replace actions high_priority, recent and old setting @links = @list.links.high_priority
 	def filter
 	@links = @list.links.public_send(params[:filter]) if @list.links.respond_to? params[:filter]
 	render action: :show
 	end
 
 
-
-	# def high_priority
-		
-	# 	@links = @list.links.high_priority
-	# 	render action: :show
-	# end
-
-	# def recent
-	# 	@links = @list.links.recent
-	# 	render action: :show
-	# end
-
-	# def old
-	# 	@links = @list.links.old
-	# 	render action: :show
-	# end
-
-
 	def create
 		@list = List.new(list_name_params)
-		
 		@list.user_id = current_user.id
 		@list.color = random_color 
 		#To have the new list appear in the user's list, I need to create a fake link to link the list and the user
@@ -71,7 +53,6 @@ before_action :create_list, :only => [:filter, :show]
 	end
 
 	def authenticate_user?
-		# binding.pry
 		if current_user && @list.user_id == current_user.id
 		else
 			flash[:alert] = "You are not allow to view this page"

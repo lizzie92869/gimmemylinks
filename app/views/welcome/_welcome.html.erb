@@ -14,7 +14,7 @@
 		
 
 				<div class="list-group-item ">
-				<%= form_for @new_list, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
+				<%= form_for List.new, :url => url_for(:controller => 'lists', :action => 'create'), method: :post do |f| %>
 				<%= f.hidden_field :user_id, value:  current_user.id%>
 				<div class="list-group-item " style="width: 265px; margin-left: -21px; padding-top: 10px;">
 				<!-- work in progress -->

@@ -5,7 +5,6 @@ before_action :authenticate_user!
 
 
 	def new
-		@new_list = List.new
 		@list = List.find(params[:list_id])
 		@link = Link.new
 		authenticate_user?
@@ -23,8 +22,6 @@ before_action :authenticate_user!
 	end
 
 	def show 
-		
-		@new_list = List.new
 		@list = @link.list
 		authenticate_user?
 	end
