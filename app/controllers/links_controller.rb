@@ -12,6 +12,7 @@ before_action :authenticate_user!
 	end
 
 	def create
+		
 		@list = List.find(params[:list_id])	
 		@link = Link.new(link_params)
 		if @link.save
@@ -43,6 +44,8 @@ before_action :authenticate_user!
 		flash[:alert]="link deleted succesfully"
 		redirect_to list_path(@list)
 	end
+
+
 
 	private
 

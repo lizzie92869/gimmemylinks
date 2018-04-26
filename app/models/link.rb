@@ -15,13 +15,14 @@ class Link < ActiveRecord::Base
 	scope :old, -> {order("created_at ASC")}
 
 	def hr_priority
+		
 		i_priority = self.priority
 		case i_priority
-		when i_priority = 1
+		when i_priority = 3
 			return "low"
 		when i_priority = 2
 			return "medium"
-		when i_priority = 3
+		when i_priority = 1
 			return "high"
 		end
 	end
