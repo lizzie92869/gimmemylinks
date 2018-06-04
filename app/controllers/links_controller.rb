@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
 include ApplicationHelper
 before_action :find_link, :only => [:show, :update, :destroy]
-before_action :authenticate_user!
+# before_action :authenticate_user!
 
 
 	def new
@@ -24,6 +24,7 @@ before_action :authenticate_user!
 
 	def show 
 		@list = @link.list
+
 		authenticate_user?
 	end
 
@@ -50,7 +51,7 @@ before_action :authenticate_user!
 	private
 
 	def link_params
-		params.require(:link).permit(:name, :url, :priority, :user_id, :list_id)
+		params.require(:link).permit(:name, :url, :priority, :user_id, :list_id, :expiration_date)
 	end
 
 	def find_link

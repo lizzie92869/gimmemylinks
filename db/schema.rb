@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421172402) do
+ActiveRecord::Schema.define(version: 20180426183106) do
 
   create_table "links", force: :cascade do |t|
     t.integer "user_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180421172402) do
     t.string "url"
     t.integer "priority", default: 3
     t.datetime "created_at"
+    t.datetime "expiration_date"
   end
 
   create_table "lists", force: :cascade do |t|
