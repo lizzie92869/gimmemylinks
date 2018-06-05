@@ -3,10 +3,10 @@
 lizzie = User.create(email: "lizzie@gmail.com", password: "lizziegmail", password_confirmation: "lizziegmail")
 david = User.create(email: "david@gmail.com", password: "davidgmail", password_confirmation: "davidgmail")
 
-list1 = List.create(name: "Rails documentation")
-list2 = List.create(name: "Baby toys wishlist" )
-list3 = List.create(name: "Interesting website designs" )
-list4 = List.create(name: "Things to do around" )
+list1 = List.create(name: "Rails documentation", user_id: 1, color: "#CCFF38")
+list2 = List.create(name: "Baby toys wishlist", user_id: 1, color: "#CCFF38" )
+list3 = List.create(name: "Interesting website designs", user_id: 1, color: "#CCFF38" )
+list4 = List.create(name: "Things to do around", user_id: 1, color: "#CCFF38" )
 
 link1 = Link.create(user_id: 1, list_id: 1, url: "http://edgeguides.rubyonrails.org/active_record_migrations.html", name: "doc migration",priority: 1)
 link2 = Link.create(user_id: 1, list_id: 2, url: "hhttps://www.amazon.com", name: "sorter",priority: 3)

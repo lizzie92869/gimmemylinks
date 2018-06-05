@@ -11,8 +11,7 @@ before_action :find_link, :only => [:show, :update, :destroy]
 
 	end
 
-	def create
-		
+	def create	
 		@list = List.find(params[:list_id])	
 		@link = Link.new(link_params)
 		if @link.save
@@ -24,7 +23,6 @@ before_action :find_link, :only => [:show, :update, :destroy]
 
 	def show 
 		@list = @link.list
-
 		authenticate_user?
 	end
 
