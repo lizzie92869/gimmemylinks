@@ -16,20 +16,26 @@ before_action :create_list, :only => [:filter, :show]
 		@list.user_id = current_user.id
 		@list.color = random_color 
 		#To have the new list appear in the user's list, I need to create a fake link to link the list and the user
-		@link = Link.create(user: current_user, list: @list, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
+		#@link = Link.create(user: current_user, list: @list, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
 				
-				if @link.valid? && @list.valid?
-				redirect_to new_list_link_path(@list)
-				else
-				flash[:alert]="name can't be blank or already used"
-				redirect_to root_path
-				end
+		if @list.valid?
+		redirect_to new_list_link_path(@list)
+		else
+		flash[:alert]="name can't be blank or already used"
+		redirect_to root_path
+		end
 			
 	end
 
 
 	def show
-		@links = @list.links	
+		@links = @list.links
+		# creating an API end point and using it to render show
+		respond_to do |format|	 
+		  format.html { render :show }
+		  format.json { render json: @list.to_json
+		end	    
+		######################################################
 		authenticate_user?
 	end
 

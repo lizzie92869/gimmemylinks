@@ -40,7 +40,7 @@
 <div>
 <% @links.each_with_index do |link, index| %> 
 <!-- to not have the fake link showing up -->
-<% if !(link.name == "Create a new link") %>
+<!-- no more erb if !(link.name == "Create a new link") -->
 <div class="caption top-margin-show">
 </br>
 	<div class="font"><%= link.name %></div>
