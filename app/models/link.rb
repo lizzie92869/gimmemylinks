@@ -3,7 +3,7 @@ require 'uri'
 class Link < ActiveRecord::Base
 
 	belongs_to :list
-	belongs_to :user, through: :lists
+	
 
 	validates :url, http_url: true
 	validates :name, presence: true
