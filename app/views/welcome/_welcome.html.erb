@@ -5,8 +5,8 @@
 		 <h1>MyLinks</h1>
 			<div class="list-group" style="width: 265px; height: 500px; overflow-y: scroll" >
 			<% current_user.lists.uniq.each do |list| %>
-    		<li style="background-color: <%= list.color %>;" class="list-group-item d-flex justify-content-between align-items-center">
-   			 <a href=<%= list_path(list) %> role="button" class="text-list" style="color: white;"><%= list.name %></a>
+    		<li style="background-color: <%= list.color %>;" class="list-group-item d-flex justify-content-between align-items-center ">
+   			 <a class="js-list" data-id="<%= list.id %>" href=<%= list_path(list) %> role="button" class="text-list" style="color: white;"><%= list.name %></a>
    			 <!-- inline style to overwrite bootstrap -->
     		<span style="background-color: white; color: grey;" class="badge badge-primary badge-pill link-count"><%= list.links.size %></span>
   			</li>
