@@ -33,7 +33,7 @@ before_action :create_list, :only => [:filter, :show]
 		# creating an API end point and using it to render show
 		respond_to do |format|	 
 		  format.html { render :show }
-		  format.json { render json: @list.to_json
+		  format.json { render json: @list.to_json }
 		end	    
 		######################################################
 		authenticate_user?
