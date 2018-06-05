@@ -3,7 +3,7 @@ require 'uri'
 class Link < ActiveRecord::Base
 
 	belongs_to :list
-	belongs_to :user
+	belongs_to :user, through: :lists
 
 	validates :url, http_url: true
 	validates :name, presence: true
@@ -26,11 +26,5 @@ class Link < ActiveRecord::Base
 			return "high"
 		end
 	end
-
-	# def list_unique_name
-	# 	if self.user.lists.any?{|list| list.name == self.list.name}
-	# 		errors.add(:name, "You already have a list with the same name")
-	# 	end
-	# end
 
 end
