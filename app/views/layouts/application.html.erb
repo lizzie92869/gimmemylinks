@@ -64,7 +64,9 @@ $(function() {
         for (var i=0; i<data["links"].length; i++) {
         $(".nameLink-" + data["links"][i].id).text(data["links"][i]["name"]);
         debugger
-        // $("#dateLink-" + id).append(data["links"][i]["created_at"]);
+        var d1 = new Date(data["links"][i]["created_at"]);
+        // let date = data["links"][i]["created_at"] 
+        $(".dateLink-" + data["links"][i].id).text((d1.getMonth() + 1) + "-" + d1.getDate() + "-" + d1.getFullYear());
         debugger
         }
         // $("#urlLink-" + id).text(data["links"][id-1]["url"]);
