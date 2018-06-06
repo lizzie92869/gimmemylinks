@@ -92,7 +92,8 @@ $(function() {
             $(".priorityLink-" + data["links"][i].id).append(data_priority_result);
             //insert the iframe src of the links
             $(".urlLink-" + data["links"][i].id).attr("src", data["links"][i]["url"] )
-
+            //insert the link of "visit the link" of the links
+            $(".linkLink-" + data["links"][i].id).attr("href", data["links"][i]["url"] )
         };
     });
     e.preventDefault();
