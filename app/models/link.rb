@@ -14,8 +14,7 @@ class Link < ActiveRecord::Base
 	scope :recent, -> {order("created_at DESC")}
 	scope :old, -> {order("created_at ASC")}
 
-	def hr_priority
-		
+	def hr_priority	
 		i_priority = self.priority
 		case i_priority
 		when i_priority = 3

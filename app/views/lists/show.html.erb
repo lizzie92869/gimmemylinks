@@ -26,7 +26,7 @@
 </br>
 
 <div class="font nameLink-<%=link.id%>"></div>
-<div class="font grey"><%= link_to "View or Edit", list_link_path(@list,link) %> // <%= link.hr_priority %> priority
+<div class="font grey priorityLink-<%=link.id%>"><%= link_to "View or Edit", list_link_path(@list,link) %> // 
 <a style="background-color: <%= link.list.color %>; color: white;" href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
 </div>
 </div>

@@ -54,23 +54,46 @@
 
     <script type="text/javascript" charset="utf-8">
 $(function() {
+    //rendering the list of lists on the left side
+    $("document").on()
+
+
+    //reformating priority to be human readable
+    function hr_priority(data_priority){
+        if (data_priority===1){
+            return "High Priority"
+        }
+         else if(data_priority===2){
+            return "Medium Priority"
+        }
+        else {
+            return "Low Priority"
+        }
+    }
+      
+
+
 
     //render the links in a list
   $(".js-list").on("click", function(e) {
     let id = $(this).data("id")   
     $.get("/lists/" + id + ".json", function(data) {
         // data = {id: 1, name: "Rails documentation", color: "#CCFF38", user_id: 1, links: Array(3)}
-        debugger
         for (var i=0; i<data["links"].length; i++) {
         $(".nameLink-" + data["links"][i].id).text(data["links"][i]["name"]);
-        debugger
-        var d1 = new Date(data["links"][i]["created_at"]);
-        // let date = data["links"][i]["created_at"] 
-        $(".dateLink-" + data["links"][i].id).text((d1.getMonth() + 1) + "-" + d1.getDate() + "-" + d1.getFullYear());
-        debugger
+        var d = new Date(data["links"][i]["created_at"]);
+        $(".dateLink-" + data["links"][i].id).text((d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear());
+        // how can I modify the format of this data to be inserted in the hr_readable format
+        let data_priority = data["links"][i]["priority"] 
+        // debugger data_priority = 1
+        let data_priority_result = hr_priority(data_priority)
+        $(".priorityLink-" + data["links"][i].id).append(data_priority_result);
         }
+
         // $("#urlLink-" + id).text(data["links"][id-1]["url"]);
         // debugger
+        // should I feed the view or edit link with the JSON too? color? visit the link?
+
         // $("#listName-" + id).html(data["name"]);
       });
     e.preventDefault();
