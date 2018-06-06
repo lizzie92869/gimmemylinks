@@ -27,10 +27,17 @@
 
 <div class="font nameLink-<%=link.id%>"></div>
 <div class="font grey priorityLink-<%=link.id%>"><%= link_to "View or Edit", list_link_path(@list,link) %> // 
+
 <a style="background-color: <%= link.list.color %>; color: white;" href="<%=link.url%>" class="go" target= "blank"> visit the link</a>
+
+
+
 </div>
 </div>
-<iframe style="border-color: <%= link.list.color %>;" class = "preview rounded" src=<%=link.url%> href="<%= list_link_path(link) %>"></iframe>
+
+<iframe style="border-color: <%= link.list.color %>;" class = "preview rounded urlLink-<%=link.id%>" href="<%= list_link_path(link) %>"></iframe>
+
+
 <div class="link_date font dateLink-<%=link.id%>"></div>
 <% end %>
 
