@@ -25,12 +25,7 @@
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.carousel');
-            var instances = M.Carousel.init(elems);
-        });
-    </script>
+   
     
   </head>
 
@@ -61,19 +56,22 @@
 $(function() {
 
     //render the links in a list
-  $(".js-list").on("click", function() {
-    const id = $(this).data("id")   
+  $(".js-list").on("click", function(e) {
+    let id = $(this).data("id")   
     $.get("/lists/" + id + ".json", function(data) {
         // data = {id: 1, name: "Rails documentation", color: "#CCFF38", user_id: 1, links: Array(3)}
         debugger
-        $(".nameLink-" + id).append(data["links"][id-1]["name"]);
+        for (var i=0; i<data["links"].length; i++) {
+        $(".nameLink-" + data["links"][i].id).text(data["links"][i]["name"]);
         debugger
-        $("#dateLink-" + id).append(data["links"][id-1]["created_at"]);
+        // $("#dateLink-" + id).append(data["links"][i]["created_at"]);
         debugger
+        }
         // $("#urlLink-" + id).text(data["links"][id-1]["url"]);
         // debugger
         // $("#listName-" + id).html(data["name"]);
       });
+    e.preventDefault();
     });
   });
 </script>
