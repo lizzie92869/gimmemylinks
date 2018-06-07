@@ -4,6 +4,8 @@ before_action :find_list, :only => [:filter, :show, :destroy]
 before_action :create_list, :only => [:filter, :show]
 # before_action :authenticate_user!, only: [:show]
 
+
+
 # replace actions high_priority, recent and old setting @links = @list.links.high_priority
 	def filter
 	@links = @list.links.public_send(params[:filter]) if @list.links.respond_to? params[:filter]
@@ -15,27 +17,23 @@ before_action :create_list, :only => [:filter, :show]
 		@list = List.new(list_name_params)
 		@list.user_id = current_user.id
 		@list.color = random_color 
-		#To have the new list appear in the user's list, I need to create a fake link to link the list and the user
-		#@link = Link.create(user: current_user, list: @list, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
-				
 		if @list.valid?
 			@list.save
-			binding.pry
-		redirect_to new_list_link_path(@list)
+			redirect_to new_list_link_path(@list)
 		else
-		flash[:alert]="name can't be blank or already used"
-		redirect_to root_path
+			flash[:alert]="name can't be blank or already used"
+			redirect_to root_path
 		end
 			
 	end
 
 
 	def show
-		@links = @list.links
+		#@links = @list.links
 		# creating an API end point and using it to render show
 		respond_to do |format|	 
 		  format.html { render :show }
-		  format.json { render json: @list.to_json(include: :links) }
+		  format.json { render json: @list }
 		end	    
 		######################################################
 		authenticate_user?
@@ -45,6 +43,7 @@ before_action :create_list, :only => [:filter, :show]
 		@list.destroy
 		redirect_to root_path
 	end
+
 
 
 
