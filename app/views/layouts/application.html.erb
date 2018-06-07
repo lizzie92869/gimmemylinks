@@ -90,28 +90,38 @@ $(function() {
     //render the links in a list
 
   $(".js-list").on("click", function(e) {
-   
          e.preventDefault();
     let id = $(this).data("id")   
     $.get("/lists/" + id + ".json", function(data) {
-        console.log(data)
-        $('.container').append(`<h1>Hello</h1>`)
+        
+
+
         // data = {id: 1, name: "Rails documentation", color: "#CCFF38", user_id: 1, links: Array(3)}
         for (var i=0; i<data["links"].length; i++) {
-         
+            $(".link").append(
+                `<div class="caption top-margin-show"> </br>
+
+                <div class="font"></div>
+                <div class="font grey"><a href=#>"View or Edit"</a>// 
+                <a href= "` + data["links"][i]["url"] + `" style="background-color:` + data["color"] + `; color: white;" class="go" target= "blank"> visit the link</a>
+
+
+
+                </div>
+                `)
+
+
+
             // insert the name of the links
-            $(".nameLink-" + data["links"][i].id).text(data["links"][i]["name"]);
+            $(".link").append(data["links"][i]["name"]);
             // insert the date of the creation of the links in a hr format
             var d = new Date(data["links"][i]["created_at"]);
-            $(".dateLink-" + data["links"][i].id).text((d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear());
+            $(".link").append((d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear());
             // insert the priority of the links in a hr format
             let data_priority = data["links"][i]["priority"] 
             let data_priority_result = hr_priority(data_priority)
-            $(".priorityLink-" + data["links"][i].id).append(data_priority_result);
-            //insert the iframe src of the links
-            $(".urlLink-" + data["links"][i].id).attr("src", data["links"][i]["url"] )
-            //insert the link of "visit the link" of the links
-            $(".linkLink-" + data["links"][i].id).attr("href", data["links"][i]["url"] )
+            $(".link").append(data_priority_result);
+            
         };
     });
     

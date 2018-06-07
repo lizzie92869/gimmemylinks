@@ -29,11 +29,11 @@ before_action :create_list, :only => [:filter, :show]
 
 
 	def show
-		#@links = @list.links
+		@links = @list.links
 		# creating an API end point and using it to render show
 		respond_to do |format|	 
 		  format.html { render :show }
-		  format.json { render json: @list }
+		  format.json { render json: @list.to_json(include: :links) }
 		end	    
 		######################################################
 		authenticate_user?

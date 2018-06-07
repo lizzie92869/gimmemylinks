@@ -1,52 +1,5 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
-			<div>
-			</br>
-			Sort by |
-			
-			
-			<%= link_to "priority", filter_path(@list, :high_priority)%> | 
-			<%= link_to "least recent", filter_path(@list, :recent)%> |  
-			<%= link_to "most recent", filter_path(@list, :old) %> 
-
-			<span class="delete_link"  > 
-			<%= link_to "Delete List!", @list, :method => :delete%>
-			</span>
-
-			</div>
-
-
-			
-
-<div>
-<% @links.each_with_index do |link, index| %> 
-<!-- to not have the fake link showing up -->
-<!-- no more erb if !(link.name == "Create a new link") -->
-<div class="caption top-margin-show">
-</br>
-
-<div class="font nameLink-<%=link.id%>"></div>
-<div class="font grey priorityLink-<%=link.id%>"><%= link_to "View or Edit", list_link_path(@list,link) %> // 
-
-<a style="background-color: <%= link.list.color %>; color: white;" class="go linkLink-<%=link.id%>" target= "blank"> visit the link</a>
-
-
-
-</div>
-</div>
-
-<iframe style="border-color: <%= link.list.color %>;" class = "preview rounded urlLink-<%=link.id%>" href="<%= list_link_path(link) %>"></iframe>
-
-
-<div class="link_date font dateLink-<%=link.id%>"></div>
-<% end %>
-
-</div>
-
-<a class="plus" href=<%=new_list_link_path(@list) %>><i class="large material-icons">add_circle_outline</i></a>
-</div>
-
-
 
 
 
