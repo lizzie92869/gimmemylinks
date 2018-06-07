@@ -95,33 +95,23 @@ $(function() {
     $.get("/lists/" + id + ".json", function(data) {
         
 
-
         // data = {id: 1, name: "Rails documentation", color: "#CCFF38", user_id: 1, links: Array(3)}
         for (var i=0; i<data["links"].length; i++) {
-            $(".link").append(
-                `<div class="caption top-margin-show"> </br>
-
-                <div class="font"></div>
-                <div class="font grey"><a href=#>"View or Edit"</a>// 
-                <a href= "` + data["links"][i]["url"] + `" style="background-color:` + data["color"] + `; color: white;" class="go" target= "blank"> visit the link</a>
-
-
-
-                </div>
-                `)
-
-
-
-            // insert the name of the links
-            $(".link").append(data["links"][i]["name"]);
-            // insert the date of the creation of the links in a hr format
-            var d = new Date(data["links"][i]["created_at"]);
-            $(".link").append((d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear());
-            // insert the priority of the links in a hr format
             let data_priority = data["links"][i]["priority"] 
             let data_priority_result = hr_priority(data_priority)
-            $(".link").append(data_priority_result);
-            
+            var d = new Date(data["links"][i]["created_at"]);
+            var hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
+            $(".link").append(`
+                <div class="caption top-margin-show"> </br>
+                    <div class="font">` + data["links"][i]["name"] + `</div>
+                    <div class="font"><a href=#>Read or Edit</a>// ` + data_priority_result +` 
+                    <a href= "` + data["links"][i]["url"] + `" style="background-color:` + data["color"] + `; color: white;" class="go" target= "blank"> visit the link</a>
+                    </div>
+                </div>
+                <iframe src="` + data["links"][i]["url"]  + `" style="border-color: ` + data["color"] +`;" class = "preview rounded" href=#></iframe>
+                <div class="link_date font>"></div>
+                <div class="link_date font>">` + hrDate + `</div>
+                `)        
         };
     });
     
