@@ -74,10 +74,10 @@ $(function() {
     //render the links in a list
 
   $(".js-list").on("click", function(e) {
- 
+   
     let id = $(this).data("id")   
     $.get("/lists/" + id + ".json", function(data) {
-      
+         e.preventDefault();
         // data = {id: 1, name: "Rails documentation", color: "#CCFF38", user_id: 1, links: Array(3)}
         for (var i=0; i<data["links"].length; i++) {
          
@@ -96,8 +96,13 @@ $(function() {
             $(".linkLink-" + data["links"][i].id).attr("href", data["links"][i]["url"] )
         };
     });
-    e.preventDefault();
+    
   });
+
+
+
+
+
 });
 </script>
 

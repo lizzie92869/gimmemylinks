@@ -19,6 +19,8 @@ before_action :create_list, :only => [:filter, :show]
 		#@link = Link.create(user: current_user, list: @list, name: "Create a new link", url: "http://socialmediacombo.net/wp-content/uploads/2015/05/13-512.png", priority: "medium")
 				
 		if @list.valid?
+			@list.save
+			binding.pry
 		redirect_to new_list_link_path(@list)
 		else
 		flash[:alert]="name can't be blank or already used"
