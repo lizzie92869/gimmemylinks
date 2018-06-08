@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Matrialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
     <!-- Materialize Javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <!-- Fonts -->
@@ -31,10 +32,7 @@
 
   <body>
 
-  <div class="container">
-  
-    
-
+ 
     <% if flash[:alert] %>
   	<p class="alert-warning"><%= flash[:alert] %></p>
     <% end %>
@@ -109,9 +107,21 @@ $(function() {
   });
 
 
-
-
-
+  // sidenav
+  $(function() {
+            $(".button-collapse").sideNav();
+            
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 1)  {          
+                   $('.fixTopNav').addClass('shadow');   
+                   $('.fixTopNav').removeClass('noShadow');
+                } else {
+                  $('.fixTopNav').removeClass('shadow');
+                  $('.fixTopNav').addClass('noShadow');   
+                }
+            });
+            
+    });
 
 
 });
@@ -120,7 +130,4 @@ $(function() {
 
 
   </body>
-
-  <!-- closes the container -->
-  </div>
 </html>
