@@ -30,18 +30,6 @@
   </head>
 
   <body>
-<!--  
-<div class="gallery js-flickity">
-  <div class="gallery-cell">1</div>
-  <div class="gallery-cell">2</div>
-  <div class="gallery-cell">3</div>
-  <div class="gallery-cell">4</div>
-  <div class="gallery-cell">5</div>
-  <div class="gallery-cell">6</div>
-  <div class="gallery-cell">7</div>
-</div> -->
-
-
 
   <div class="container">
   
@@ -99,8 +87,8 @@ $(function() {
         for (var i=0; i<data["links"].length; i++) {
             let data_priority = data["links"][i]["priority"] 
             let data_priority_result = hr_priority(data_priority)
-            var d = new Date(data["links"][i]["created_at"]);
-            var hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
+            let d = new Date(data["links"][i]["created_at"]);
+            let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
             $(".link").append(`
                 <div class="caption top-margin-show"> </br>
                     <div class="font">` + data["links"][i]["name"] + `</div>
@@ -108,11 +96,14 @@ $(function() {
                     <a href= "` + data["links"][i]["url"] + `" style="background-color:` + data["color"] + `; color: white;" class="go" target= "blank"> visit the link</a>
                     </div>
                 </div>
-                <iframe src="` + data["links"][i]["url"]  + `" style="border-color: ` + data["color"] +`;" class = "preview rounded" href=#></iframe>
+                <iframe src="` + data["links"][i]["url"]  + `" style="border-color: ` + data["color"] +`;" class = "preview rounded iframe-placeholder" href=#>` + data["links"][i]["url"] + `</iframe>
                 <div class="link_date font>"></div>
                 <div class="link_date font>">` + hrDate + `</div>
                 `)        
         };
+        $(".link").append(`<a class="plus" href=#><i class="large material-icons">add_circle_outline</i></a>
+                </div>`)
+
     });
     
   });
