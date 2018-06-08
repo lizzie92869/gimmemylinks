@@ -28,14 +28,16 @@
   </div>
   
   <div class="hide-on-med-and-down leftSide center darkGray">
-		<div><a href="#"  ><i class="material-icons">assistant</i></a></div> 
+		<div><a href="#"  ><i class="material-icons">brightness_1</i></a></div> 
 		<div style="padding-bottom:20px;"><a href="#" >list1</a></div> 
-		<div><a href="#" ><i class="material-icons">insert_photo</i></a></div>  
+		<div><a href="#" ><i class="material-icons">brightness_1</i></a></div>  
 		<div style="padding-bottom:20px;"><a href="#" >list2</a></div> 
-		<div><a href="#" ><i class="material-icons">photo_library</i></a></div>  
+		<div><a href="#" ><i class="material-icons">brightness_1</i></a></div>  
 		<div style="padding-bottom:20px;"><a href="#" >list3</a></div> 
-		<div><a href="#" ><i class="material-icons">people</i></a></div> 
+		<div><a href="#" ><i class="material-icons">brightness_1</i></a></div> 
 		<div style="padding-bottom:20px;"><a href="#" >list4</a></div> 
+		<div><a href="#" ><i class="material-icons">add</i></a></div> 
+		
   </div>
   <div class="container">
 	<div class="row">
@@ -52,7 +54,16 @@
 		</ul>
 		
 		<div class="content">
+
+			<div class="row email-logout">
+				<div class="top-margin-show">
+	    		<%=current_user.email%> |
+	    		<%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
+				</div>
+			</div>
 			<h2>Google Photos Material Design Sidebar </h2>
+
+
 		</div>
 	</div>
   </div>
@@ -65,12 +76,7 @@
 
 
 	
-		<div class="row email-logout">
-			<div class="top-margin-show">
-    		<%=current_user.email%> |
-    		<%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
-			</div>
-		</div>
+		
 
 		
 		
