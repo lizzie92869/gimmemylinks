@@ -109,11 +109,17 @@ $(function() {
             let data_priority_result = hr_priority(data_priority)
             let d = new Date(data["links"][i]["created_at"]);
             let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
-            $(".link").append(`
+            $(".link").html(`
                 <div class="caption top-margin-show"> </br>
                     <div class="font">` + data["links"][i]["name"] + `</div>
                     <div class="font"><a href=#>Read or Edit</a>// ` + data_priority_result +` 
-                    <a href= "` + data["links"][i]["url"] + `" style="background-color:` + data["color"] + `; color: white;" class="go" target= "blank"> visit the link</a>
+                    
+                    <a href= "#"> <i class="small material-icons link-icons-gray">visibility</i></a>
+                    <a href= "#"> <i class="small material-icons link-icons-gray red-text">assistant_photo</i></a>
+                    <a href= "#"> <i class="small material-icons link-icons-gray">edit</i></a>
+                    <a href= "#"> <i class="small material-icons link-icons-gray">delete</i></a>
+                    <a href= "` + data["links"][i]["url"] + `"target= "blank"> <i class="small material-icons link-icons-gray">link</i></a>
+
                     </div>
                 </div>
                 
