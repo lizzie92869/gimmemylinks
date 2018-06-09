@@ -111,14 +111,12 @@ $(function() {
             let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
             $(".link").html(`
                 <div class="caption top-margin-show"> </br>
-                    <div class="font">` + data["links"][i]["name"] + `</div>
-                    <div class="font"><a href=#>Read or Edit</a>// ` + data_priority_result +` 
-                    
-                    <a href= "#"> <i class="small material-icons link-icons-gray">visibility</i></a>
-                    <a href= "#"> <i class="small material-icons link-icons-gray red-text">assistant_photo</i></a>
-                    <a href= "#"> <i class="small material-icons link-icons-gray">edit</i></a>
-                    <a href= "#"> <i class="small material-icons link-icons-gray">delete</i></a>
-                    <a href= "` + data["links"][i]["url"] + `"target= "blank"> <i class="small material-icons link-icons-gray">link</i></a>
+                    <div class="font">` + data["links"][i]["name"] + ` 
+                    <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">delete</i></a>
+                    <a href= "#"> <i class="tiny material-icons link-icons-gray red-text push-right">assistant_photo</i></a>
+                    <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">edit</i></a>
+                    <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">visibility</i></a>
+                    <a href= "` + data["links"][i]["url"] + `"target= "blank"> <i class="tiny material-icons link-icons-gray push-right">link</i></a>
 
                     </div>
                 </div>
