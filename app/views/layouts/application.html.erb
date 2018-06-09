@@ -87,7 +87,21 @@ $(function() {
          e.preventDefault();
     let id = $(this).data("id")   
     $.get("/lists/" + id + ".json", function(data) {
-        
+        $(".filter").append(`
+        <div>
+            </br>
+            Sort by |
+           <a href= "#"> higher priority</a> | 
+           <a href= "#"> most recent</a> |  
+           <a href= "#"> oldest</a> 
+
+            <span class="delete_link"  > 
+            <a href= "#"> Delete list!</a>
+            </span>
+
+            </div>
+        `)
+
 
         // data = {id: 1, name: "Rails documentation", color: "#CCFF38", user_id: 1, links: Array(3)}
         for (var i=0; i<data["links"].length; i++) {
@@ -102,7 +116,9 @@ $(function() {
                     <a href= "` + data["links"][i]["url"] + `" style="background-color:` + data["color"] + `; color: white;" class="go" target= "blank"> visit the link</a>
                     </div>
                 </div>
+                
                 <iframe src="` + data["links"][i]["url"]  + `" style="border-color: ` + data["color"] +`;" class = "preview rounded iframe-placeholder" href=#>` + data["links"][i]["url"] + `</iframe>
+                
                 <div class="link_date font>"></div>
                 <div class="link_date font>">` + hrDate + `</div>
                 `)        
@@ -113,6 +129,8 @@ $(function() {
     });
     
   });
+
+  
 
 
   // sidenav

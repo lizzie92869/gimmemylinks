@@ -1,9 +1,9 @@
-.hidden_button{
+/*.hidden_button{
 	height: 0px;
 	visibility: hidden;
-}
+}*/
 
-.delete_link a{
+.delete_link {
 	color: white;
 	background: red;
 	padding: 14px;
@@ -11,7 +11,7 @@
 	font-family: 'Ubuntu Mono', monospace;
 }
 
-.plus{
+./*plus{
 	display: block;
     text-align: center;
 }
@@ -23,16 +23,16 @@
 	padding-bottom: 2px;
 	padding-right: 13px;
 	padding-left: 13px;
-	width: 100%;
+	width: 100%;*/
 	/*float: right;*/
-	display: inline;
+	/*display: inline;
 	font-family: 'Ubuntu Mono', monospace;
 	border-style: hidden;
 	border-style: none;
 	border-width: 0px;	
 
-}
-
+}*/
+/*
 .save-button{
 	color: grey;
 	background: #CCFF38;
@@ -44,4 +44,4 @@
 	border-style: hidden;
 	border-style: none;
 	border-width: 0px;
-}
+}*/
