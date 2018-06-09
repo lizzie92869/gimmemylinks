@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   # get '/lists/:id/old', to: 'lists#old', as: :old_lists
   get '/lists/:id/:filter', to: 'lists#filter', as: :filter
 
-  resources :lists, only: [:show, :create, :destroy] do
+
+  resources :lists, only: [:index, :show, :create, :destroy] do
     resources :links, except: [:index, :edit]
 
   end

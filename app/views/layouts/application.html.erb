@@ -64,7 +64,7 @@ $(function() {
     //rendering the list of lists on the left side
 
 
-    console.log('js is loading')
+ 
    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //reformating priority to be human readable
@@ -81,13 +81,16 @@ $(function() {
     }
       
 
-    //render the links in a list
-
+   
+    //when a list is clicked
   $(".js-list").on("click", function(e) {
          e.preventDefault();
     let id = $(this).data("id")   
     $.get("/lists/" + id + ".json", function(data) {
-        $(".filter").append(`
+
+
+         //render the links in a list
+        $(".filter").html(`
         <div>
             </br>
             Sort by |
@@ -138,19 +141,34 @@ $(function() {
 
 
   // sidenav
-            $(".button-collapse").sideNav();
-            
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 1)  {          
-                   $('.fixTopNav').addClass('shadow');   
-                   $('.fixTopNav').removeClass('noShadow');
-                } else {
-                  $('.fixTopNav').removeClass('shadow');
-                  $('.fixTopNav').addClass('noShadow');   
-                }
+
+var listsNames = function(data){
+    let listNamesArray = []
+    for (let i=0; i<data.length; i++) {
+    listNamesArray.push(`<li>` + data[i]["name"] + `</li>`)
+    }
+    //extract the string from the array and remove the commas to inject it as it
+    listNamesString = listNamesArray.toString().replace(/,/g, "")
+    return listNamesString 
+}
+
+            $(document).on("click", function(e) {
+                e.preventDefault();
+                $.get("/lists.json", function(data) {
+                   
+                debugger
+                
+                    $(".big-sidenav").html(`
+                        <div class = "leftSide darkGray lightGreyBackground" style="width: 400px; ">
+                        `+ listsNames(data) +`
+                        </div>
+                        `)
+                    
+
+                });
             });
             
-
+        
 
 
 });
