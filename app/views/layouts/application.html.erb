@@ -142,11 +142,12 @@ $(function() {
 
   // sidenav
 
-var listsNames = function(data){
+    var listsNames = function(data){
     let listNamesArray = []
     for (let i=0; i<data.length; i++) {
-    listNamesArray.push(`<li>` + data[i]["name"] + `</li>`)
+    listNamesArray.push(`<p><a href=#>` + data[i]["name"] + `</a></p>`)
     }
+
     //extract the string from the array and remove the commas to inject it as it
     listNamesString = listNamesArray.toString().replace(/,/g, "")
     return listNamesString 
@@ -154,12 +155,10 @@ var listsNames = function(data){
 
             $(document).on("click", function(e) {
                 e.preventDefault();
-                $.get("/lists.json", function(data) {
-                   
-                debugger
-                
+                $.get("/lists.json", function(data) {     
                     $(".big-sidenav").html(`
-                        <div class = "leftSide darkGray lightGreyBackground" style="width: 400px; ">
+                        <div class = "colon-left leftSideBigNav darkGray lightGreyBackground";">
+                        <div class="show-bar right-align"><a href="#"><i class="material-icons darkGray">chevron_left</i></a></div>
                         `+ listsNames(data) +`
                         </div>
                         `)
