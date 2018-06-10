@@ -147,26 +147,31 @@ $(function() {
     for (let i=0; i<data.length; i++) {
     listNamesArray.push(`<p><a href=#>` + data[i]["name"] + `</a></p>`)
     }
-
     //extract the string from the array and remove the commas to inject it as it
     listNamesString = listNamesArray.toString().replace(/,/g, "")
     return listNamesString 
 }
 
-            $(document).on("click", function(e) {
+            $(".open-bar").on("click", function(e) {
                 e.preventDefault();
                 $.get("/lists.json", function(data) {     
                     $(".big-sidenav").html(`
                         <div class = "colon-left leftSideBigNav darkGray lightGreyBackground";">
-                        <div class="show-bar right-align"><a href="#"><i class="material-icons darkGray">chevron_left</i></a></div>
+                        <div class="close-bar"><div class="right-align"><a href="#"><i class=" material-icons darkGray">chevron_left</i></a></div></div>
                         `+ listsNames(data) +`
                         </div>
                         `)
-                    
-
                 });
             });
             
+            // need debug
+            $("").on("click", function(e) {
+                debugger
+                e.preventDefault();
+                $(".main-frame").append(`helo`)
+            });
+
+             
         
 
 
