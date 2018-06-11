@@ -119,20 +119,20 @@ function displayLinksFromSmallBar(e) {
     $.get("/lists.json", function(data) { 
         debugger
         //render the filter heading
-        // $(".filter").html(`
-        // <div>
-        // </br>
-        // Sort by |
-        // <a href= "#"> higher priority</a> | 
-        // <a href= "#"> most recent</a> |  
-        // <a href= "#"> oldest</a> 
+        $(".filter").html(`
+        <div>
+        </br>
+        Sort by |
+        <a href= "#"> higher priority</a> | 
+        <a href= "#"> most recent</a> |  
+        <a href= "#"> oldest</a> 
 
-        // <span class="delete_link"  > 
-        // <a href= "#"> Delete list!</a>
-        // </span>
+        <span class="delete_link"  > 
+        <a href= "#"> Delete list!</a>
+        </span>
 
-        // </div>
-        // `)
+        </div>
+        `)
 
         //render the links
         //we want the links array for the data whose ["id"] == listId
