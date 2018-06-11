@@ -64,7 +64,7 @@ $(function() {
 
 function attachListeners() {
     $(".open-bar").on("click", openBar);     
-    $(".js-small-list").on("click", displayLinksFromSmallBar)
+    $(".js-list").on("click", displayLinksFromBars)
 }
 
 
@@ -80,7 +80,8 @@ function openBar(e) {
             </div></div>`
         $(".big-sidenav").html(htmlData)
         //we need to attach the listener from the opened bar (vs when the document is loaded and the chevron is not visible
-        attachCloseBarListener()  
+        attachCloseBarListener() 
+        attachJsListListener()
     });
     
 }
@@ -99,14 +100,18 @@ function closeBar(e){
 function listsNames(data){
 let listNamesArray = []
     for (let i=0; i<data.length; i++) {
-    listNamesArray.push(`<div data-id=` + data[i]["id"] +`class="valign-wrapper js-list"><i class="material-icons rightMarginForIcons" style="color: ` + data[i]["color"] + `">brightness_1</i><a href="#">` + data[i]["name"] + `</a></div>`)
+    listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + data[i]["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + data[i]["id"] +`>` + data[i]["name"] + `</a></div>`)
     }
     //extract the string from the array and remove the commas to inject it as it
     listNamesString = listNamesArray.toString().replace(/,/g, "")
     return listNamesString 
 }
 
-function displayLinksFromSmallBar(e) {
+function attachJsListListener(){
+    $(".js-list").on("click", displayLinksFromBars);
+}
+
+function displayLinksFromBars(e) {
     e.preventDefault();
         //erease all data from that box before displaying a new serie of links
     $(".link").html(``)
