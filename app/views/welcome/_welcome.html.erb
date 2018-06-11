@@ -28,7 +28,8 @@
   <div class="show-bar"><a href="#" data-activates="mobile-demo" class="button-collapse"><i class="open-bar material-icons darkGray">chevron_right</i></a></div>
   <div>
   	<% current_user.lists.uniq.each do |list| %>
-		<div data-id="<%=list.id%>" class="list-button"><a href="#" ><i class="js-small-list material-icons" style="color: <%=list.color%>">brightness_1</i></a></div> 
+  	<!--  ??? no need??-->
+		<div class="list-button"><a href="#"><i data-id="<%=list.id%>" class="js-small-list material-icons" style="color: <%=list.color%>">brightness_1</i></a></div> 
 	<%end%>
 	</div>
 

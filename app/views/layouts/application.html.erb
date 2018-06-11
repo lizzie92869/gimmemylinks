@@ -38,7 +38,10 @@
     <!-- materialize for sidebar -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+    <!-- for underscore librairy (for the where method) -->
+  <!--   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script> -->
+
   </head>
 
   <body>
@@ -76,31 +79,17 @@ function openBar(e) {
             `+ listsNames(data) +`
             </div></div>`
         $(".big-sidenav").html(htmlData)
+        //we need to attach the listener from the opened bar (vs when the document is loaded and the chevron is not visible
         attachCloseBarListener()  
     });
     
 }
 
 function attachCloseBarListener() {
-    debugger
-    $(".close-bar").on("click", closeBar); 
-    //not appending anything
-    // $(".main-frame").html(`
-    
-    // $(".js-big-nav").html(`
-    //     <h1>HELLLLLLO</h1> 
-        
-    //     `);
-    // // 
-
-    // debugger
-    // console.log("hello from console")
-    // debugger
-    
+    $(".close-bar").on("click", closeBar);   
 }
 
 function closeBar(e){
-    debugger
     e.preventDefault();
     $(".big-sidenav").html(``)
     };
@@ -118,28 +107,66 @@ let listNamesArray = []
 }
 
 function displayLinksFromSmallBar(e) {
-            e.preventDefault();
-            debugger
-            $.get("/lists.json", function(data) { 
-             debugger
-                //render the links in a list
-            $(".filter").html(`
-            <div>
-            </br>
-            Sort by |
-            <a href= "#"> higher priority</a> | 
-            <a href= "#"> most recent</a> |  
-            <a href= "#"> oldest</a> 
+    e.preventDefault();
+        //erease all data from that box before displaying a new serie of links
+    $(".link").html(``)
 
-            <span class="delete_link"  > 
-            <a href= "#"> Delete list!</a>
-            </span>
+    let listId = parseInt($(this).attr("data-id"))
 
-            </div>
-            `)
-                
-                 
-            });
+    debugger
+
+    //render the info
+    $.get("/lists.json", function(data) { 
+        debugger
+        //render the filter heading
+        // $(".filter").html(`
+        // <div>
+        // </br>
+        // Sort by |
+        // <a href= "#"> higher priority</a> | 
+        // <a href= "#"> most recent</a> |  
+        // <a href= "#"> oldest</a> 
+
+        // <span class="delete_link"  > 
+        // <a href= "#"> Delete list!</a>
+        // </span>
+
+        // </div>
+        // `)
+
+        //render the links
+        //we want the links array for the data whose ["id"] == listId
+        for (let j=0; j<data.length; j++){
+            if (data[j]["id"] === listId){
+                let dataStartingPath = data[j]["links"]
+                let linksLength = data[j]["links"].length
+
+                for (let i=0; i<linksLength; i++) {
+                    let data_priority = dataStartingPath[i]["priority"] 
+                    let d = new Date(dataStartingPath[i]["created_at"]);
+                    let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
+                    $(".link").append(`
+                        <div class="caption top-margin-show"> </br>
+                            <div class="font">` + dataStartingPath[i]["name"] + ` 
+                            <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">delete</i></a>
+                            <a href= "#"> <i class="tiny material-icons link-icons-gray red-text push-right">assistant_photo</i></a>
+                            <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">edit</i></a>
+                            <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">visibility</i></a>
+                            <a href= "` + dataStartingPath[i]["url"] + `"target= "blank"> <i class="tiny material-icons link-icons-gray push-right">link</i></a>
+                            </div>
+                        </div>       
+                        <iframe src="` + dataStartingPath[i]["url"]  + `" style="border-color: ` + data["color"] +`;" class = "preview rounded iframe-placeholder" href=#>` + dataStartingPath[i]["url"] + `</iframe>
+                        
+                        <div class="link_date font>"></div>
+                        <div class="link_date font>">` + hrDate + `</div>
+                    `)        
+                };
+                $(".link").append(`<a class="plus" href=#><i class="large material-icons">add_circle_outline</i></a>
+                    </div>`)       
+            }
+        }
+        
+    });
 };
             
    
@@ -161,10 +188,6 @@ function displayLinksFromSmallBar(e) {
 
 
    
-
-  
-
-
     //when a list in the big bar or small bar is clicked
   // $(".js-list").on("click", function(e) {
   //        e.preventDefault();
