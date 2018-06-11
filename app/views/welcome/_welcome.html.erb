@@ -26,9 +26,11 @@
   <!-- small lists view -->
   <div class="hide-on-med-and-down leftSide center darkGray lightGreyBackground">
   <div class="show-bar"><a href="#" data-activates="mobile-demo" class="button-collapse"><i class="open-bar material-icons darkGray">chevron_right</i></a></div>
+  <div>
   	<% current_user.lists.uniq.each do |list| %>
-		<div class="list-button"><a href="#" ><i class="material-icons" style="color: <%=list.color%>">brightness_1</i></a></div> 
+		<div data-id="<%=list.id%>" class="list-button"><a href="#" ><i class="js-small-list material-icons" style="color: <%=list.color%>">brightness_1</i></a></div> 
 	<%end%>
+	</div>
 
 		<div class="divider white"></div>
 		<div><a href="#" ><i class="material-icons">delete</i></a></div>  
@@ -47,17 +49,7 @@
   <div class="container">
 	<div class="row">
 		
-		<ul class="side-nav grey lighten-2" id="mobile-demo">
-			<h5 class="logo">YourLists</h5>
-			<!-- when js-list is clicked, listen to display the right links through ajax -->
-			
-			<% current_user.lists.uniq.each do |list| %>
-			<li><a class="js-list waves-effect darkGray" data-id="<%= list.id %>" href=<%= list_path(list) %> role="button" class="text-list"><%= list.name %></a><li>
-			<% end %>
-			<li><div class="divider"></div></li>
-			<li><a href="#!" class="waves-effect"><i class="material-icons">add</i>new list</a></li>
-			<li><div class="divider"></div></li>
-		</ul>
+		
 		
 		
 
