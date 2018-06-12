@@ -149,13 +149,15 @@ function displayLinksFromBars(e) {
                     let data_priority = dataStartingPath[i]["priority"] 
                     let d = new Date(dataStartingPath[i]["created_at"]);
                     let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
+                    let showUrl = "/lists/"+listId+"/links/"+linkId
+                   
                     $(".link").append(`
                         <div class="caption top-margin-show"> </br>
-                            <div class="font"><a href=# data-id="`+ dataStartingPath[i]["id"] +`" class="js-showEditLink">` + dataStartingPath[i]["name"] + `<a>
+                            <div class="font"><a href=` + showUrl + ` data-id="`+ dataStartingPath[i]["id"] +`">` + dataStartingPath[i]["name"] + `<a>
                             <a href= "#"> <i class="small material-icons link-icons-gray push-right">delete</i></a>
                             <a href= "#"> <i id="flag-`+ linkId +`" class="small material-icons link-icons-gray push-right">assistant_photo</i></a>
-                            <a href= "#"> <i data-id="`+ linkId +`" class="js-showEditLink small material-icons link-icons-gray push-right">edit</i></a>
-                            <a href= "#"> <i data-id="`+ linkId +`" class="js-showEditLink small material-icons link-icons-gray push-right">visibility</i></a>
+                            <a href=` + showUrl + `> <i data-id="`+ linkId +`" class="small material-icons link-icons-gray push-right">edit</i></a>
+                            <a href=` + showUrl + `> <i data-id="`+ linkId +`" class="small material-icons link-icons-gray push-right">visibility</i></a>
                             <a href= "` + dataStartingPath[i]["url"] + `"target= "blank"> <i class="small material-icons link-icons-gray push-right">link</i></a>
                             </div>
                         </div>       
@@ -168,7 +170,7 @@ function displayLinksFromBars(e) {
                 };
                 $(".link").append(`<a class="plus" href=#><i class="large material-icons">add_circle_outline</i></a>
                     </div>`) 
-                attachShowEditLinkListener()
+                // attachShowEditLinkListener()
             }
         }    
     });
@@ -191,16 +193,16 @@ function flagColor(data_priority, linkId){
     }
 }
 
-function attachShowEditLinkListener(){
-    $(".js-showEditLink").on("click", displayShowEditLink);
-}
+// function attachShowEditLinkListener(){
+//     $(".js-showEditLink").on("click", displayShowEditLink);
+// }
 
-function displayShowEditLink(e){
-    e.preventDefault();
-    $(".container").html(``)
-    // let linkId = parseInt($(this).attr("data-id"))
+// function displayShowEditLink(e){
+//     e.preventDefault();
+//     $(".container").html(``)
+//     // let linkId = parseInt($(this).attr("data-id"))
 
-}
+// }
    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //reformating priority to be human readable
