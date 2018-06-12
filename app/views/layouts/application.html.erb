@@ -111,6 +111,7 @@ function attachJsListListener(){
     $(".js-list").on("click", displayLinksFromBars);
 }
 
+
 function displayLinksFromBars(e) {
     e.preventDefault();
         //erease all data from that box before displaying a new serie of links
@@ -118,11 +119,8 @@ function displayLinksFromBars(e) {
 
     let listId = parseInt($(this).attr("data-id"))
 
-    debugger
-
     //render the info
     $.get("/lists.json", function(data) { 
-        debugger
         //render the filter heading
         $(".filter").html(`
         <div>
@@ -147,33 +145,62 @@ function displayLinksFromBars(e) {
                 let linksLength = data[j]["links"].length
 
                 for (let i=0; i<linksLength; i++) {
+                    let linkId = dataStartingPath[i]["id"]
                     let data_priority = dataStartingPath[i]["priority"] 
                     let d = new Date(dataStartingPath[i]["created_at"]);
                     let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
                     $(".link").append(`
                         <div class="caption top-margin-show"> </br>
-                            <div class="font">` + dataStartingPath[i]["name"] + ` 
-                            <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">delete</i></a>
-                            <a href= "#"> <i class="tiny material-icons link-icons-gray red-text push-right">assistant_photo</i></a>
-                            <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">edit</i></a>
-                            <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">visibility</i></a>
-                            <a href= "` + dataStartingPath[i]["url"] + `"target= "blank"> <i class="tiny material-icons link-icons-gray push-right">link</i></a>
+                            <div class="font"><a href=# data-id="`+ dataStartingPath[i]["id"] +`" class="js-showEditLink">` + dataStartingPath[i]["name"] + `<a>
+                            <a href= "#"> <i class="small material-icons link-icons-gray push-right">delete</i></a>
+                            <a href= "#"> <i id="flag-`+ linkId +`" class="small material-icons link-icons-gray push-right">assistant_photo</i></a>
+                            <a href= "#"> <i data-id="`+ linkId +`" class="js-showEditLink small material-icons link-icons-gray push-right">edit</i></a>
+                            <a href= "#"> <i data-id="`+ linkId +`" class="js-showEditLink small material-icons link-icons-gray push-right">visibility</i></a>
+                            <a href= "` + dataStartingPath[i]["url"] + `"target= "blank"> <i class="small material-icons link-icons-gray push-right">link</i></a>
                             </div>
                         </div>       
                         <iframe src="` + dataStartingPath[i]["url"]  + `" style="border-color: ` + data["color"] +`;" class = "preview rounded iframe-placeholder" href=#>` + dataStartingPath[i]["url"] + `</iframe>
                         
                         <div class="link_date font>"></div>
                         <div class="link_date font>">` + hrDate + `</div>
-                    `)        
+                    `)
+                    attachFlagListener(data_priority, linkId)         
                 };
                 $(".link").append(`<a class="plus" href=#><i class="large material-icons">add_circle_outline</i></a>
-                    </div>`)       
+                    </div>`) 
+                attachShowEditLinkListener()
             }
-        }
-        
+        }    
     });
 };
-            
+
+function attachFlagListener(data_priority, linkId){
+    $(".link").on("load", flagColor(data_priority, linkId));
+}
+
+function flagColor(data_priority, linkId){
+    if (data_priority===1){
+        $("#flag-"+linkId).addClass('red-text');
+    }
+
+    else if(data_priority===2){
+         $("#flag-"+linkId).addClass('yellow-text');
+    }
+    else {
+         $("#flag-"+linkId).addClass('white-text');
+    }
+}
+
+function attachShowEditLinkListener(){
+    $(".js-showEditLink").on("click", displayShowEditLink);
+}
+
+function displayShowEditLink(e){
+    e.preventDefault();
+    $(".container").html(``)
+    // let linkId = parseInt($(this).attr("data-id"))
+
+}
    
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //reformating priority to be human readable
@@ -189,49 +216,6 @@ function displayLinksFromBars(e) {
     //     }
     // }
 
-
-
-
-   
-    //when a list in the big bar or small bar is clicked
-  // $(".js-list").on("click", function(e) {
-  //        e.preventDefault();
-  //   let id = $(this).data("id")   
-  //      debugger
-  //   $.get("/lists/" + id + ".json", function(data) {
-
-  //       for (var i=0; i<data["links"].length; i++) {
-  //           let data_priority = data["links"][i]["priority"] 
-  //           let data_priority_result = hr_priority(data_priority)
-  //           let d = new Date(data["links"][i]["created_at"]);
-  //           let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
-  //           $(".link").html(`
-  //               <div class="caption top-margin-show"> </br>
-  //                   <div class="font">` + data["links"][i]["name"] + ` 
-  //                   <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">delete</i></a>
-  //                   <a href= "#"> <i class="tiny material-icons link-icons-gray red-text push-right">assistant_photo</i></a>
-  //                   <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">edit</i></a>
-  //                   <a href= "#"> <i class="tiny material-icons link-icons-gray push-right">visibility</i></a>
-  //                   <a href= "` + data["links"][i]["url"] + `"target= "blank"> <i class="tiny material-icons link-icons-gray push-right">link</i></a>
-
-  //                   </div>
-  //               </div>
-                
-  //               <iframe src="` + data["links"][i]["url"]  + `" style="border-color: ` + data["color"] +`;" class = "preview rounded iframe-placeholder" href=#>` + data["links"][i]["url"] + `</iframe>
-                
-  //               <div class="link_date font>"></div>
-  //               <div class="link_date font>">` + hrDate + `</div>
-  //               `)        
-  //       };
-  //       $(".link").append(`<a class="plus" href=#><i class="large material-icons">add_circle_outline</i></a>
-  //               </div>`)
-
-  //   });
-    
-  // });
-
-  
-             
         
 
 
