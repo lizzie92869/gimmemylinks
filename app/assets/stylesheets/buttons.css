@@ -4,7 +4,7 @@
 }*/
 
 .delete_link {
-	color: white;
+	color: grey;
 	background: red;
 	padding: 14px;
 	float: right;
@@ -32,9 +32,9 @@
 	border-width: 0px;	
 
 }*/
-/*
+
 .save-button{
-	color: grey;
+	
 	background: #CCFF38;
 	padding: 7px;
 	padding-right: 11px;
@@ -44,4 +44,15 @@
 	border-style: hidden;
 	border-style: none;
 	border-width: 0px;
-}*/
+}
+
+.visit-button{
+	color: grey;
+	background: #e7e7e7;
+	padding: 11px;
+	float: left;
+	font-family: 'Ubuntu Mono', monospace;
+	border-style: hidden;
+	border-style: none;
+	border-width: 0px;
+}
