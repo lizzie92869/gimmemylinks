@@ -188,7 +188,7 @@ function createNewList(e){
     var posting = $.post('/lists', values, function(response){
         var list = response
         $(".js-appendListName").append(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
-        $("#newListName").text("")
+        $('#newListName').val("")
     });
 
 }
