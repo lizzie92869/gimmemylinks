@@ -4,12 +4,11 @@ before_action :find_link, :only => [:show, :update, :destroy]
 # before_action :authenticate_user!
 
 
-	# def new
-	# 	@list = List.find(params[:list_id])
-	# 	@link = Link.new
-	# 	authenticate_user?
-
-	# end
+	def new
+		@list = List.find(params[:list_id])
+		@link = Link.new
+		authenticate_user?
+	end
 
 	# def create	
 	# 	@list = List.find(params[:list_id])	

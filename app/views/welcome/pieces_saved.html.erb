@@ -25,3 +25,60 @@
 			<li><a href="#!" class="waves-effect"><i class="material-icons">add</i>new list</a></li>
 			<li><div class="divider"></div></li>
 		</ul>
+
+
+444444444444444444444444444444444
+
+
+
+		function attachCreateLinkListener(e, listId, UserId){
+    $(".plus").on("click", displayCreateLinkForm(e, listId, UserId));
+}
+
+
+let form = `
+            <form>
+            <input type="text" name="name" placeholder="name" >
+            <input type="text" name="url" placeholder="url" >
+            Priority: 
+         
+
+            <p>
+            <label>
+              <input class="with-gap" name="priority" type="radio" checked />
+              <span>High</span>
+            </label>
+            </p>
+            <p>
+            <label>
+              <input class="with-gap" name="priority" type="radio" checked />
+              <span>Medium</span>
+            </label>
+            </p>
+            <p>
+            <label>
+              <input class="with-gap" name="priority" type="radio" checked />
+              <span>Low</span>
+            </label>
+            </p>
+
+
+            <input type="hidden" name="user_id" value="`+ listId +`">
+            <input type="hidden" name="List_id" value="`+ UserId +`">
+
+
+            </form>
+        `
+
+
+function displayCreateLinkForm(e, listId, UserId){
+    e.preventDefault();
+    //erase the filter header and replace the link text
+    $(".filter").html(``)
+    debugger
+    $(".link").html(
+        form
+    )
+
+
+}

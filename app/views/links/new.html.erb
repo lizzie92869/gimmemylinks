@@ -1,6 +1,7 @@
+
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
 </br>
-
+<div class="show-link">
 <div class="new font"> Save a new link in <%=@list.name%></div>
 <%= image_tag "line.png", option={class: "new"} %>
 </br>
@@ -8,4 +9,4 @@
 
 <%= render partial: 'form', locals: {link: @link, list: @list} %>
 </div>
-
+</div>
