@@ -67,10 +67,48 @@ function openBar(e) {
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
             `+ listsNames(data) +`
             </div>
-            </br>
-            </br>
+            </br></br></br></br></br></br>
+            <h6>Enter a new list:</h6>
+            <form action="/lists" method="post" class="js-newList" id="js-clearList"><input id="newListName" type="text" name="name" >
+            <h6>Choose a color:</h6>
+                
+                <label class="container1"> a
+                  <input type="radio" checked="checked" name="color" value="#CCFF38">
+                  <span class="checkmark" id="green"></span>
+                </label>
 
-            <form action="/lists" method="post" class="js-newList" id="js-clearList"><input id="newListName" type="text" name="name" ><input type="submit">
+                <label class="container1"> a
+                  <input type="radio" checked="checked" name="color" value="#604560">
+                  <span class="checkmark" id="purple"></span>
+                </label>
+
+                <label class="container1"> a 
+                  <input type="radio" name="color" value="#E4E0D5">
+                  <span class="checkmark" id="taupe"></span>
+                </label>
+
+                <label class="container1"> a
+                  <input type="radio" name="color" value="#51CDA7">
+                  <span class="checkmark" id="teal"></span>
+                </label>
+
+                <label class="container1"> a
+                  <input type="radio" name="color" value="#BCB7B3">
+                  <span class="checkmark" id="mgrey"></span>
+                </label>
+
+                <label class="container1"> a
+                  <input type="radio" name="color" value="#FF3333">
+                  <span class="checkmark" id="red"></span>
+                </label>
+
+                <label class="container1"> a
+                  <input type="radio" name="color" value="#F9FFFC">
+                  <span class="checkmark" id="mint"></span>
+                </label>
+
+
+                <input type="submit">
             </form>
             </div>`
         $(".big-sidenav").html(htmlData)
