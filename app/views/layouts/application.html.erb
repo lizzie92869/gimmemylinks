@@ -116,6 +116,7 @@ function displayLinksFromBars(e) {
 
     //render the info
     $.get("/lists.json", function(data) { 
+        console.log(data)
         //render the filter heading
         $(".filter").html(`
         <div>
@@ -136,6 +137,7 @@ function displayLinksFromBars(e) {
         //we want the links array for the data whose ["id"] == listId
         for (let j=0; j<data.length; j++){
             if (data[j]["id"] === listId){
+                debugger
                 let dataStartingPath = data[j]["links"]
                 let linksLength = data[j]["links"].length
 
