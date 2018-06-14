@@ -69,6 +69,7 @@ function openBar(e) {
             </div>
             </br>
             </br>
+
             <form action="/lists" method="post" class="js-newList" id="js-clearList"><input id="newListName" type="text" name="name" ><input type="submit">
             </form>
             </div>`
@@ -94,8 +95,10 @@ function closeBar(e){
 //rendering the list of lists in the big side bar
 function listsNames(data){
 let listNamesArray = []
+
     for (let i=0; i<data.length; i++) {
-    listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + data[i]["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + data[i]["id"] +`>` + data[i]["name"] + `</a></div>`)
+    let dataStartingPath = data[i]
+    listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + dataStartingPath["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + dataStartingPath["id"] +`>` + dataStartingPath["name"] + `</a></div>`)
     }
     //extract the string from the array and remove the commas to inject it as it
     listNamesString = listNamesArray.toString().replace(/,/g, "")
@@ -137,17 +140,14 @@ function displayLinksFromBars(e) {
         //we want the links array for the data whose ["id"] == listId
         for (let j=0; j<data.length; j++){
             if (data[j]["id"] === listId){
-                debugger
                 let dataStartingPath = data[j]["links"]
                 let linksLength = data[j]["links"].length
-
                 for (let i=0; i<linksLength; i++) {
                     let linkId = dataStartingPath[i]["id"]
                     let data_priority = dataStartingPath[i]["priority"] 
                     let d = new Date(dataStartingPath[i]["created_at"]);
                     let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
                     let showUrl = "/lists/"+listId+"/links/"+linkId
-                   
                     $(".link").append(`
                         <div class="caption top-margin-show"> </br>
                             <div class="font"><a href=` + showUrl + ` data-id="`+ dataStartingPath[i]["id"] +`">` + dataStartingPath[i]["name"] + `<a>

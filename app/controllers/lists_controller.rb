@@ -35,7 +35,7 @@ before_action :find_list, :only => [:filter, :show, :destroy]
 		  format.html { render :"welcome/home" }
 		  # format.json { render json: @lists.to_json(include: :links)}
 		  format.json { render json: @lists }
-		end 
+		end
 	end
 
 	def create
