@@ -69,45 +69,45 @@ function openBar(e) {
             </div>
             </br></br></br></br></br></br>
             <h6>Enter a new list:</h6>
-            <form action="/lists" method="post" class="js-newList" id="js-clearList"><input id="newListName" type="text" name="name" >
-            <h6>Choose a color:</h6>
+            <form action="/lists" method="post" class="js-newList" id="js-clearList">
+                <input id="newListName" type="text" name="name" >
+                <h6>Choose a color:</h6>
                 
-                <label class="container1"> a
-                  <input type="radio" checked="checked" name="color" value="#CCFF38">
+                <label class="container1"> 
+                  <input type="radio" checked="checked" name="color" value="#CCFF38" class="newListColor">
                   <span class="checkmark" id="green"></span>
                 </label>
 
-                <label class="container1"> a
-                  <input type="radio" checked="checked" name="color" value="#604560">
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#604560" class="newListColor">
                   <span class="checkmark" id="purple"></span>
                 </label>
 
-                <label class="container1"> a 
-                  <input type="radio" name="color" value="#E4E0D5">
+                <label class="container1">  
+                  <input type="radio" name="color" value="#E4E0D5" class="newListColor">
                   <span class="checkmark" id="taupe"></span>
                 </label>
 
-                <label class="container1"> a
-                  <input type="radio" name="color" value="#51CDA7">
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#51CDA7" class="newListColor">
                   <span class="checkmark" id="teal"></span>
                 </label>
 
-                <label class="container1"> a
-                  <input type="radio" name="color" value="#BCB7B3">
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#BCB7B3" class="newListColor">
                   <span class="checkmark" id="mgrey"></span>
                 </label>
 
-                <label class="container1"> a
-                  <input type="radio" name="color" value="#FF3333">
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#FF3333" class="newListColor">
                   <span class="checkmark" id="red"></span>
                 </label>
 
-                <label class="container1"> a
-                  <input type="radio" name="color" value="#F9FFFC">
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#F9FFFC" class="newListColor">
                   <span class="checkmark" id="mint"></span>
                 </label>
-
-
+                </br></br>
                 <input type="submit">
             </form>
             </div>`
@@ -220,13 +220,16 @@ function attachNewListListener(){
 
 function createNewList(e){
     e.preventDefault();
+    debugger
     var values = {
         "authenticity_token": $('meta[name=csrf-token]').attr('content'),
         "list": {
-            "name": $("#newListName").val()
+            "name": $("#newListName").val(),
+            "color": $("input:checked").val()
     }};
     var posting = $.post('/lists', values, function(response){
         var list = response
+        debugger
         $(".js-appendListName").append(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
         $('#newListName').val("")
     });

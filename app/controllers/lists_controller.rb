@@ -39,8 +39,7 @@ before_action :find_list, :only => [:filter, :show, :destroy]
 	end
 
 	def create
-
-
+		binding.pry
     @list = List.new(list_params)
     current_user.lists<<@list
     if @list.save
@@ -75,7 +74,7 @@ before_action :find_list, :only => [:filter, :show, :destroy]
 	# private
 
 	def list_params
-		params.require(:list).permit(:name, :user_id)
+		params.require(:list).permit(:name, :color, :user_id)
 	end
 
 	def find_list
