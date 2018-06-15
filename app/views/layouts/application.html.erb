@@ -220,7 +220,6 @@ function attachNewListListener(){
 
 function createNewList(e){
     e.preventDefault();
-    debugger
     var values = {
         "authenticity_token": $('meta[name=csrf-token]').attr('content'),
         "list": {
@@ -229,7 +228,6 @@ function createNewList(e){
     }};
     var posting = $.post('/lists', values, function(response){
         var list = response
-        debugger
         $(".js-appendListName").append(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
         $('#newListName').val("")
     });
@@ -252,6 +250,24 @@ function flagColor(data_priority, linkId){
          $("#flag-"+linkId).addClass('white-text');
     }
 }
+
+
+$.get("/lists.json", function(data) {
+    var newUser = new User(data[0].user)
+    $("#user").html(newUser.renderUserInfo())
+
+})
+
+function User(dataObj){
+    this.email = dataObj.email
+}
+
+User.prototype.renderUserInfo = function(){
+    return `
+        ${this.email}
+    `
+}
+
 
 
    

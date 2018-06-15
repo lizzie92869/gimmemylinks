@@ -14,11 +14,14 @@
 				</div>
 			</li>
 		  </ul>
-				
-		  <ul class="right blackfont">
-		  	<%=current_user.email%> | Sign Out
-	    	<!-- erb link_to("Sign Out", destroy_user_session_path, :method => 'delete') to rework as an ajax to not refresh the page-->
+		
+		  <div class="right blackfont">
+		  	<div id="user" style="display:inline-block">
+			</div>
+			|
+		    <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete', class: "signout") %>
 		  </ul>
+
 		</div>
 	  </nav>
   </div>
@@ -52,7 +55,7 @@
 		
 		
 		
-
+			<div class="selected-list"></div>
 			<div class="filter"></div>
 			<div class="link"></div>
 
