@@ -41,12 +41,12 @@ before_action :find_link, :only => [:show, :update, :destroy]
 	# 	end
 	# end
 
-	# def destroy
-	# 	@list = @link.list
-	# 	@link.destroy
-	# 	flash[:alert]="link deleted succesfully"
-	# 	redirect_to list_path(@list)
-	# end
+	def destroy
+		@list = @link.list
+		@link.destroy
+		flash[:alert]="link deleted succesfully"
+		redirect_to root_path
+	end
 
 
 

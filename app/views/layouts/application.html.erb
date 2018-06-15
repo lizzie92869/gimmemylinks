@@ -198,7 +198,7 @@ function displayLinksFromBars(e) {
 
                         <div class="caption top-margin-show"> </br>
                             <div class="font"><a href=` + showUrl + ` data-id="`+ dataStartingPath[i]["id"] +`">` + dataStartingPath[i]["name"] + `<a>
-                            <a href= "#"> <i class="small material-icons link-icons-gray push-right">delete</i></a>
+                            <a href= "/lists/`+listId+`/links/`+linkId+`" data-method="delete"> <i class="small material-icons link-icons-gray push-right">delete</i></a>
                             <a href= "#"> <i id="flag-`+ linkId +`" class="small material-icons link-icons-gray push-right">assistant_photo</i></a>
                             <a href=` + showUrl + `> <i data-id="`+ linkId +`" class="small material-icons link-icons-gray push-right">edit</i></a>
                             <a href=` + showUrl + `> <i data-id="`+ linkId +`" class="small material-icons link-icons-gray push-right">visibility</i></a>
