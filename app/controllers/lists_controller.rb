@@ -63,10 +63,10 @@ before_action :find_list, :only => [:filter, :show, :destroy]
 	# 	authenticate_user?
 	# end
 
-	# def destroy 
-	# 	@list.destroy
-	# 	redirect_to root_path
-	# end
+	def destroy 
+		@list.destroy
+		redirect_to root_path
+	end
 
 
 

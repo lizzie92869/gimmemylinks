@@ -143,8 +143,12 @@ let listNamesArray = []
     return listNamesString 
 }
 
+
+
+
 function attachJsListListener(){
     $(".js-list").on("click", displayLinksFromBars);
+    $(".js-list").on("click", closeBar);
 }
 
 
@@ -167,11 +171,12 @@ function displayLinksFromBars(e) {
         <a href= "#"> most recent</a> |  
         <a href= "#"> oldest</a> 
 
-        <span class="delete_link"  > 
-        <a href= "#"> Delete list!</a>
-        </span>
+        </br>
+        <a href= "/lists/`+listId+`" data-method="delete"><i id="can" class="material-icons">delete</i></a>
+      
 
         </div>
+
         `)
 
         //render the links
@@ -187,6 +192,7 @@ function displayLinksFromBars(e) {
                     let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
                     let showUrl = "/lists/"+listId+"/links/"+linkId
                     $(".link").append(`
+
                         <div class="caption top-margin-show"> </br>
                             <div class="font"><a href=` + showUrl + ` data-id="`+ dataStartingPath[i]["id"] +`">` + dataStartingPath[i]["name"] + `<a>
                             <a href= "#"> <i class="small material-icons link-icons-gray push-right">delete</i></a>
