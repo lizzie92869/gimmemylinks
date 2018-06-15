@@ -158,10 +158,8 @@ function displayLinksFromBars(e) {
     $(".link").html(``)
 
     let listId = parseInt($(this).attr("data-id"))
-
     //render the info
     $.get("/lists.json", function(data) { 
-        console.log(data)
         //render the filter heading
         $(".filter").html(`
         <div>
@@ -172,7 +170,7 @@ function displayLinksFromBars(e) {
         <a href= "#"> oldest</a> 
 
         </br>
-        <a href= "/lists/`+listId+`" data-method="delete"><i id="can" class="material-icons">delete</i></a>
+        <a href= "/lists/`+listId+`" data-method="delete"><i id="can" class="material-icons">delete</i>delete this list</a>
       
 
         </div>
@@ -191,6 +189,11 @@ function displayLinksFromBars(e) {
                     let d = new Date(dataStartingPath[i]["created_at"]);
                     let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
                     let showUrl = "/lists/"+listId+"/links/"+linkId
+                     // render the new link page if no link yet
+                    if (linksLength===0){
+                        $(".link").append(`<a list-id="`+ listId +`" user-id="`+ data[j]["user_id"] +`" class="plus" href=/lists/`+listId+`/links/new><i class="large material-icons">add_circle_outline</i></a>
+                        </div>`) 
+                    }
                     $(".link").append(`
 
                         <div class="caption top-margin-show"> </br>

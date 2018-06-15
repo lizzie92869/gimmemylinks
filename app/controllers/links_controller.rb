@@ -10,15 +10,15 @@ before_action :find_link, :only => [:show, :update, :destroy]
 		authenticate_user?
 	end
 
-	# def create	
-	# 	@list = List.find(params[:list_id])	
-	# 	@link = Link.new(link_params)
-	# 	if @link.save
-	# 	else
-	# 	flash[:alert]="name can't be blank / URL must be valid"
-	# 	end
-	# 	redirect_to list_path(@list)
-	# end
+	def create	
+		@list = List.find(params[:list_id])	
+		@link = Link.new(link_params)
+		if @link.save
+		else
+		flash[:alert]="name can't be blank / URL must be valid"
+		end
+		redirect_to root_path
+	end
 
 	def show 
 		@list = @link.list

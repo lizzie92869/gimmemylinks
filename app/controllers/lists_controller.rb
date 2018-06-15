@@ -1,7 +1,7 @@
 
 class ListsController < ApplicationController
 include ApplicationHelper
-before_action :find_list, :only => [:filter, :show, :destroy]
+before_action :find_list, :only => [:show, :destroy]
 # before_action :create_list, :only => [:filter, :show]
 # before_action :authenticate_user!, only: [:show]
 
@@ -39,7 +39,6 @@ before_action :find_list, :only => [:filter, :show, :destroy]
 	end
 
 	def create
-		binding.pry
     @list = List.new(list_params)
     current_user.lists<<@list
     if @list.save
