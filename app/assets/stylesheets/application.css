@@ -4,20 +4,11 @@
 */
 
 
-/*body{
-font-family: 'Ubuntu Mono', monospace;
-}
 
-@media only screen and (max-width: 1000px){
- #second_column {
- 	margin-top: calc(div.first_column.height);
- }
-}*/
-
-
-flash alerts
+/*flash alerts*/
 .alert-warning{
 	opacity: 0.5;
+	margin-left: 74px;
 }
 
 #error_explanation, #error_explanation h2{
@@ -41,103 +32,6 @@ flash alerts
 	overflow: hidden; 
 	text-overflow: ellipsis;
 }
-
-/*.field-new-list{
-	margin-right: 0;
-}
-
-#list-name{
-	width:100%;
-}
-
-.grey{
-	color:grey;
-}
-
-.white{
-	color: white;
-}
-
-
-
-.size-preview{
-	height: 700px;
-}
-
-
-
-.go{
-	float: right;
-	background-color: #CCFF38;
-	padding: 7px;
-}
-
-a:link{
-	color: grey;
-}
-
-a:visited { 
-    color: grey;
-}
-
-a:hover {
-    color: black;
-}
-
-a:active {
-    color: red;
-}
-
-.pos{
-	position: fixed;
-	min-height: 100%;
-	 height: auto !important;
-	 height: 100%;
-
-}
-
-.pos h1{
-	font-size: 4em; 
-	color: grey;
-	margin-bottom: 50px;
-}
-
-.new{
-	margin-bottom: 30px;
-}
-
-.field-length{
-	width: 80%;
-}
-
-
-
-
-
-
-
-
-.iframe-placeholder
-{
-   background: url(<?php echo $variable_holding_img_url; ?>)
-}
-
-
-/*logo colors
-.color1{
-color: #FF3333;
-}
-
-.color2{
-color: #CCFF38;
-}
-
-.color3{
-color: #51CDA7;
-}
-
-
-
 
 
 
@@ -413,11 +307,9 @@ nav div a {
 	}
 
 	.preview-show{
-		height: 500px;
+		height: 700px;
 		width: 80%;
+		margin-left: 100px;
 	}
 
-
-	
-	/************************************    new link   ****************************/
 	

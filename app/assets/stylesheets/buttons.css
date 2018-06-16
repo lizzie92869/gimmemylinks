@@ -1,7 +1,4 @@
-/*.hidden_button{
-	height: 0px;
-	visibility: hidden;
-}*/
+
 
 .delete-button {
 	background: red;
@@ -16,23 +13,6 @@
 	display: block;
     text-align: center;
 }
-/*
-.button-new-list{
-    color: white;
-	background: blue;
-	padding-top: 4px;
-	padding-bottom: 2px;
-	padding-right: 13px;
-	padding-left: 13px;
-	width: 100%;*/
-	/*float: right;*/
-	/*display: inline;
-	font-family: 'Ubuntu Mono', monospace;
-	border-style: hidden;
-	border-style: none;
-	border-width: 0px;	
-
-}*/
 
 .save-button{
 	background: #CCFF38;

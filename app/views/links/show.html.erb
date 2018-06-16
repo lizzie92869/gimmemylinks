@@ -1,28 +1,21 @@
 
 <%= render partial: 'welcome/welcome', locals: { lists: @lists} %>
 		</br>
-
 		<div class="show-link">
 		<%= render partial: 'form', locals: { link: @link, list: @list} %>
 		</br>
 		<span class="delete-button">
 		<%= link_to "Delete Link!", list_link_path, :method => :delete, class: "grey-text text-lighten-2"%>
 		</span>
-		</br>
-		</br>
-		</br>
+		</br></br></br>
 		<div class="visit-button">
 		<a href=<%=@link.url%> target=_blank class="grey-text">Visit Link!</a>
 		</div>
-
-		</br>
-		</br>
-		</br>
-
-		<iframe style="border-color: <%= @link.list.color %>;" class = "preview-show rounded" src=<%=@link.url%> href="<%= list_link_path(@link) %>"></iframe>
-		</br>
-		</br>
-		</br>
+		</div>
+		</br></br></br>
+		
+		<iframe style="border-color: <%= @link.list.color %>;" class = "preview-show rounded show-iframe" src=<%=@link.url%> href="<%= list_link_path(@link) %>"></iframe>
+		</br></br></br>
 		<div class="link_date font"><%=@link.created_at.strftime("%m/%d/%Y")%></div>
 
-		</div>
+		

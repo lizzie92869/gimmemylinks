@@ -30,16 +30,16 @@ before_action :find_link, :only => [:show, :update, :destroy]
 		authenticate_user?
 	end
 
-	# def update
-	# 	@list = params[:list_id]
-	# 	if @link.update(link_params)
-	# 		flash[:alert]="link updated succesfully"
-	# 		redirect_to list_path(@list)
-	# 	else
-	# 		flash[:alert]="name can't be blank / URL must be valid"
-	# 		redirect_to list_link_path(@list, @link)
-	# 	end
-	# end
+	def update
+		@list = params[:list_id]
+		if @link.update(link_params)
+			flash[:alert]="link updated succesfully"
+			redirect_to list_path(@list)
+		else
+			flash[:alert]="name can't be blank / URL must be valid"
+			redirect_to root_path
+		end
+	end
 
 	def destroy
 		@list = @link.list
