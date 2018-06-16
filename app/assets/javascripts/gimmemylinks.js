@@ -28,10 +28,8 @@ function createNewList(e){
             <a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>
             `)
         $('#newListName').val("")
-        // need debugging
-        // debugger
-        $("#sumbitNewListButton").on("click", closeBar);  
-        // debugger
+        attachJsListListener()
+       
         
     });
 
@@ -89,7 +87,7 @@ function openBar(e) {
                   <span class="checkmark" id="mint"></span>
                 </label>
                 </br></br>
-                <input type="submit" id="sumbitNewListButton">
+                <input type="submit" id="submitNewListButton">
             </form>
             </div>`
         $(".big-sidenav").html(htmlData)
