@@ -14,12 +14,14 @@ function attachListeners() {
 
 function createNewList(e){
     e.preventDefault();
+
     var values = {
         "authenticity_token": $('meta[name=csrf-token]').attr('content'),
         "list": {
             "name": $("#newListName").val(),
             "color": $("input:checked").val()
     }};
+
     var posting = $.post('/lists', values, function(response){
         var list = response
         $(".js-appendListName").append(`
@@ -29,7 +31,6 @@ function createNewList(e){
             `)
         $('#newListName').val("")
         attachJsListListener()
-       
         
     });
 
@@ -205,23 +206,6 @@ function displayLinksFromBars(e) {
 function attachNewListListener(){
     $("form.js-newList").submit(createNewList)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function attachFlagListener(data_priority, linkId){
     $(".link").on("load", flagColor(data_priority, linkId));

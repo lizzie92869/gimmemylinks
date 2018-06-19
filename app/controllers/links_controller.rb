@@ -34,7 +34,7 @@ before_action :find_link, :only => [:show, :update, :destroy]
 		@list = params[:list_id]
 		if @link.update(link_params)
 			flash[:alert]="link updated succesfully"
-			redirect_to list_path(@list)
+			redirect_to root_path
 		else
 			flash[:alert]="name can't be blank / URL must be valid"
 			redirect_to root_path
