@@ -226,18 +226,21 @@ function flagColor(data_priority, linkId){
 
 
 $.get("/lists.json", function(data) {
+
     var newUser = new User(data[0].user)
     $("#user").html(newUser.renderUserInfo())
 
 })
 
 function User(dataObj){
+
     this.email = dataObj.email
 }
 
 User.prototype.renderUserInfo = function(){
+    const name = this.email.split("@")[0]
     return `
-        ${this.email}
+        ${name}
     `
 }
 
