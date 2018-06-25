@@ -7,7 +7,6 @@ $(function() {
 
 function attachListeners() {
     $(".open-bar").on("click", openBar);     
-    $(".js-list").on("click", displayLinksFromBars)
     $(".new-plus").on("click", openBar)
     
 }
