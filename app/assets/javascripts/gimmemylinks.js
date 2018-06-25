@@ -237,7 +237,7 @@ function User(dataObj){
     this.email = dataObj.email
 }
 
-User.prototype.renderUserInfo = function(){
+User.prototype.renderUserInfo = function() {
     const name = this.email.split("@")[0]
     return `
         ${name}
