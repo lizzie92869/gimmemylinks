@@ -12,9 +12,7 @@ before_action :find_list, :only => [:show, :destroy]
 	# render action: :show
 	# end
 
-
 	def index
-
 		@lists = current_user.lists
 		#creating an API end point and using to render index
 		respond_to do |format|	 
@@ -28,8 +26,10 @@ before_action :find_list, :only => [:show, :destroy]
     @list = List.new(list_params)
     current_user.lists<<@list
 	    if @list.save
+	    	#ok + created
 	    	render json: @list, status: 201
 	    else
+	    	#bad request + the content of the request is correct but the server was unable to process the contained instruction
 	    	render json: @list.errors, status: 422
 	    end 
   	end

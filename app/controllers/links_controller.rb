@@ -23,10 +23,11 @@ before_action :find_link, :only => [:show, :update, :destroy]
 	def show 
 		@list = @link.list
 		#creating an API end point and using to render show link
-		respond_to do |format|	 
-		  format.html { render :"show" }
-		  format.json { render json: @link.to_json}
-		end
+		# respond_to do |format|	 
+		#   format.html { render :"show" }
+		#   format.json { render json: @link.to_json}
+		# end
+		
 		authenticate_user?
 	end
 
