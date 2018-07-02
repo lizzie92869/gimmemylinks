@@ -1,4 +1,47 @@
 
+//upon load of the document retrieve the api information, create a new js-user 
+$.get("/lists.json", function(data) {
+    //the user is instantiated through the use of the first list, user key(provided by the belongs to relationship)
+    let newUser = new User(data[0].user)
+    //get the div and place the info user modified as specified in the renderUserName function
+    $("#user").html(newUser.renderUserName())
+
+})
+
+//define a model object of a User which only takes the email 
+function User(dataObj){
+    this.email = dataObj.email
+}
+// add a function on the prototype to extract the name part of the email
+User.prototype.renderUserName = function() {
+    const name = this.email.split("@")[0]
+    return `${name}`
+}
+
+// function List(dataObj){
+//     this.name = dataObj.name
+//     this.color = dataObj.color
+//     this.user_id = dataObj.user_id
+// }
+
+// List.prototype.listData = function (data, listId) {
+//     return data.find(list => {
+//        return list.id===listId
+//     })
+// } 
+
+// function Link(dataObj){
+//     this.user_id = dataObj.user_id
+//     this.list_id = dataObj.list_id
+//     this.name = dataObj.name
+//     this.url = dataObj.url
+//     this.priority = dataObj.priority
+// }
+
+
+
+
+
 
 $(function() {
     attachListeners();
@@ -364,9 +407,29 @@ function User(dataObj){
 // add a function on the prototype to extract the name part of the email
 User.prototype.renderUserName = function() {
     const name = this.email.split("@")[0]
-    return `
-        ${name}
-    `
+    return `${name}`
 }
+
+function List(dataObj){
+    this.name = dataObj.name
+    this.color = dataObj.color
+    this.user_id = dataObj.user_id
+}
+
+List.prototype.listData = function (data, listId) {
+    return data.find(list => {
+       return list.id===listId
+    })
+} 
+
+function Link(dataObj){
+    this.user_id = dataObj.user_id
+    this.list_id = dataObj.list_id
+    this.name = dataObj.name
+    this.url = dataObj.url
+    this.priority = dataObj.priority
+}
+
+
 
 
