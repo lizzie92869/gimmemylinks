@@ -256,7 +256,7 @@ function displayLinksFromBars(e) {
     //erase all data from that box before displaying a new serie of links
     $(".link").html(``)
     //hold the id of the list that has been clicked on. "this" is the link clicked
-    const listId = parseInt($(this).attr("data-id"))
+    let listId = parseInt($(this).attr("data-id"))
     //render the filter heading
     renderFilterHeading(listId)
 
@@ -264,11 +264,11 @@ function displayLinksFromBars(e) {
  
     $.get("/lists.json", function(data) {
         //return the list where list.id===listId
-        const list = listData(data, listId)
-        const listName = list.name
+        let list = listData(data, listId)
+        let listName = list.name
         $(".link").append(`</br></br></br>Viewing list: `+listName+``)
         //append all the links with the styling    
-        const links = linkData(data, list) 
+        let links = linkData(data, list) 
         //append the + sign to add a new link
         $(".link").append(`
             <a list-id="`+ listId +`" user-id="`+ list.user+`" class="plus" href=/lists/`+listId+`/links/new><i class="large material-icons">add_circle_outline</i></a>
