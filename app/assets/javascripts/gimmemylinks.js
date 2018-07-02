@@ -87,16 +87,24 @@ function filterList(e){
     e.preventDefault();
     $.get("/lists.json", function(data) { 
         
-    let listNamesArray = []
-        data.forEach(function(list){
-            let linksLenght = list.links.length
-            if (linksLenght > 0){
-                let links = list.links
-                if (links.some(link => link.priority < 2)){
-                    listNamesArray.push(list)  
-                } 
-            }
-        });
+    // let listNamesArray = []
+    //     data.forEach(function(list){
+    //         let linksLenght = list.links.length
+    //         if (linksLenght > 0){
+    //             let links = list.links
+    //             if (links.some(link => link.priority < 2)){
+    //                 listNamesArray.push(list)  
+    //             } 
+    //         }
+    //     });
+
+    let listNamesArray = data.filter(list=>{
+        let linksLenght = list.links.length;
+        let links = list.links;
+        return (linksLenght > 0 && links.some(link => link.priority < 2))
+    });
+
+
     let htmlData = ` 
             <div class="js-big-nav"><div class = "colon-left leftSideBigNav darkGray lightGreyBackground">
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
@@ -166,13 +174,19 @@ function filterList(e){
 
 //create the string to append for the lists names
 function listsNames(data){
-let listNamesArray = []
-    data.forEach(function(list){
-        listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
+// let listNamesArray = []
+//     data.forEach(function(list){
+//         listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
+//     })
+//     //extract the string from the array and remove the commas to inject it as it
+//     listNamesString = listNamesArray.toString().replace(/,/g, "")
+//     return listNamesString 
+    let listNamesArray = data.map(function(list){
+        return `<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`
     })
     //extract the string from the array and remove the commas to inject it as it
     listNamesString = listNamesArray.toString().replace(/,/g, "")
-    return listNamesString 
+    return listNamesString    
 }
 
 
@@ -202,8 +216,8 @@ let listData = (data, listId) =>{
 } 
 
 let linkData = (data, list) =>{
-    listId = list.id
-    listColor = list.color
+    let listId = list.id
+    let listColor = list.color
     return list.links.map(link => {
         
         let linkId = link.id
