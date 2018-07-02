@@ -16,11 +16,14 @@ function openBar(e) {
     //get the api data for all lists
     $.get("/lists.json", function(data) { 
         //define a variable holding the bar, the left chevron, the lists names, the form to create a new list    
-        let htmlData = `
+        let htmlData = ` 
             <div class="js-big-nav"><div class = "colon-left leftSideBigNav darkGray lightGreyBackground">
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
-            `+ listsNames(data) +`
+            ${listsNames(data)}
             </div>
+
+            <button id="hp-list">only lists HP</button>
+
             </br></br></br></br></br></br>
             <h6>Enter a new list:</h6>
             <form action="/lists" method="post" class="js-newList" id="js-clearList">
@@ -72,20 +75,108 @@ function openBar(e) {
         attachCloseBarListener() 
         attachJsListListener()
         attachNewListListener()
+        attachButtonListener()
     }); 
 }
+
+function attachButtonListener(){
+    $("#hp-list").on("click", filterList);
+}
+
+function filterList(e){
+    e.preventDefault();
+    $.get("/lists.json", function(data) { 
+        
+    let listNamesArray = []
+        data.forEach(function(list){
+            let linksLenght = list.links.length
+            if (linksLenght > 0){
+                let links = list.links
+                if (links.some(link => link.priority < 2)){
+                    listNamesArray.push(list)  
+                } 
+            }
+        });
+    let htmlData = ` 
+            <div class="js-big-nav"><div class = "colon-left leftSideBigNav darkGray lightGreyBackground">
+            <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
+            ${listsNames(listNamesArray)}
+            </div>
+
+            <button id="hp-list">only lists HP</button>
+
+            </br></br></br></br></br></br>
+            <h6>Enter a new list:</h6>
+            <form action="/lists" method="post" class="js-newList" id="js-clearList">
+                <input id="newListName" type="text" name="name" >
+                <h6>Choose a color:</h6>
+                
+                <label class="container1"> 
+                  <input type="radio" checked="checked" name="color" value="#CCFF38" class="newListColor">
+                  <span class="checkmark" id="green"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#604560" class="newListColor">
+                  <span class="checkmark" id="purple"></span>
+                </label>
+
+                <label class="container1">  
+                  <input type="radio" name="color" value="#E4E0D5" class="newListColor">
+                  <span class="checkmark" id="taupe"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#51CDA7" class="newListColor">
+                  <span class="checkmark" id="teal"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#BCB7B3" class="newListColor">
+                  <span class="checkmark" id="mgrey"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#FF3333" class="newListColor">
+                  <span class="checkmark" id="red"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#F9FFFC" class="newListColor">
+                  <span class="checkmark" id="mint"></span>
+                </label>
+                </br></br>
+                <input type="submit" id="submitNewListButton">
+            </form>
+            </div>`
+        // insert this variable in the parent div
+        $(".big-sidenav").html(htmlData)
+        //we need to attach the listener to close the bar, open a list and create a new list from here 
+        //as the elements triggering those events are only visible after the openbar() executes
+        attachCloseBarListener() 
+        attachJsListListener()
+        attachNewListListener()
+        attachButtonListener()    
+    });
+}
+        
+       
+
+
 
 //create the string to append for the lists names
 function listsNames(data){
 let listNamesArray = []
-    for (let i=0; i<data.length; i++) {
-    let dataStartingPath = data[i]
-    listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + dataStartingPath["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + dataStartingPath["id"] +`>` + dataStartingPath["name"] + `</a></div>`)
-    }
+    data.forEach(function(list){
+        listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
+    })
     //extract the string from the array and remove the commas to inject it as it
     listNamesString = listNamesArray.toString().replace(/,/g, "")
     return listNamesString 
 }
+
+
+
 
 //on click of the left chevron, executes closebar()
 function attachCloseBarListener() {
@@ -104,28 +195,50 @@ function attachJsListListener(){
     $(".js-list").on("click", closeBar);
 }
 
-const listData = (data, listId) =>{
-    return data.filter(list => {
-       list.id==listId
+let listData = (data, listId) =>{
+    return data.find(list => {
+       return list.id===listId
     })
 } 
 
-//the function render the filter in a specific div and append the links through a loop to the next div
-function displayLinksFromBars(e) {
-    e.preventDefault();
-    //erase all data from that box before displaying a new serie of links
-    $(".link").html(``)
-    //hold the id of the list that has been clicked on. "this" is the link clicked
-    const listId = parseInt($(this).attr("data-id"))
-    //get the lists and their links from the API
-    $.get("/lists.json", function(data, listI) {
+let linkData = (data, list) =>{
+    listId = list.id
+    listColor = list.color
+    return list.links.map(link => {
+        
+        let linkId = link.id
+        let linkName = link.name
+        let linkUrl = link.url
+        let showUrl = "/lists/"+listId+"/links/"+linkId
+        let d = new Date(link.created_at);
+        let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
+        let data_priority = link.priority
 
-        //render the filter heading
-        $(".filter").html(`
+        $(".link").append(`
+            <div class="caption top-margin-show"> </br>
+                <div class="font"><a href=` + showUrl + ` data-id="`+ linkId +`">` + linkName + `<a>
+                <a href= "/lists/`+listId+`/links/`+linkId+`" data-method="delete"> <i class="small material-icons link-icons-gray push-right">delete</i></a>
+                <a href= "#"> <i id="flag-`+ linkId +`" class="small material-icons link-icons-gray push-right">assistant_photo</i></a>
+                <a href=` + showUrl + `> <i data-id="`+ linkId +`" class="small material-icons link-icons-gray push-right">edit</i></a>
+                <a href=` + showUrl + `> <i data-id="`+ linkId +`" class="small material-icons link-icons-gray push-right">visibility</i></a>
+                <a href= "` + linkUrl + `"target= "blank"> <i class="small material-icons link-icons-gray push-right">link</i></a>
+                </div>
+            </div>       
+            <iframe src="` + linkUrl  + `" style="border-color: ` + listColor +`;" class = "preview rounded iframe-placeholder" href=#>` + linkUrl + `</iframe>
+            <div class="link_date font>">` + hrDate + `</div>
+        `)
+        //listen for the flag to show up to ask for its color
+        attachFlagListener(data_priority, linkId) 
+        
+    })
+}
+
+function renderFilterHeading(listId){
+$(".filter").html(`
         <div>
         </br>
         Sort by |
-        <a href= "#" id="high-priority"> higher priority</a> | 
+        <a href= "#" id="high-priority" data-id=`+listId+`> higher priority</a> | 
         <a href= "#"> most recent</a> |  
         <a href= "#"> oldest</a> 
 
@@ -134,64 +247,41 @@ function displayLinksFromBars(e) {
     
         </div>
 
-        `)
-        //render the links
-        //we want the links array for the data whose ["id"] == listId
+        `) 
+}
 
-        
+//the function render the filter in a specific div and append the links through a loop to the next div
+function displayLinksFromBars(e) {
+    e.preventDefault();
+    //erase all data from that box before displaying a new serie of links
+    $(".link").html(``)
+    //hold the id of the list that has been clicked on. "this" is the link clicked
+    const listId = parseInt($(this).attr("data-id"))
+    //render the filter heading
+    renderFilterHeading(listId)
+
+    //get the lists and their links from the API
+ 
+    $.get("/lists.json", function(data) {
+        //return the list where list.id===listId
         const list = listData(data, listId)
-        debugger
-        for (let j=0; j<data.length; j++){
-            if (data[j]["id"] === listId){
-                let dataStartingPath = data[j]["links"]
-                let linksLength = data[j]["links"].length
-                $(".link").append(`</br></br></br>Viewing list: `+data[j]["name"]+``)
-                for (let i=0; i<linksLength; i++) {
-                    let linkId = dataStartingPath[i]["id"]
-                    let data_priority = dataStartingPath[i]["priority"] 
-                    let d = new Date(dataStartingPath[i]["created_at"]);
-                    let hrDate = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear()
-                    let showUrl = "/lists/"+listId+"/links/"+linkId
-                     // render the new link page if no link yet
-                    if (linksLength===0){
-                        $(".link").append(`<a list-id="`+ listId +`" user-id="`+ data[j]["user_id"] +`" class="plus" href=/lists/`+listId+`/links/new><i class="large material-icons">add_circle_outline</i></a>
-                        </div>`) 
-                    }
-                    //append each link with this display: name(links to the show link page), buttons (delete, flag, edit, view, link), iframe (border with color of the list), creation date
-                    $(".link").append(`
-                        <div class="caption top-margin-show"> </br>
-                            <div class="font"><a href=` + showUrl + ` data-id="`+ dataStartingPath[i]["id"] +`">` + dataStartingPath[i]["name"] + `<a>
-                            <a href= "/lists/`+listId+`/links/`+linkId+`" data-method="delete"> <i class="small material-icons link-icons-gray push-right">delete</i></a>
-                            <a href= "#"> <i id="flag-`+ linkId +`" class="small material-icons link-icons-gray push-right">assistant_photo</i></a>
-                            <a href=` + showUrl + `> <i data-id="`+ linkId +`" class="small material-icons link-icons-gray push-right">edit</i></a>
-                            <a href=` + showUrl + `> <i data-id="`+ linkId +`" class="small material-icons link-icons-gray push-right">visibility</i></a>
-                            <a href= "` + dataStartingPath[i]["url"] + `"target= "blank"> <i class="small material-icons link-icons-gray push-right">link</i></a>
-                            </div>
-                        </div>       
-                        <iframe src="` + dataStartingPath[i]["url"]  + `" style="border-color: ` + data["color"] +`;" class = "preview rounded iframe-placeholder" href=#>` + dataStartingPath[i]["url"] + `</iframe>
-                        <div class="link_date font>">` + hrDate + `</div>
-                    `)
-                    //listen for the flag to show up to ask for its color
-                    attachFlagListener(data_priority, linkId)         
-                };
-                //append the + sign to add a new link
-                $(".link").append(`<a list-id="`+ listId +`" user-id="`+ data[j]["user_id"] +`" class="plus" href=/lists/`+listId+`/links/new><i class="large material-icons">add_circle_outline</i></a>
-                    </div>`) 
-            }
-        } 
-        attachHighPriorityListener()   
+        const listName = list.name
+        $(".link").append(`</br></br></br>Viewing list: `+listName+``)
+        //append all the links with the styling    
+        const links = linkData(data, list) 
+        //append the + sign to add a new link
+        $(".link").append(`
+            <a list-id="`+ listId +`" user-id="`+ list.user+`" class="plus" href=/lists/`+listId+`/links/new><i class="large material-icons">add_circle_outline</i></a>
+            </div>
+        `) 
+        //to think about
+        // attachHighPriorityListener()
+        // attachMostRecentListener()
+        // attachOldestListener()
+  
     });
 };
 
-
-
-function attachHighPriorityListener() {
-    $("#high-priority").on("click", filterByPriority)
-}  
-
-function filterByPriority() {
-  
-};
 
 
 
@@ -206,15 +296,15 @@ function createNewList(e){
     // we should have writte let values = $(this).serialize(); but
     // to create a new list Devise requiere the token of the user
     //so we have to write the whole object we pass to the post request
-    var values = {
+    let values = {
         "authenticity_token": $('meta[name=csrf-token]').attr('content'),
         "list": {
             "name": $("#newListName").val(),
             "color": $("input:checked").val()
     }};
     // post to the api with $.post(url, data, success callback function), append the new list to the list of lists and empty input field
-    var posting = $.post('/lists', values, function(response){
-        var list = response
+    let posting = $.post('/lists', values, function(response){
+        let list = response
         $(".js-appendListName").append(`
             <div class="valign-wrapper">
             <i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i>
@@ -247,7 +337,7 @@ function flagColor(data_priority, linkId){
 //upon load of the document retrieve the api information, create a new js-user 
 $.get("/lists.json", function(data) {
     //the user is instantiated through the use of the first list, user key(provided by the belongs to relationship)
-    var newUser = new User(data[0].user)
+    let newUser = new User(data[0].user)
     //get the div and place the info user modified as specified in the renderUserName function
     $("#user").html(newUser.renderUserName())
 
