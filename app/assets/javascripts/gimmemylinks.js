@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of a9ed9a5... looking to understand List and Link Model Objects
 $(function() {
     attachListeners();
     // getLists();
@@ -396,16 +401,15 @@ function User(dataObj){
 // add a function on the prototype to extract the name part of the email
 User.prototype.renderUserName = function() {
     const name = this.email.split("@")[0]
-    return `${name}`
+    return `
+        ${name}
+    `
 }
 
-function List(dataObj){
-    this.name = dataObj.name
-    this.color = dataObj.color
-    this.user_id = dataObj.user_id
-}
+<<<<<<< HEAD
 
 
 
-
+=======
+>>>>>>> parent of a9ed9a5... looking to understand List and Link Model Objects
 
