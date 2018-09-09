@@ -1,3 +1,4 @@
+
 $(function() {
     attachListeners();
     
@@ -344,7 +345,25 @@ function User(dataObj){
 // add a function on the prototype to extract the name part of the email
 User.prototype.renderUserName = function() {
     const name = this.email.split("@")[0]
-    return `
-        ${name}
-    `
+    return `${name}`
+}
+
+function List(dataObj){
+    this.name = dataObj.name
+    this.color = dataObj.color
+    this.user_id = dataObj.user_id
+}
+
+List.prototype.listData = function (data, listId) {
+    return data.find(list => {
+       return list.id===listId
+    })
+} 
+
+function Link(dataObj){
+    this.user_id = dataObj.user_id
+    this.list_id = dataObj.list_id
+    this.name = dataObj.name
+    this.url = dataObj.url
+    this.priority = dataObj.priority
 }
