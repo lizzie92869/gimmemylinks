@@ -4,6 +4,8 @@ This application allow its users to keep track and organize useful links such as
 This application is like a powerful tool bar. You create your lists, save your links, define a priority for them. You can read your resources without even leaving the application thank to a big preview display (from the list and from the link page). You can check your links by priority or date. 
 
 -------------------------------------------------------------------------------------------------------------
+#Where to read more about it
+http://codingtalesbylizzie.com/portfolio_gimmemylinks_with_jquery
 
 #How to install this application:
 
