@@ -90,6 +90,7 @@ function attachButtonListener(){
 
 function filterList(e){
     e.preventDefault();
+<<<<<<< HEAD
     barWithoutLists()
     $.get("/lists.json", function(data) {   
     // let listNamesArray = []
@@ -123,6 +124,99 @@ function attachListenersToOpenBar(){
     attachNewListListener()
     attachButtonListener()   
 }      
+=======
+    $.get("/lists.json", function(data) { 
+        
+    let listNamesArray = []
+        data.forEach(function(list){
+            let linksLenght = list.links.length
+            if (linksLenght > 0){
+                let links = list.links
+                if (links.some(link => link.priority < 2)){
+                    listNamesArray.push(list)  
+                } 
+            }
+        });
+    let htmlData = ` 
+            <div class="js-big-nav"><div class = "colon-left leftSideBigNav darkGray lightGreyBackground">
+            <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
+            ${listsNames(listNamesArray)}
+            </div>
+
+            <button id="hp-list">only lists HP</button>
+
+            </br></br></br></br></br></br>
+            <h6>Enter a new list:</h6>
+            <form action="/lists" method="post" class="js-newList" id="js-clearList">
+                <input id="newListName" type="text" name="name" >
+                <h6>Choose a color:</h6>
+                
+                <label class="container1"> 
+                  <input type="radio" checked="checked" name="color" value="#CCFF38" class="newListColor">
+                  <span class="checkmark" id="green"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#604560" class="newListColor">
+                  <span class="checkmark" id="purple"></span>
+                </label>
+
+                <label class="container1">  
+                  <input type="radio" name="color" value="#E4E0D5" class="newListColor">
+                  <span class="checkmark" id="taupe"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#51CDA7" class="newListColor">
+                  <span class="checkmark" id="teal"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#BCB7B3" class="newListColor">
+                  <span class="checkmark" id="mgrey"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#FF3333" class="newListColor">
+                  <span class="checkmark" id="red"></span>
+                </label>
+
+                <label class="container1"> 
+                  <input type="radio" name="color" value="#F9FFFC" class="newListColor">
+                  <span class="checkmark" id="mint"></span>
+                </label>
+                </br></br>
+                <input type="submit" id="submitNewListButton">
+            </form>
+            </div>`
+        // insert this variable in the parent div
+        $(".big-sidenav").html(htmlData)
+        //we need to attach the listener to close the bar, open a list and create a new list from here 
+        //as the elements triggering those events are only visible after the openbar() executes
+        attachCloseBarListener() 
+        attachJsListListener()
+        attachNewListListener()
+        attachButtonListener()    
+    });
+}
+        
+       
+
+
+
+//create the string to append for the lists names
+function listsNames(data){
+let listNamesArray = []
+    data.forEach(function(list){
+        listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
+    })
+    //extract the string from the array and remove the commas to inject it as it
+    listNamesString = listNamesArray.toString().replace(/,/g, "")
+    return listNamesString 
+}
+
+
+>>>>>>> parent of ac70122... rewrite using filter and map
 
 
 //on click of the left chevron, executes closebar()
@@ -149,8 +243,8 @@ let listData = (data, listId) =>{
 } 
 
 let linkData = (data, list) =>{
-    let listId = list.id
-    let listColor = list.color
+    listId = list.id
+    listColor = list.color
     return list.links.map(link => {
         
         let linkId = link.id
