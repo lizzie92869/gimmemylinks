@@ -1,5 +1,5 @@
 user has_many lists 
-user has_many links, through: lists
+user has_many links through lists
 
 list belongs_to user
 list has_many list_links

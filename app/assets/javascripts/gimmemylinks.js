@@ -10,8 +10,6 @@ function attachListeners() {
     
 }
 
-//removed: <button id="hp-list">only lists HP</button> from the assignment 
-
 function barWithoutLists(){
     $(".big-sidenav").html(
         ` 
@@ -19,7 +17,7 @@ function barWithoutLists(){
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
      
             </div>
-            
+            <button id="hp-list">only lists HP</button>
             </br></br></br></br></br></br>
             <h6>Enter a new list:</h6>
             <form action="/lists" method="post" class="js-newList" id="js-clearList">
