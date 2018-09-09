@@ -1,4 +1,44 @@
 
+//upon load of the document retrieve the api information, create a new js-user 
+$.get("/lists.json", function(data) {
+    //the user is instantiated through the use of the first list, user key(provided by the belongs to relationship)
+    let newUser = new User(data[0].user)
+    //get the div and place the info user modified as specified in the renderUserName function
+    $("#user").html(newUser.renderUserName())
+
+})
+
+//define a model object of a User which only takes the email 
+function User(dataObj){
+    this.email = dataObj.email
+}
+// add a function on the prototype to extract the name part of the email
+User.prototype.renderUserName = function() {
+    const name = this.email.split("@")[0]
+    return `${name}`
+}
+
+// function List(dataObj){
+//     this.name = dataObj.name
+//     this.color = dataObj.color
+//     this.user_id = dataObj.user_id
+// }
+
+// List.prototype.listData = function (data, listId) {
+//     return data.find(list => {
+//        return list.id===listId
+//     })
+// } 
+
+// function Link(dataObj){
+//     this.user_id = dataObj.user_id
+//     this.list_id = dataObj.list_id
+//     this.name = dataObj.name
+//     this.url = dataObj.url
+//     this.priority = dataObj.priority
+// }
+
+
 $(function() {
     attachListeners();
     
@@ -20,7 +60,9 @@ function openBar(e) {
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
             ${listsNames(data)}
             </div>
+
             <button id="hp-list">only lists HP</button>
+
             </br></br></br></br></br></br>
             <h6>Enter a new list:</h6>
             <form action="/lists" method="post" class="js-newList" id="js-clearList">
@@ -101,7 +143,8 @@ function filterList(e){
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
             ${listsNames(listNamesArray)}
             </div>
-            <button id="hp-list">only lists HP</button>
+
+
             </br></br></br></br></br></br>
             <h6>Enter a new list:</h6>
             <form action="/lists" method="post" class="js-newList" id="js-clearList">
@@ -112,26 +155,39 @@ function filterList(e){
                   <input type="radio" checked="checked" name="color" value="#CCFF38" class="newListColor">
                   <span class="checkmark" id="green"></span>
                 </label>
+
                 <label class="container1"> 
                   <input type="radio" name="color" value="#604560" class="newListColor">
                   <span class="checkmark" id="purple"></span>
                 </label>
+
+
                 <label class="container1">  
                   <input type="radio" name="color" value="#E4E0D5" class="newListColor">
                   <span class="checkmark" id="taupe"></span>
                 </label>
+
+
                 <label class="container1"> 
                   <input type="radio" name="color" value="#51CDA7" class="newListColor">
                   <span class="checkmark" id="teal"></span>
                 </label>
+
+
+
                 <label class="container1"> 
                   <input type="radio" name="color" value="#BCB7B3" class="newListColor">
                   <span class="checkmark" id="mgrey"></span>
                 </label>
+
+
                 <label class="container1"> 
                   <input type="radio" name="color" value="#FF3333" class="newListColor">
                   <span class="checkmark" id="red"></span>
                 </label>
+
+
+
                 <label class="container1"> 
                   <input type="radio" name="color" value="#F9FFFC" class="newListColor">
                   <span class="checkmark" id="mint"></span>
@@ -359,6 +415,7 @@ List.prototype.listData = function (data, listId) {
        return list.id===listId
     })
 } 
+
 
 function Link(dataObj){
     this.user_id = dataObj.user_id
