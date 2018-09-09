@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-=======
-
-
->>>>>>> parent of a9ed9a5... looking to understand List and Link Model Objects
 $(function() {
     attachListeners();
-    // getLists();
     
 });
 // attach the listeners of the element that display on the document
@@ -14,13 +8,16 @@ function attachListeners() {
     $(".new-plus").on("click", openBar)
     
 }
-
-function barWithoutLists(){
-    $(".big-sidenav").html(
-        ` 
+//when click on the right chevron or the small + sign, the side bar shows up whithout page refresh
+function openBar(e) {
+    e.preventDefault();
+    //get the api data for all lists
+    $.get("/lists.json", function(data) { 
+        //define a variable holding the bar, the left chevron, the lists names, the form to create a new list    
+        let htmlData = ` 
             <div class="js-big-nav"><div class = "colon-left leftSideBigNav darkGray lightGreyBackground">
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
-     
+            ${listsNames(data)}
             </div>
             <button id="hp-list">only lists HP</button>
             </br></br></br></br></br></br>
@@ -28,37 +25,31 @@ function barWithoutLists(){
             <form action="/lists" method="post" class="js-newList" id="js-clearList">
                 <input id="newListName" type="text" name="name" >
                 <h6>Choose a color:</h6>
-           
+                
                 <label class="container1"> 
                   <input type="radio" checked="checked" name="color" value="#CCFF38" class="newListColor">
                   <span class="checkmark" id="green"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#604560" class="newListColor">
                   <span class="checkmark" id="purple"></span>
                 </label>
-
                 <label class="container1">  
                   <input type="radio" name="color" value="#E4E0D5" class="newListColor">
                   <span class="checkmark" id="taupe"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#51CDA7" class="newListColor">
                   <span class="checkmark" id="teal"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#BCB7B3" class="newListColor">
                   <span class="checkmark" id="mgrey"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#FF3333" class="newListColor">
                   <span class="checkmark" id="red"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#F9FFFC" class="newListColor">
                   <span class="checkmark" id="mint"></span>
@@ -66,28 +57,17 @@ function barWithoutLists(){
                 </br></br>
                 <input type="submit" id="submitNewListButton">
             </form>
-            </div>`)
+            </div>`
+        // insert this variable in the parent div
+        $(".big-sidenav").html(htmlData)
+        //we need to attach the listener to close the bar, open a list and create a new list from here 
+        //as the elements triggering those events are only visible after the openbar() executes
+        attachCloseBarListener() 
+        attachJsListListener()
+        attachNewListListener()
+        attachButtonListener()
+    }); 
 }
-//when click on the right chevron or the small + sign, the side bar shows up whithout page refresh
-function openBar(e) {
-    e.preventDefault();
-    //display the bar without the lists
-    barWithoutLists()
-    //get the api data for all lists, create JavaScript Objects and append them
-    $.get("/lists.json", function(data) {
-        let sortedLists = data.sort(function(a,b) {
-           return (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1;
-
-        });
-        debugger
-         sortedLists.forEach(l => { 
-            let list = new List(l)
-            $(".js-appendListName").append(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
-         } ); 
-    })
-    attachListenersToOpenBar()   
-}
-
 
 function attachButtonListener(){
     $("#hp-list").on("click", filterList);
@@ -95,9 +75,8 @@ function attachButtonListener(){
 
 function filterList(e){
     e.preventDefault();
-<<<<<<< HEAD
-    barWithoutLists()
-    $.get("/lists.json", function(data) {   
+    $.get("/lists.json", function(data) { 
+        
     // let listNamesArray = []
     //     data.forEach(function(list){
     //         let linksLenght = list.links.length
@@ -115,41 +94,13 @@ function filterList(e){
         return (linksLenght > 0 && links.some(link => link.priority < 2))
     });
 
-   listNamesArray.forEach(l => { 
-            let list = new List(l)
-            $(".js-appendListName").append(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
-    } ); 
-    attachListenersToOpenBar()
-    });
-}
-        
-function attachListenersToOpenBar(){
-    attachCloseBarListener() 
-    attachJsListListener()
-    attachNewListListener()
-    attachButtonListener()   
-}      
-=======
-    $.get("/lists.json", function(data) { 
-        
-    let listNamesArray = []
-        data.forEach(function(list){
-            let linksLenght = list.links.length
-            if (linksLenght > 0){
-                let links = list.links
-                if (links.some(link => link.priority < 2)){
-                    listNamesArray.push(list)  
-                } 
-            }
-        });
+
     let htmlData = ` 
             <div class="js-big-nav"><div class = "colon-left leftSideBigNav darkGray lightGreyBackground">
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
             ${listsNames(listNamesArray)}
             </div>
-
             <button id="hp-list">only lists HP</button>
-
             </br></br></br></br></br></br>
             <h6>Enter a new list:</h6>
             <form action="/lists" method="post" class="js-newList" id="js-clearList">
@@ -160,32 +111,26 @@ function attachListenersToOpenBar(){
                   <input type="radio" checked="checked" name="color" value="#CCFF38" class="newListColor">
                   <span class="checkmark" id="green"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#604560" class="newListColor">
                   <span class="checkmark" id="purple"></span>
                 </label>
-
                 <label class="container1">  
                   <input type="radio" name="color" value="#E4E0D5" class="newListColor">
                   <span class="checkmark" id="taupe"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#51CDA7" class="newListColor">
                   <span class="checkmark" id="teal"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#BCB7B3" class="newListColor">
                   <span class="checkmark" id="mgrey"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#FF3333" class="newListColor">
                   <span class="checkmark" id="red"></span>
                 </label>
-
                 <label class="container1"> 
                   <input type="radio" name="color" value="#F9FFFC" class="newListColor">
                   <span class="checkmark" id="mint"></span>
@@ -211,17 +156,22 @@ function attachListenersToOpenBar(){
 
 //create the string to append for the lists names
 function listsNames(data){
-let listNamesArray = []
-    data.forEach(function(list){
-        listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
+// let listNamesArray = []
+//     data.forEach(function(list){
+//         listNamesArray.push(`<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`)
+//     })
+//     //extract the string from the array and remove the commas to inject it as it
+//     listNamesString = listNamesArray.toString().replace(/,/g, "")
+//     return listNamesString 
+    let listNamesArray = data.map(function(list){
+        return `<div class="valign-wrapper"><i class="material-icons rightMarginForIcons" style="color: ` + list["color"] + `">brightness_1</i><a href="#" class="js-list" data-id=` + list["id"] +`>` + list["name"] + `</a></div>`
     })
     //extract the string from the array and remove the commas to inject it as it
     listNamesString = listNamesArray.toString().replace(/,/g, "")
-    return listNamesString 
+    return listNamesString    
 }
 
 
->>>>>>> parent of ac70122... rewrite using filter and map
 
 
 //on click of the left chevron, executes closebar()
@@ -248,8 +198,8 @@ let listData = (data, listId) =>{
 } 
 
 let linkData = (data, list) =>{
-    listId = list.id
-    listColor = list.color
+    let listId = list.id
+    let listColor = list.color
     return list.links.map(link => {
         
         let linkId = link.id
@@ -287,15 +237,12 @@ $(".filter").html(`
         <a href= "#" id="high-priority" data-id=`+listId+`> higher priority</a> | 
         <a href= "#"> most recent</a> |  
         <a href= "#"> oldest</a> 
-
         </br>
         <a href= "/lists/`+listId+`" data-method="delete"><i id="can" class="material-icons">delete</i>delete this list</a>
     
         </div>
-
         `) 
 }
-
 
 //the function render the filter in a specific div and append the links through a loop to the next div
 function displayLinksFromBars(e) {
@@ -311,8 +258,6 @@ function displayLinksFromBars(e) {
  
     $.get("/lists.json", function(data) {
         //return the list where list.id===listId
-
-        
         let list = listData(data, listId)
         let listName = list.name
         $(".link").append(`</br></br></br>Viewing list: `+listName+``)
@@ -365,8 +310,6 @@ function createNewList(e){
     });
 
 }
-
-
 // listen for the flag to show up to ask for the color
 function attachFlagListener(data_priority, linkId){
     $(".link").on("load", flagColor(data_priority, linkId));
@@ -405,11 +348,3 @@ User.prototype.renderUserName = function() {
         ${name}
     `
 }
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> parent of a9ed9a5... looking to understand List and Link Model Objects
-
