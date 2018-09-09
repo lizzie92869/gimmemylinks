@@ -4,8 +4,10 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+# Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem "figaro"
+# google + authentication
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -29,8 +31,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -39,14 +40,16 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 # Spec
 gem 'rspec'
-# google + authentication
-gem 'omniauth'
+
+
 
 gem 'activerecord'
 
 gem "pry"
 
 gem 'active_model_serializers'
+
+# gem 'sprockets' ~> '3.7.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

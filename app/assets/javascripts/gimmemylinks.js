@@ -53,6 +53,7 @@ function attachListeners() {
     
 }
 //when click on the right chevron or the small + sign, the side bar shows up whithout page refresh
+//removed: <button id="hp-list">only lists HP</button>
 function openBar(e) {
     e.preventDefault();
     //get the api data for all lists
@@ -63,7 +64,7 @@ function openBar(e) {
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
             ${listsNames(data)}
             </div>
-            <button id="hp-list">only lists HP</button>
+            
             </br></br></br></br></br></br>
             <h6>Enter a new list:</h6>
             <form action="/lists" method="post" class="js-newList" id="js-clearList">
@@ -138,13 +139,13 @@ function filterList(e){
         return (linksLenght > 0 && links.some(link => link.priority < 2))
     });
 
-
+//removed: <button id="hp-list">only lists HP</button>
     let htmlData = ` 
             <div class="js-big-nav"><div class = "colon-left leftSideBigNav darkGray lightGreyBackground">
             <div class="js-appendListName"><div class="right-align"><a href="#"><i class="close-bar material-icons darkGray">chevron_left</i></a></div>
             ${listsNames(listNamesArray)}
             </div>
-            <button id="hp-list">only lists HP</button>
+            
             </br></br></br></br></br></br>
             <h6>Enter a new list:</h6>
             <form action="/lists" method="post" class="js-newList" id="js-clearList">
