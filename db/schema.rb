@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20180426183106) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "links", force: :cascade do |t|
     t.integer "user_id"
     t.integer "list_id"
     t.string "name"
     t.string "url"
-    t.integer "priority", default: 3
+    t.string "priority", default: "medium"
     t.datetime "created_at"
     t.datetime "expiration_date"
   end

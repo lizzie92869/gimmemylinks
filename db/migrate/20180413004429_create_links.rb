@@ -5,7 +5,7 @@ class CreateLinks < ActiveRecord::Migration[5.1]
       t.integer :list_id
       t.string :name
       t.string :url
-      t.string :priority, :default => "medium"
+      t.integer :priority, :default => 3
     end
   end
 end
