@@ -13,3 +13,12 @@ test:
   pool: 5
   username: postgres
   password: password1
+
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: gimmemylinks_test
+  pool: 5
+  username: postgres
+  password: password1

@@ -40,7 +40,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # Spec
 gem 'rspec'
-
+gem "bundler"
 
 
 gem 'activerecord'

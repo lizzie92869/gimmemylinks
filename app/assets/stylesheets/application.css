@@ -41,7 +41,7 @@ html{
 		height: 100%;
 		font-family: 'Ubuntu Mono', monospace;
 		min-height:900px;
-		color: black;
+		color: black
 
 	}
 	body{
@@ -200,8 +200,8 @@ html{
 }
 
 .signout{
-	display:inline-block
-	color: black;
+	display:inline-block;
+	color: black
 }
 
 /*overwrite the style for sign out to display*/
