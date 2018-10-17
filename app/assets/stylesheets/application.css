@@ -207,6 +207,7 @@ html{
 /*overwrite the style for sign out to display*/
 nav div a {
 	color: #656565 !important;
+
 }
 
 	#green, #purple, #taupe, #teal, #mgrey, #red, #mint{
@@ -232,8 +233,14 @@ nav div a {
 	#red{
 		background-color: #FF3333;
 	}
-	#mint{
-		background-color: #F9FFFC;
+	#orange{
+		background-color: #FFBF00;
+	}
+	#yellow{
+		background-color: #FFFF00;
+	}
+	#red-light{
+		background-color: #FF3333;
 	}
 	
 	#can{
@@ -311,5 +318,15 @@ nav div a {
 		width: 80%;
 		margin-left: 100px;
 	}
+
+	/******************** new page radio buttons *******************/
+/*	[type="radio"]:not(:checked)+label:before {
+		background-color: grey;
+		border: grey;
+	}*/
+
+/*	[type="radio"]:checked+label{
+		background-color: blue;
+	}*/
 
 	
